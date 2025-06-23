@@ -1,0 +1,212 @@
+-- ====================
+-- TABELAS PRINCIPAIS
+-- ====================
+
+CREATE TABLE aluno (
+    id_aluno INT PRIMARY KEY,
+    rm INT NOT NULL UNIQUE,
+    nome VARCHAR(255) NOT NULL,
+    curso VARCHAR(100) NOT NULL,
+    modulo_ano VARCHAR(20),
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL, -- Armazenar hash da senha
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE empresa (
+    id_empresa INT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    telefone VARCHAR(20),
+    cidade VARCHAR(100),
+    setor VARCHAR(100),
+    senha VARCHAR(255) NOT NULL,
+    cnpj VARCHAR(18) NOT NULL UNIQUE,
+    uf CHAR(2),
+    cep VARCHAR(9)
+);
+
+CREATE TABLE instituicao (
+    id_instituicao VARCHAR(10) PRIMARY KEY,
+    cod_instituicao INT NOT NULL UNIQUE,
+    nome VARCHAR(255) NOT NULL,
+    tipo ENUM('ETEC', 'FATEC') NOT NULL,
+    cidade VARCHAR(100),
+    telefone VARCHAR(20),
+    cep VARCHAR(9)
+);
+
+CREATE TABLE coordenador (
+    id_coordenador INT PRIMARY KEY,
+    matricula INT NOT NULL UNIQUE,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE palestrante (
+    id_palestrante INT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    bio TEXT,
+    telefone VARCHAR(20),
+    area_atuacao VARCHAR(100),
+    experiencia TEXT
+);
+
+CREATE TABLE administrador (
+    id_administrador VARCHAR(10) PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ====================
+-- TABELAS DE EVENTOS
+-- ====================
+
+CREATE TABLE palestra (
+    id_palestra INT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    descricao TEXT,
+    data_palestra DATE,
+    hora_palestra TIME,
+    status ENUM('Pendente', 'Aprovada', 'Concluída', 'Cancelada') DEFAULT 'Pendente',
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    cep VARCHAR(9),
+    id_instituicao VARCHAR(10),
+    FOREIGN KEY (id_instituicao) REFERENCES instituicao (id_instituicao)
+);
+
+CREATE TABLE visita_tecnica (
+    id_visita_tecnica VARCHAR(10) PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    descricao TEXT,
+    data_visita DATE,
+    hora_visita TIME,
+    cep VARCHAR(9),
+    status ENUM('Pendente', 'Aprovada', 'Concluída', 'Cancelada') DEFAULT 'Pendente',
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    id_empresa INT NOT NULL,
+    id_instituicao VARCHAR(10),
+    FOREIGN KEY (id_empresa) REFERENCES empresa (id_empresa),
+    FOREIGN KEY (id_instituicao) REFERENCES instituicao (id_instituicao)
+);
+
+-- ====================
+-- PARTICIPAÇÃO EM EVENTOS
+-- ====================
+
+CREATE TABLE palestra_participante (
+    id_palestra_participante INT PRIMARY KEY,
+    status ENUM('Inscrito', 'Confirmado', 'Cancelado') DEFAULT 'Inscrito',
+    data_inscricao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    id_palestra INT NOT NULL,
+    FOREIGN KEY (id_palestra) REFERENCES palestra (id_palestra)
+);
+
+CREATE TABLE visita_tecnica_participante (
+    id_visita_tecnica_participante INT PRIMARY KEY,
+    status ENUM('Inscrito', 'Confirmado', 'Cancelado') DEFAULT 'Inscrito',
+    data_inscricao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    id_visita_tecnica VARCHAR(10) NOT NULL,
+    FOREIGN KEY (id_visita_tecnica) REFERENCES visita_tecnica (id_visita_tecnica)
+);
+
+-- ====================
+-- RELACIONAMENTOS
+-- ====================
+
+-- Palestrante realiza palestra
+CREATE TABLE palestra_realizada (
+    id_palestrante INT,
+    id_palestra INT,
+    PRIMARY KEY (id_palestrante, id_palestra),
+    FOREIGN KEY (id_palestrante) REFERENCES palestrante (id_palestrante),
+    FOREIGN KEY (id_palestra) REFERENCES palestra (id_palestra)
+);
+
+-- Coordenador coordena visita
+CREATE TABLE coordenador_visita (
+    id_coordenador INT,
+    id_visita_tecnica VARCHAR(10),
+    PRIMARY KEY (id_coordenador, id_visita_tecnica),
+    FOREIGN KEY (id_coordenador) REFERENCES coordenador (id_coordenador),
+    FOREIGN KEY (id_visita_tecnica) REFERENCES visita_tecnica (id_visita_tecnica)
+);
+
+-- Coordenador pertence a instituição
+CREATE TABLE coordenador_instituicao (
+    id_coordenador INT,
+    id_instituicao VARCHAR(10),
+    PRIMARY KEY (id_coordenador, id_instituicao),
+    FOREIGN KEY (id_coordenador) REFERENCES coordenador (id_coordenador),
+    FOREIGN KEY (id_instituicao) REFERENCES instituicao (id_instituicao)
+);
+
+-- Coordenador supervisiona participação de palestra
+CREATE TABLE coordenador_palestra_participante (
+    id_coordenador INT,
+    id_palestra_participante INT,
+    PRIMARY KEY (id_coordenador, id_palestra_participante),
+    FOREIGN KEY (id_coordenador) REFERENCES coordenador (id_coordenador),
+    FOREIGN KEY (id_palestra_participante) REFERENCES palestra_participante (id_palestra_participante)
+);
+
+-- Coordenador supervisiona participação de visita
+CREATE TABLE coordenador_visita_participante (
+    id_coordenador INT,
+    id_visita_tecnica_participante INT,
+    PRIMARY KEY (id_coordenador, id_visita_tecnica_participante),
+    FOREIGN KEY (id_coordenador) REFERENCES coordenador (id_coordenador),
+    FOREIGN KEY (id_visita_tecnica_participante) REFERENCES visita_tecnica_participante (id_visita_tecnica_participante)
+);
+
+-- Aluno participa de palestra
+CREATE TABLE aluno_palestra (
+    id_aluno INT,
+    id_palestra_participante INT,
+    PRIMARY KEY (id_aluno, id_palestra_participante),
+    FOREIGN KEY (id_aluno) REFERENCES aluno (id_aluno),
+    FOREIGN KEY (id_palestra_participante) REFERENCES palestra_participante (id_palestra_participante)
+);
+
+-- Aluno participa de visita técnica
+CREATE TABLE aluno_visita (
+    id_aluno INT,
+    id_visita_tecnica_participante INT,
+    PRIMARY KEY (id_aluno, id_visita_tecnica_participante),
+    FOREIGN KEY (id_aluno) REFERENCES aluno (id_aluno),
+    FOREIGN KEY (id_visita_tecnica_participante) REFERENCES visita_tecnica_participante (id_visita_tecnica_participante)
+);
+
+-- ====================
+-- FEEDBACKS
+-- ====================
+
+CREATE TABLE feedback_evento (
+    id_feedback INT PRIMARY KEY AUTO_INCREMENT,
+    id_aluno INT NOT NULL,
+    id_evento INT NOT NULL,
+    tipo_evento ENUM('Palestra', 'Visita') NOT NULL,
+    avaliacao INT CHECK (avaliacao BETWEEN 1 AND 5),
+    comentario TEXT,
+    data_feedback TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_aluno) REFERENCES aluno(id_aluno)
+);
+
+-- ====================
+-- LOG DE ATIVIDADES (AUDITORIA)
+-- ====================
+
+CREATE TABLE log_evento (
+    id_log INT PRIMARY KEY AUTO_INCREMENT,
+    id_usuario VARCHAR(10),
+    acao VARCHAR(50),
+    id_referencia INT,
+    tipo_evento ENUM('Palestra', 'Visita'),
+    data_acao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

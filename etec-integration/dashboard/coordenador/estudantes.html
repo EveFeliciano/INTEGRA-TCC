@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudantes - Coordenador - INTEGRA</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/coordenador.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="flex-col min-h-screen">
+        <!-- Header -->
+        <header class="sticky-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <a href="home.html" class="logo-link">
+                            <img src="../../img/logo.png" alt="Logo" class="logo-image"
+                                style="max-width: 200px; height: auto;">
+                        </a>
+                    </div>
+
+                    <nav class="main-nav">
+                        <a href="home.html" class="nav-link">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                        <a href="agendamento.html" class="nav-link">
+                            <i class="fas fa-calendar-plus"></i> Agendamento
+                        </a>
+                        <a href="agendados.html" class="nav-link">
+                            <i class="fas fa-calendar-check"></i> Agendados
+                        </a>
+                        <a href="estudantes.html" class="nav-link active">
+                            <i class="fas fa-users"></i> Estudantes
+                        </a>
+                    </nav>
+
+                    <div class="user-actions">
+                        <div class="notification-container">
+                            <button class="notification-btn">
+                                <i class="fas fa-bell"></i>
+                                <span class="notification-badge">3</span>
+                            </button>
+                        </div>
+                        <div class="user-info" id="user-profile-btn">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span class="user-name">Prof. João Silva</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <a href="../../login.html" class="logout-button">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Gerenciamento de Estudantes</h1>
+                    <p class="page-description">Organize os estudantes por turmas e cursos</p>
+                </div>
+
+                <!-- Classes Grid -->
+                <div class="classes-grid" id="classes-grid">
+                    <!-- Classes will be populated by JavaScript -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Students List Modal -->
+        <div class="modal" id="students-modal">
+            <div class="modal-content large">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="students-modal-title">Alunos da Turma</h3>
+                    <p class="modal-description" id="students-modal-description">Lista de estudantes</p>
+                </div>
+                <div class="modal-body">
+                    <div class="students-table-container">
+                        <table class="data-table" id="students-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>RM</th>
+                                    <th>Email</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="students-list">
+                                <!-- Students will be populated -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="add-student-btn" class="button primary-button">
+                        <i class="fas fa-plus"></i> Adicionar Aluno
+                    </button>
+                    <button id="close-students-modal" class="button outline-button">Fechar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add/Edit Student Modal -->
+        <div class="modal" id="student-form-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="student-form-title">Adicionar Aluno</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="student-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="student-name">Nome Completo</label>
+                                <input type="text" id="student-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="student-rm">RM</label>
+                                <input type="text" id="student-rm" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="student-email">Email</label>
+                            <input type="email" id="student-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="student-password">Senha Temporária</label>
+                            <input type="password" id="student-password" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="save-student-btn" class="button primary-button">
+                        <i class="fas fa-save"></i> Salvar
+                    </button>
+                    <button id="close-student-form-modal" class="button outline-button">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="dashboard-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="copyright">© 2025 INTEGRA. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../../js/coordenador-estudantes.js"></script>
+</body>
+
+</html>

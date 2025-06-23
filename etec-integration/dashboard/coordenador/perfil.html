@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Coordenador - INTEGRA</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/coordenador.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="flex-col min-h-screen">
+        <!-- Header -->
+        <header class="sticky-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <a href="home.html" class="logo-link">
+                            <img src="../../img/logo.png" alt="Logo" class="logo-image"
+                                style="max-width: 200px; height: auto;">
+                        </a>
+                    </div>
+
+                    <nav class="main-nav">
+                        <a href="home.html" class="nav-link">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                        <a href="agendamento.html" class="nav-link">
+                            <i class="fas fa-calendar-plus"></i> Agendamento
+                        </a>
+                        <a href="agendados.html" class="nav-link">
+                            <i class="fas fa-calendar-check"></i> Agendados
+                        </a>
+                        <a href="estudantes.html" class="nav-link">
+                            <i class="fas fa-users"></i> Estudantes
+                        </a>
+                    </nav>
+
+                    <div class="user-actions">
+                        <div class="notification-container">
+                            <button class="notification-btn">
+                                <i class="fas fa-bell"></i>
+                                <span class="notification-badge">3</span>
+                            </button>
+                        </div>
+                        <div class="user-info active">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span class="user-name">Prof. João Silva</span>
+                        </div>
+                        <a href="../../login.html" class="logout-button">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Meu Perfil</h1>
+                    <p class="page-description">Gerencie suas informações pessoais</p>
+                </div>
+
+                <div class="profile-container">
+                    <!-- Profile Photo Section -->
+                    <div class="profile-photo-section">
+                        <div class="profile-photo-container">
+                            <div class="profile-photo" id="profile-photo">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <button class="change-photo-btn" id="change-photo-btn">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                            <input type="file" id="photo-input" accept="image/*" style="display: none;">
+                        </div>
+                        <h2 class="profile-name">Prof. João Silva</h2>
+                        <p class="profile-role">Coordenador ETEC</p>
+                    </div>
+
+                    <!-- Profile Information -->
+                    <div class="profile-info-section">
+                        <div class="profile-card">
+                            <div class="profile-card-header">
+                                <h3>Informações Pessoais</h3>
+                                <button class="button outline-button" id="edit-profile-btn">
+                                    <i class="fas fa-edit"></i> Editar Perfil
+                                </button>
+                            </div>
+                            <div class="profile-info-grid">
+                                <div class="info-item">
+                                    <label>Nome Completo</label>
+                                    <span id="display-name">João Silva Santos</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Email Institucional</label>
+                                    <span id="display-email">joao.silva@etec.sp.gov.br</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Telefone</label>
+                                    <span id="display-phone">(11) 99999-8888</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Instituição</label>
+                                    <span id="display-institution">ETEC Prof. Basilides de Godoy</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Código da Instituição</label>
+                                    <span id="display-institution-code">001</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Data de Cadastro</label>
+                                    <span id="display-register-date">15/01/2025</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Statistics Card -->
+                        <div class="profile-card">
+                            <div class="profile-card-header">
+                                <h3>Estatísticas</h3>
+                            </div>
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-number">24</div>
+                                    <div class="stat-label">Eventos Criados</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">156</div>
+                                    <div class="stat-label">Alunos Gerenciados</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">8</div>
+                                    <div class="stat-label">Parcerias Ativas</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">12</div>
+                                    <div class="stat-label">Palestras Realizadas</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Edit Profile Modal -->
+        <div class="modal" id="edit-profile-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Editar Perfil</h3>
+                    <p class="modal-description">Atualize suas informações pessoais</p>
+                </div>
+                <div class="modal-body">
+                    <form id="profile-form">
+                        <div class="form-group">
+                            <label for="edit-name">Nome Completo</label>
+                            <input type="text" id="edit-name" value="João Silva Santos">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-email">Email Institucional</label>
+                            <input type="email" id="edit-email" value="joao.silva@etec.sp.gov.br" readonly>
+                            <small class="form-help">O email institucional não pode ser alterado</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-phone">Telefone</label>
+                            <input type="tel" id="edit-phone" value="(11) 99999-8888">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-institution">Instituição</label>
+                            <select id="edit-institution">
+                                <option value="001">001 - ETEC Prof. Basilides de Godoy</option>
+                                <option value="002">002 - ETEC Albert Einstein</option>
+                                <option value="003">003 - ETEC Getúlio Vargas</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="save-profile-btn" class="button primary-button">
+                        <i class="fas fa-save"></i> Salvar Alterações
+                    </button>
+                    <button id="close-edit-modal" class="button outline-button">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="dashboard-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="copyright">© 2025 INTEGRA. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../../js/coordenador-perfil.js"></script>
+</body>
+
+</html>

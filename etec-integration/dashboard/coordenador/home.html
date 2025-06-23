@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Coordenador - INTEGRA</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/coordenador.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="flex-col min-h-screen">
+        <!-- Header -->
+        <header class="sticky-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <a href="home.html" class="logo-link">
+                            <img src="../../img/logo.png" alt="Logo" class="logo-image"
+                                style="max-width: 200px; height: auto;">
+                        </a>
+                    </div>
+
+                    <nav class="main-nav">
+                        <a href="home.html" class="nav-link active">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                        <a href="agendamento.html" class="nav-link">
+                            <i class="fas fa-calendar-plus"></i> Agendamento
+                        </a>
+                        <a href="agendados.html" class="nav-link">
+                            <i class="fas fa-calendar-check"></i> Agendados
+                        </a>
+                        <a href="estudantes.html" class="nav-link">
+                            <i class="fas fa-users"></i> Estudantes
+                        </a>
+                    </nav>
+
+                    <div class="user-actions">
+                        <!-- Notification Bell -->
+                        <div class="notification-container">
+                            <button class="notification-btn" id="notification-btn">
+                                <i class="fas fa-bell"></i>
+                                <span class="notification-badge" id="notification-badge">3</span>
+                            </button>
+                            <div class="notification-dropdown" id="notification-dropdown">
+                                <div class="notification-header">
+                                    <h3>Notificações</h3>
+                                </div>
+                                <div class="notification-list">
+                                    <div class="notification-item">
+                                        <i class="fas fa-calendar text-blue"></i>
+                                        <div class="notification-content">
+                                            <p>Nova solicitação de visita técnica</p>
+                                            <span class="notification-time">2 horas atrás</span>
+                                        </div>
+                                    </div>
+                                    <div class="notification-item">
+                                        <i class="fas fa-user-plus text-green"></i>
+                                        <div class="notification-content">
+                                            <p>Novo palestrante cadastrado</p>
+                                            <span class="notification-time">1 dia atrás</span>
+                                        </div>
+                                    </div>
+                                    <div class="notification-item">
+                                        <i class="fas fa-exclamation-triangle text-orange"></i>
+                                        <div class="notification-content">
+                                            <p>Palestra precisa de confirmação</p>
+                                            <span class="notification-time">2 dias atrás</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- User Profile -->
+                        <div class="user-info" id="user-profile-btn">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span class="user-name">Prof. João Silva</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <a href="../../login.html" class="logout-button">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span class="sr-only">Sair</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <div class="container">
+                <!-- Welcome Message -->
+                <div class="welcome-section">
+                    <h1 class="welcome-title">Bem-vindo(a), Prof. João Silva!</h1>
+                    <p class="welcome-description">Gerencie suas atividades acadêmicas e eventos da ETEC</p>
+                </div>
+
+                <!-- Dashboard Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>12</h3>
+                            <p>Empresas Parceiras</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>8</h3>
+                            <p>Palestrantes</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>5</h3>
+                            <p>Eventos Agendados</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon purple">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>156</h3>
+                            <p>Estudantes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions-section">
+                    <h2 class="section-title">Ações Rápidas</h2>
+                    <div class="quick-actions-grid">
+                        <a href="agendamento.html" class="quick-action-card">
+                            <div class="quick-action-icon blue">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <h3>Agendar Evento</h3>
+                            <p>Criar nova palestra ou visita técnica</p>
+                        </a>
+                        <a href="estudantes.html" class="quick-action-card">
+                            <div class="quick-action-icon green">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <h3>Adicionar Aluno</h3>
+                            <p>Cadastrar novo estudante</p>
+                        </a>
+                        <a href="agendados.html" class="quick-action-card">
+                            <div class="quick-action-icon orange">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <h3>Ver Agendados</h3>
+                            <p>Visualizar eventos programados</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="recent-activity-section">
+                    <h2 class="section-title">Atividades Recentes</h2>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon blue">
+                                <i class="fas fa-calendar-plus"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p><strong>Palestra agendada:</strong> "Inteligência Artificial na Prática"</p>
+                                <span class="activity-time">Hoje, 14:30</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon green">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p><strong>Visita aprovada:</strong> TechSolutions - Turma 3º DS</p>
+                                <span class="activity-time">Ontem, 16:45</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon purple">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p><strong>Novo aluno:</strong> Maria Santos - 2º ADM</p>
+                                <span class="activity-time">2 dias atrás</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="copyright">© 2025 INTEGRA. Todos os direitos reservados.</p>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Termos de Uso</a>
+                        <a href="#" class="footer-link">Política de Privacidade</a>
+                        <a href="#" class="footer-link">Suporte</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../../js/coordenador-home.js"></script>
+</body>
+
+</html>

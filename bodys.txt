@@ -1,0 +1,36 @@
+Insert aluno: 
+{
+    "rm": 11223,
+    "nome": "Jeff Quiler",
+    "curso": "Informática",
+    "modulo_ano": "3ºano",
+    "email": "jeff@email.com",
+    "senha": "senha123"
+}
+
+Insert coordenador:
+{
+    "matricula": 1004,
+    "nome": "Evanilson Fabrega",
+    "email": "evan@email.com",
+    "senha": "senha123"
+}
+
+Inserir empresa: 
+{
+    "nome": "TechPlusPlus Ltda",
+    "email": "contato@techplusplus.com.br",
+    "telefone": "(11) 4022-8922",
+    "cidade": "São Paulo",
+    "setor": "Tecnologia",
+    "cnpj": "12.345.628/0001-90",
+    "uf": "SP",
+    "cep": "01200-000",
+    "senha": "empresa123"
+}
+
+deletar:
+{
+    "id": 4,
+    "tipo": "aluno"
+}

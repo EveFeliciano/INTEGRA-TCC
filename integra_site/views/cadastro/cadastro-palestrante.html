@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Palestrante - INTEGRA</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/cadastro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="cadastro-page">
+        <div class="cadastro-container">
+            <a href="/cadastro" class="back-link">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </a>
+
+            <div class="cadastro-card">
+                <div class="card-header">
+                    <h1 class="card-title">Cadastro - Palestrante</h1>
+                    <p class="card-description">Cadastre-se para se tornar um palestrante</p>
+                </div>
+                <div class="card-content">
+                    <form id="palestrante-form" class="cadastro-form">
+                        <!-- Nome Completo -->
+                        <div class="form-group">
+                            <label for="nome-palestrante">Nome Completo</label>
+                            <input id="nome-palestrante" type="text" required>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email-palestrante">Email</label>
+                            <input id="email-palestrante" type="email" placeholder="palestrante@dominio.com" required>
+                        </div>
+
+                        <!-- Telefone -->
+                        <div class="form-group">
+                            <label for="telefone-palestrante">Telefone</label>
+                            <input id="telefone-palestrante" type="tel" placeholder="(XX) XXXXX-XXXX" required>
+                        </div>
+
+                        <!-- Especialização ou Área de Atuação -->
+                        <div class="form-group">
+                            <label for="especializacao">Especialização ou Área de Atuação</label>
+                            <select id="especializacao" onchange="mostrarOutroCampo()" required>
+                                <option value="">Selecione...</option>
+                                <option value="tecnologia">Tecnologia</option>
+                                <option value="educacao">Educação</option>
+                                <option value="saude">Saúde</option>
+                                <option value="arte-cultura">Arte e Cultura</option>
+                                <option value="negocios">Negócios</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+
+                        <!-- Campo para "Outro" -->
+                        <div class="form-group" id="campo-outro" style="display: none;">
+                            <label for="especializacao-outro">Informe sua especialização</label>
+                            <input id="especializacao-outro" type="text" placeholder="Digite sua especialização...">
+                        </div>
+
+                        <!-- Instituição ou Empresa -->
+                        <div class="form-group">
+                            <label for="instituicao">Instituição ou Empresa</label>
+                            <input id="instituicao" type="text" required>
+                        </div>
+
+                        <!-- Senha -->
+                        <div class="form-group">
+                            <label for="senha-palestrante">Senha</label>
+                            <input id="senha-palestrante" type="password" required>
+                        </div>
+
+                        <!-- Confirmar Senha -->
+                        <div class="form-group">
+                            <label for="confirmar-senha-palestrante">Confirmar Senha</label>
+                            <input id="confirmar-senha-palestrante" type="password" required>
+                        </div>
+
+                        <button type="submit" class="button primary-button full-width">Cadastrar</button>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="recovery-link">
+                        Já possui uma conta? <a href="#" class="text-link">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Função para mostrar o campo de texto caso "Outro" seja selecionado
+        function mostrarOutroCampo() {
+            const especializacaoSelect = document.getElementById("especializacao");
+            const campoOutro = document.getElementById("campo-outro");
+
+            if (especializacaoSelect.value === "outro") {
+                campoOutro.style.display = "block";  // Exibe o campo de texto
+            } else {
+                campoOutro.style.display = "none";  // Esconde o campo de texto
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("palestrante-form");
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+                // Redireciona para o dashboard de Palestrante após o cadastro
+                window.location.href = "/palestrante";
+            });
+        });
+    </script>
+</body>
+
+</html>

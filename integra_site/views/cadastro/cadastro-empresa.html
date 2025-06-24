@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Empresa - INTEGRA</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/cadastro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="cadastro-page">
+        <div class="cadastro-container">
+            <a href="/cadastro" class="back-link">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </a>
+
+            <div class="cadastro-card">
+                <div class="card-header">
+                    <h1 class="card-title">Cadastro - Empresa</h1>
+                    <p class="card-description">Cadastre sua Empresa</p>
+                </div>
+                <div class="card-content">
+                    <form id="empresa-form" class="cadastro-form">
+                        <!-- Nome da Empresa -->
+                        <div class="form-group">
+                            <label for="nome-empresa">Nome da Empresa</label>
+                            <input id="nome-empresa" type="text" required>
+                        </div>
+
+                        <!-- CNPJ -->
+                        <div class="form-group">
+                            <label for="cnpj">CNPJ</label>
+                            <input id="cnpj" type="text" placeholder="XX.XXX.XXX/XXXX-XX" required>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email-empresa">Email</label>
+                            <input id="email-empresa" type="email" placeholder="email@empresa.com" required>
+                        </div>
+
+                        <!-- Telefone -->
+                        <div class="form-group">
+                            <label for="telefone-empresa">Telefone</label>
+                            <input id="telefone-empresa" type="tel" placeholder="(XX) XXXXX-XXXX" required>
+                        </div>
+
+                        <!-- CEP -->
+                        <div class="form-group">
+                            <label for="cep-empresa">CEP</label>
+                            <input id="cep-empresa" type="text" placeholder="XXXXX-XXX" required>
+                        </div>
+
+                        <!-- Segmento -->
+                        <div class="form-group">
+                            <label for="segmento-empresa">Segmento</label>
+                            <select id="segmento-empresa" required>
+                                <option value="">Selecione o Segmento</option>
+                                <option value="tecnologia">Tecnologia</option>
+                                <option value="saude">Saúde</option>
+                                <option value="educacao">Educação</option>
+                                <!-- Outros segmentos -->
+                            </select>
+                        </div>
+
+                        <!-- Senha -->
+                        <div class="form-group">
+                            <label for="senha-empresa">Senha</label>
+                            <input id="senha-empresa" type="password" required>
+                        </div>
+
+                        <!-- Confirmar Senha -->
+                        <div class="form-group">
+                            <label for="confirmar-senha-empresa">Confirmar Senha</label>
+                            <input id="confirmar-senha-empresa" type="password" required>
+                        </div>
+
+                        <button type="submit" class="button primary-button full-width">Cadastrar</button>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="recovery-link">
+                        Já possui uma conta? <a href="#" class="text-link">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

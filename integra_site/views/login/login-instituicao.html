@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Instituição - INTEGRA</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="login-page">
+    <div class="login-container">
+      <a href="/login" class="back-link">
+        <i class="fas fa-arrow-left"></i> Voltar
+      </a>
+
+      <div class="login-card">
+        <div class="card-header">
+          <h1 class="card-title">Acesso - Instituição</h1>
+          <p class="card-description">Faça login com seu email institucional</p>
+        </div>
+        <div class="card-content">
+          <form id="instituicao-form" class="login-form">
+            <div class="form-group">
+              <label for="email-instituicao">Email Institucional</label>
+              <input
+                id="email-instituicao"
+                type="email"
+                placeholder="instituicao@instituicao.sp.gov.br"
+                required
+                pattern=".+@(etec\.sp\.gov\.br|fatec\.sp\.gov\.br)$"
+                title="Por favor, insira um email institucional válido (@etec.sp.gov.br ou @fatec.sp.gov.br)">
+            </div>
+            <div class="form-group">
+              <label for="password-instituicao">Senha</label>
+              <input id="password-instituicao" type="password" required>
+            </div>
+            <button type="submit" class="button primary-button full-width">Entrar</button>
+          </form>
+        </div>
+        <div class="card-footer">
+          <div class="recovery-link">
+            Esqueceu sua senha? <a href="#" class="text-link">Recuperar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/login.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const form = document.getElementById("instituicao-form");
+
+      form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        // Redireciona para o dashboard de Instituição após o login
+        window.location.href = "/instituicao";
+      });
+    });
+  </script>
+</body>
+</html>
+

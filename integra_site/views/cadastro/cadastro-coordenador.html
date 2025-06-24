@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Coordenador - INTEGRA</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/cadastro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="cadastro-page">
+        <div class="cadastro-container">
+            <a href="/cadastro" class="back-link">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </a>
+
+            <div class="cadastro-card">
+                <div class="card-header">
+                    <h1 class="card-title">Cadastro - Coordenador</h1>
+                    <p class="card-description">Cadastre-se com seu email institucional</p>
+                </div>
+                <div class="card-content">
+                    <form id="coordenador-form" class="cadastro-form">
+                        <div class="form-group">
+                            <label for="email-coordenador">Email Institucional</label>
+                            <input id="email-coordenador" type="email" placeholder="coordenador@etec.sp.gov.br" required
+                                pattern=".+@etec\.sp\.gov\.br$"
+                                title="Por favor, use seu email institucional (@etec.sp.gov.br)">
+                        </div>
+                        
+                        <!-- Escolha entre ETEC e FATEC -->
+                        <div class="form-group">
+                            <label for="instituicao">Escolha a instituição</label>
+                            <select id="instituicao" onchange="atualizarOpcoes()" required>
+                                <option value="">Selecione</option>
+                                <option value="etec">ETEC</option>
+                                <option value="fatec">FATEC</option>
+                            </select>
+                        </div>
+
+                        <!-- Lista de ETECs e FATECs -->
+                        <div class="form-group" id="lista-opcoes" style="display:none;">
+                            <label for="curso">Escolha a instituição</label>
+                            <select id="curso" required>
+                                <!-- As opções serão inseridas dinamicamente -->
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nome-coordenador">Nome Completo</label>
+                            <input id="nome-coordenador" type="text" required>
+                        </div>
+
+                        <!-- Telefone -->
+                        <div class="form-group">
+                            <label for="telefone-coordenador">Telefone</label>
+                            <input id="telefone-coordenador" type="tel" placeholder="(XX) XXXXX-XXXX" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="senha-coordenador">Senha</label>
+                            <input id="senha-coordenador" type="password" required>
+                        </div>
+
+                        <button type="submit" class="button primary-button full-width">Cadastrar</button>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="recovery-link">
+                       Já possui uma conta? <a href="#" class="text-link">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("coordenador-form");
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+                // Redireciona para o dashboard de Coordenador após o cadastro
+                window.location.href = "/coordenador";
+            });
+        });
+
+        function atualizarOpcoes() {
+            const instituicao = document.getElementById("instituicao").value;
+            const listaOpcoes = document.getElementById("lista-opcoes");
+            const cursoSelect = document.getElementById("curso");
+
+            // Limpa as opções existentes
+            cursoSelect.innerHTML = "<option value=''>Selecione</option>";
+
+            if (instituicao === "etec") {
+                // Adiciona as opções de ETEC
+                const etecs = [
+                    { code: "001", name: "ETEC A" },
+                    { code: "002", name: "ETEC B" },
+                    { code: "003", name: "ETEC C" },
+                    { code: "004", name: "ETEC D" },
+                    { code: "005", name: "ETEC E" }
+                ];
+
+                etecs.forEach(etec => {
+                    const option = document.createElement("option");
+                    option.value = etec.code;
+                    option.textContent = `${etec.code} - ${etec.name}`;
+                    cursoSelect.appendChild(option);
+                });
+            } else if (instituicao === "fatec") {
+                // Adiciona as opções de FATEC
+                const fatecs = [
+                    { code: "101", name: "FATEC A" },
+                    { code: "102", name: "FATEC B" },
+                    { code: "103", name: "FATEC C" },
+                    { code: "104", name: "FATEC D" }
+                ];
+
+                fatecs.forEach(fatec => {
+                    const option = document.createElement("option");
+                    option.value = fatec.code;
+                    option.textContent = `${fatec.code} - ${fatec.name}`;
+                    cursoSelect.appendChild(option);
+                });
+            }
+
+            // Exibe o dropdown de cursos
+            listaOpcoes.style.display = instituicao ? "block" : "none";
+        }
+    </script>
+</body>
+
+</html>

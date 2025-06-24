@@ -1,3 +1,11 @@
+
+GET:
+http://localhost:3001/integra-api/estudantes
+http://localhost:3001/integra-api/coordenadores
+http://localhost:3001/integra-api/empresas
+
+POST:
+http://localhost:3001/integra-api/inserir-estudante
 Insert aluno: 
 {
     "rm": 11223,
@@ -8,6 +16,7 @@ Insert aluno:
     "senha": "senha123"
 }
 
+http://localhost:3001/integra-api/inserir-coordenador
 Insert coordenador:
 {
     "matricula": 1004,
@@ -16,6 +25,7 @@ Insert coordenador:
     "senha": "senha123"
 }
 
+http://localhost:3001/integra-api/inserir-empresa
 Inserir empresa: 
 {
     "nome": "TechPlusPlus Ltda",
@@ -29,6 +39,8 @@ Inserir empresa:
     "senha": "empresa123"
 }
 
+DELETE:
+http://localhost:3001/integra-api/delete-usuario
 deletar:
 {
     "id": 4,

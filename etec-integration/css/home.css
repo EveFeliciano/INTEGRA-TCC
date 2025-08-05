@@ -7,10 +7,13 @@
 }
 
 .logo-image {
-  max-width: 200px; /* Ajuste conforme necessário */
+  max-width: 200px;
+  /* Ajuste conforme necessário */
   width: 100%;
-  height: auto; /* Mantém a proporção da imagem */
-  object-fit: contain; /* Garante que a imagem se ajuste ao tamanho sem distorcer */
+  height: auto;
+  /* Mantém a proporção da imagem */
+  object-fit: contain;
+  /* Garante que a imagem se ajuste ao tamanho sem distorcer */
 }
 
 .banner-grid {
@@ -211,30 +214,84 @@
 }
 
 /* Contact Section */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  align-items: center;
+.contact-form {
+  background-color: #f8fafc;
+  /* Mudança de cor de fundo */
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  margin-top: 2rem;
+  /* Espaço acima do formulário */
 }
 
-.contact-info {
-  margin-bottom: 1rem;
+.form-group {
+  margin-bottom: 2rem;
+  /* Aumenta o espaço entre os campos */
 }
 
-.contact-details {
-  margin-top: 0.75rem;
-}
-
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.contact-item i {
+label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  /* Aumenta o peso da fonte para destaque */
+  margin-bottom: 0.5rem;
   color: var(--primary-color);
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  background-color: var(--white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  /* Transição suave */
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(88, 43, 105, 0.2);
+  /* Sombra ao focar */
+}
+
+textarea {
+  min-height: 6rem;
+  resize: vertical;
+  /* Permite redimensionar verticalmente */
+}
+
+button {
+  margin-top: 1.5rem;
+  /* Aumenta o espaço acima do botão */
+}
+
+.form-feedback {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+}
+
+.form-feedback.success {
+  color: #4caf50;
+  /* Verde para sucesso */
+  background-color: rgba(76, 175, 80, 0.1);
+  /* Fundo leve para sucesso */
+}
+
+.form-feedback.error {
+  color: #f44336;
+  /* Vermelho para erro */
+  background-color: rgba(244, 67, 54, 0.1);
+  /* Fundo leve para erro */
+}
+
+.hidden {
+  display: none;
 }
 
 /* CTA Section */
@@ -299,5 +356,81 @@
 
   .cta-buttons {
     flex-direction: row;
+  }
+}
+
+.footer {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 2rem 1rem;
+  /* Adiciona padding para o footer */
+  text-align: center;
+  /* Centraliza o texto por padrão */
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  /* Uma coluna por padrão */
+  gap: 2rem;
+  /* Espaçamento entre os itens */
+}
+
+.footer-title {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.footer-description {
+  font-size: 0.875rem;
+}
+
+.footer-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-menu li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-menu a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.footer-menu a:hover {
+  text-decoration: underline;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  /* Centraliza os ícones sociais */
+  gap: 1rem;
+}
+
+.social-icon {
+  color: var(--white);
+  font-size: 1.5rem;
+  transition: color 0.2s;
+}
+
+.social-icon:hover {
+  color: var(--secondary-color);
+}
+
+.footer-bottom {
+  margin-top: 2rem;
+  font-size: 0.875rem;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(4, 1fr);
+    /* Quatro colunas em telas maiores */
+    text-align: left;
+    /* Alinha o texto à esquerda em telas maiores */
   }
 }

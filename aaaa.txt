@@ -65,3 +65,80 @@ Ferramentas de chat, mensagens ou convites precisam ser acessíveis e claras.
 
 Usar ícones universais e mensagens visuais que complementem o texto.
 
+
+
+PONTOS DE ACESSIBILIDADE DO NOSSO SITE:
+✅ 1. Uso Equitativo
+O design é útil e comercializável para pessoas com diferentes habilidades.
+
+Na sua página:
+
+O site oferece acesso igualitário para estudantes, empresas e palestrantes, com botões de login e cadastro visíveis.
+
+O conteúdo está disponível a todos, sem exigir autenticação inicial (ex: informações sobre palestras e empresas parceiras).
+
+✅ 2. Uso Flexível
+O design acomoda uma ampla gama de preferências e habilidades individuais.
+
+Na sua página:
+
+O site permite múltiplas formas de navegação: menu no topo com âncoras (#sobre, #empresas, etc.) e botões distribuídos ao longo do conteúdo (ex: "Ver Detalhes", "Saiba Mais").
+
+Ícones com texto ajudam na compreensão visual e textual (ex: ícones de palestrante, empresa, estudantes).
+
+✅ 3. Uso Simples e Intuitivo
+O uso do design é fácil de entender, independentemente da experiência, conhecimento, idioma ou nível de concentração do usuário.
+
+Na sua página:
+
+O site tem estrutura clara e previsível (banner, seções separadas, footer com links úteis).
+
+Botões com descrições claras ("Ver Detalhes", "Acessar Plataforma") tornam a navegação intuitiva.
+
+Linguagem objetiva e bem organizada (sem jargões complexos).
+
+✅ 4. Informação Perceptível
+O design comunica as informações de forma eficaz, independentemente das condições ambientais ou das capacidades sensoriais do usuário.
+
+Na sua página:
+
+Ícones visuais reforçam a informação textual.
+
+Contraste de texto provavelmente está sendo tratado via CSS (mas ideal seria verificar o styles.css).
+
+Texto alternativo nas imagens (como alt="Logo") já está presente em algumas imagens, o que beneficia leitores de tela. Seria ideal repetir isso para todas as imagens importantes.
+
+⚠️ 5. Tolerância ao Erro
+O design minimiza perigos e consequências adversas de ações acidentais.
+
+Na sua página:
+
+Este princípio não é tão perceptível apenas pelo HTML. No entanto:
+
+Botões como "Ver Detalhes" ou "Enviar" são claros, mas não há sinais de confirmações, mensagens de erro amigáveis ou desfazer ações.
+
+Seria interessante implementar no futuro mensagens que avisem se algo está errado no formulário (ex: email inválido).
+
+✅ 6. Baixo Esforço Físico
+O design pode ser usado de forma eficiente, confortável e com um mínimo de fadiga.
+
+Na sua página:
+
+Navegação é direta, com botões grandes e fáceis de clicar.
+
+Estrutura em grid e espaçamento bem distribuído reduz o esforço visual.
+
+Se for responsivo (o meta viewport indica que sim), o site se adapta a celulares, evitando zoom e rolagem horizontal.
+
+⚠️ 7. Tamanho e Espaço para Aproximação e Uso
+Espaço apropriado é fornecido para aproximação, alcance, manipulação e uso, independentemente do tamanho corporal, postura ou mobilidade do usuário.
+
+Na sua página:
+
+O layout parece respeitar proporções adequadas, mas como só temos o HTML, não há como confirmar totalmente sem ver o CSS.
+
+Recomendações:
+
+Garantir que botões e links tenham tamanho mínimo de toque (ideal: 44px de altura/largura).
+
+Garantir que elementos clicáveis não fiquem muito próximos, especialmente em dispositivos móveis.

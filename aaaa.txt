@@ -1,0 +1,67 @@
+1. Interface da Plataforma (Acessibilidade Digital)
+Aplicação do Desenho Universal:
+
+Garantir que o site/plataforma seja acessível para pessoas com deficiência visual (uso de leitores de tela, contraste adequado, fontes escaláveis).
+
+Tornar a navegação simples e intuitiva para pessoas com deficiência cognitiva.
+
+Incluir navegação por teclado (sem uso de mouse) para pessoas com mobilidade reduzida.
+
+Garantir compatibilidade com tecnologias assistivas.
+
+Exemplo prático:
+
+Usar etiquetas alternativas (alt text) em imagens.
+
+Certificar-se de que botões e menus estejam bem descritos e visíveis.
+
+📌 2. Calendários de Agendamento e Visualização
+Aplicação do Desenho Universal:
+
+Os calendários devem ser legíveis, com cores acessíveis (bom contraste).
+
+Disponibilizar múltiplas formas de visualização: semanal, mensal, com filtros acessíveis.
+
+Incluir ícones com texto descritivo para facilitar o entendimento.
+
+Exemplo prático:
+
+Adicionar um modo de alto contraste ou modo noturno.
+
+Permitir leitura por voz dos eventos agendados.
+
+📌 3. Formulários de Avaliação e Feedback dos Alunos
+Aplicação do Desenho Universal:
+
+Formulários devem ser simples, com linguagem clara, e adaptáveis a múltiplos dispositivos.
+
+Usar perguntas objetivas, com possibilidade de resposta em áudio (para pessoas com dislexia, por exemplo).
+
+Exemplo prático:
+
+Adicionar opção de gravar feedback em vez de apenas digitar.
+
+Validar formulários com ferramentas de acessibilidade.
+
+📌 4. Inclusão de Todos os Usuários na Plataforma (Estudantes, Coordenadores, Empresas)
+Aplicação do Desenho Universal:
+
+Interface e fluxos de uso devem funcionar igualmente bem para pessoas com diferentes níveis de alfabetização digital.
+
+Inclusão de legendas em vídeos e intérprete de Libras, se houver conteúdos audiovisuais.
+
+Traduzir termos técnicos quando possível.
+
+Exemplo prático:
+
+Criar tutoriais em vídeo com legenda e narração explicativa.
+
+Garantir que a linguagem da interface seja simples e inclusiva.
+
+📌 5. Comunicação Entre os Usuários
+Aplicação do Desenho Universal:
+
+Ferramentas de chat, mensagens ou convites precisam ser acessíveis e claras.
+
+Usar ícones universais e mensagens visuais que complementem o texto.
+

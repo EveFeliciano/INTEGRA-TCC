@@ -1,0 +1,144 @@
+1. Interface da Plataforma (Acessibilidade Digital)
+Aplicação do Desenho Universal:
+
+Garantir que o site/plataforma seja acessível para pessoas com deficiência visual (uso de leitores de tela, contraste adequado, fontes escaláveis).
+
+Tornar a navegação simples e intuitiva para pessoas com deficiência cognitiva.
+
+Incluir navegação por teclado (sem uso de mouse) para pessoas com mobilidade reduzida.
+
+Garantir compatibilidade com tecnologias assistivas.
+
+Exemplo prático:
+
+Usar etiquetas alternativas (alt text) em imagens.
+
+Certificar-se de que botões e menus estejam bem descritos e visíveis.
+
+📌 2. Calendários de Agendamento e Visualização
+Aplicação do Desenho Universal:
+
+Os calendários devem ser legíveis, com cores acessíveis (bom contraste).
+
+Disponibilizar múltiplas formas de visualização: semanal, mensal, com filtros acessíveis.
+
+Incluir ícones com texto descritivo para facilitar o entendimento.
+
+Exemplo prático:
+
+Adicionar um modo de alto contraste ou modo noturno.
+
+Permitir leitura por voz dos eventos agendados.
+
+📌 3. Formulários de Avaliação e Feedback dos Alunos
+Aplicação do Desenho Universal:
+
+Formulários devem ser simples, com linguagem clara, e adaptáveis a múltiplos dispositivos.
+
+Usar perguntas objetivas, com possibilidade de resposta em áudio (para pessoas com dislexia, por exemplo).
+
+Exemplo prático:
+
+Adicionar opção de gravar feedback em vez de apenas digitar.
+
+Validar formulários com ferramentas de acessibilidade.
+
+📌 4. Inclusão de Todos os Usuários na Plataforma (Estudantes, Coordenadores, Empresas)
+Aplicação do Desenho Universal:
+
+Interface e fluxos de uso devem funcionar igualmente bem para pessoas com diferentes níveis de alfabetização digital.
+
+Inclusão de legendas em vídeos e intérprete de Libras, se houver conteúdos audiovisuais.
+
+Traduzir termos técnicos quando possível.
+
+Exemplo prático:
+
+Criar tutoriais em vídeo com legenda e narração explicativa.
+
+Garantir que a linguagem da interface seja simples e inclusiva.
+
+📌 5. Comunicação Entre os Usuários
+Aplicação do Desenho Universal:
+
+Ferramentas de chat, mensagens ou convites precisam ser acessíveis e claras.
+
+Usar ícones universais e mensagens visuais que complementem o texto.
+
+
+
+PONTOS DE ACESSIBILIDADE DO NOSSO SITE:
+✅ 1. Uso Equitativo
+O design é útil e comercializável para pessoas com diferentes habilidades.
+
+Na sua página:
+
+O site oferece acesso igualitário para estudantes, empresas e palestrantes, com botões de login e cadastro visíveis.
+
+O conteúdo está disponível a todos, sem exigir autenticação inicial (ex: informações sobre palestras e empresas parceiras).
+
+✅ 2. Uso Flexível
+O design acomoda uma ampla gama de preferências e habilidades individuais.
+
+Na sua página:
+
+O site permite múltiplas formas de navegação: menu no topo com âncoras (#sobre, #empresas, etc.) e botões distribuídos ao longo do conteúdo (ex: "Ver Detalhes", "Saiba Mais").
+
+Ícones com texto ajudam na compreensão visual e textual (ex: ícones de palestrante, empresa, estudantes).
+
+✅ 3. Uso Simples e Intuitivo
+O uso do design é fácil de entender, independentemente da experiência, conhecimento, idioma ou nível de concentração do usuário.
+
+Na sua página:
+
+O site tem estrutura clara e previsível (banner, seções separadas, footer com links úteis).
+
+Botões com descrições claras ("Ver Detalhes", "Acessar Plataforma") tornam a navegação intuitiva.
+
+Linguagem objetiva e bem organizada (sem jargões complexos).
+
+✅ 4. Informação Perceptível
+O design comunica as informações de forma eficaz, independentemente das condições ambientais ou das capacidades sensoriais do usuário.
+
+Na sua página:
+
+Ícones visuais reforçam a informação textual.
+
+Contraste de texto provavelmente está sendo tratado via CSS (mas ideal seria verificar o styles.css).
+
+Texto alternativo nas imagens (como alt="Logo") já está presente em algumas imagens, o que beneficia leitores de tela. Seria ideal repetir isso para todas as imagens importantes.
+
+⚠️ 5. Tolerância ao Erro
+O design minimiza perigos e consequências adversas de ações acidentais.
+
+Na sua página:
+
+Este princípio não é tão perceptível apenas pelo HTML. No entanto:
+
+Botões como "Ver Detalhes" ou "Enviar" são claros, mas não há sinais de confirmações, mensagens de erro amigáveis ou desfazer ações.
+
+Seria interessante implementar no futuro mensagens que avisem se algo está errado no formulário (ex: email inválido).
+
+✅ 6. Baixo Esforço Físico
+O design pode ser usado de forma eficiente, confortável e com um mínimo de fadiga.
+
+Na sua página:
+
+Navegação é direta, com botões grandes e fáceis de clicar.
+
+Estrutura em grid e espaçamento bem distribuído reduz o esforço visual.
+
+Se for responsivo (o meta viewport indica que sim), o site se adapta a celulares, evitando zoom e rolagem horizontal.
+
+⚠️ 7. Tamanho e Espaço para Aproximação e Uso
+Espaço apropriado é fornecido para aproximação, alcance, manipulação e uso, independentemente do tamanho corporal, postura ou mobilidade do usuário.
+
+Na sua página:
+
+O layout parece respeitar proporções adequadas, mas como só temos o HTML, não há como confirmar totalmente sem ver o CSS.
+
+Recomendações:
+
+Garantir que botões e links tenham tamanho mínimo de toque (ideal: 44px de altura/largura).
+
+Garantir que elementos clicáveis não fiquem muito próximos, especialmente em dispositivos móveis.

@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>INTEGRA - Conectando ETECs, Empresas e Palestrantes</title>
-  <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/home.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
   <div class="flex-col min-h-screen">
     <!-- Navigation -->
@@ -16,7 +18,7 @@
         <div class="header-content">
           <div class="logo">
             <a href="/" class="logo-link">
-              <img src="/img/logo.png" alt="Logo" class="logo-image" style="max-width: 200px; height: auto;">
+              <img src="img/logo.png" alt="Logo" class="logo-image" style="max-width: 200px; height: auto;">
             </a>
           </div>
 
@@ -25,6 +27,7 @@
             <a href="#empresas" class="nav-link">Empresas</a>
             <a href="#palestras" class="nav-link">Palestras</a>
             <a href="#contato" class="nav-link">Contato</a>
+            <a href="/planos" class="nav-link">Planos</a>
           </nav>
 
           <div>
@@ -53,7 +56,8 @@
                 </a>
               </div>
             </div>
-            <div class="banner-image" style="background-image: url('img/banner.png'); background-size: cover; background-position: center;">
+            <div class="banner-image"
+              style="background-image: url('img/banner.png'); background-size: cover; background-position: center;">
               <div class="banner-image-placeholder">
               </div>
             </div>
@@ -214,16 +218,6 @@
               <p class="section-description">
                 Tem alguma dúvida ou sugestão? Entre em contato conosco. Estamos sempre à disposição para ajudar.
               </p>
-              <div class="contact-details">
-                <div class="contact-item">
-                  <i class="fas fa-envelope"></i>
-                  <span>contato@etecconnect.com.br</span>
-                </div>
-                <div class="contact-item">
-                  <i class="fas fa-phone"></i>
-                  <span>(11) 9999-9999</span>
-                </div>
-              </div>
             </div>
             <div class="contact-form">
               <form action="submit_form.php" method="POST">
@@ -241,9 +235,47 @@
     <!-- Footer -->
     <footer class="footer">
       <div class="container">
-        <p>&copy; 2025 INTEGRA. Todos os direitos reservados.</p>
+        <div class="footer-grid">
+          <div class="footer-about">
+            <h3 class="footer-title">Sobre Nós</h3>
+            <p class="footer-description">
+              INTEGRA conecta estudantes das ETECs com o mercado de trabalho, oferecendo oportunidades de aprendizado e
+              desenvolvimento.
+            </p>
+          </div>
+          <div class="footer-links">
+            <h3 class="footer-title">Links Úteis</h3>
+            <ul class="footer-menu">
+              <li><a href="#sobre">Sobre Nós</a></li>
+              <li><a href="#empresas">Empresas</a></li>
+              <li><a href="#palestras">Palestras</a></li>
+              <li><a href="#contato">Contato</a></li>
+              <li><a href="privacy.html">Política de Privacidade</a></li>
+              <li><a href="terms.html">Termos de Uso</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h3 class="footer-title">Contato</h3>
+            <p>Email: contato@etecconnect.com.br</p>
+            <p>Telefone: (11) 9999-9999</p>
+            <p>Endereço: Rua Exemplo, 123 - São Paulo, SP</p>
+          </div>
+          <div class="footer-social">
+            <h3 class="footer-title">Siga-nos</h3>
+            <div class="social-icons">
+              <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 INTEGRA. Todos os direitos reservados.</p>
+        </div>
       </div>
     </footer>
   </div>
 </body>
+
 </html>

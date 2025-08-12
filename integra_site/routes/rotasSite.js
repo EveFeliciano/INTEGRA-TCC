@@ -73,5 +73,8 @@ router.get('/login-palestrante', (req, res) => {
   res.sendFile(path.join(__dirname, '../views/login/login-palestrante.html'));
 });
 
+router.get('/planos', (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/planos/planos.html'));
+});
 
 module.exports = router;

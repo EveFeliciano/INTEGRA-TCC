@@ -1,35 +1,37 @@
 const express = require('express');
 const router = express.Router();
-const conexao = require('../db/conexao');
 
-const UsuarioController = require('../components/UsuarioController');
+const UsuarioController = require('../components/Usuarios/UsuarioController');
+const AlunoController = require('../components/Usuarios/AlunoController');
+const EmpresaController = require('../components/Usuarios/EmpresaController');
+const coordenadorController = require('../components/Usuarios/CoordenadorController');
 
 router.get('/api', (req, res) => {
     res.json({mensagem: "Api funcionando!"});
 });
 
 router.get('/estudantes', (req, res) => {
-    UsuarioController.GetAllEstudantes(res);
+    AlunoController.GetAllEstudantes(res);
 });
 
 router.get('/coordenadores', (req, res) => {
-    UsuarioController.GetAllCoordenadores(res);
+    coordenadorController.GetAllCoordenadores(res);
 });
 
 router.get('/empresas', (req, res) => {
-    UsuarioController.GetAllEmpresas(res);
+    EmpresaController.GetAllEmpresas(res);
 });
 
 router.post('/inserir-estudante', (req, res) => {
-    UsuarioController.InserirEstudante(req, res);
+    AlunoController.InserirEstudante(req, res);
 });
 
 router.post('/inserir-coordenador', (req, res) => {
-    UsuarioController.InserirCoordenador(req, res);
+    coordenadorController.InserirCoordenador(req, res);
 });
 
 router.post('/inserir-empresa', (req, res) => {
-    UsuarioController.InserirEmpresa(req, res);
+    EmpresaController.InserirEmpresa(req, res);
 });
 
 router.delete('/delete-usuario', (req, res) => {

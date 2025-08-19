@@ -4,10 +4,119 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.5)), url('../img/fundo_login.png');
   background-size: cover;
   background-position: center;
   padding: 1rem;
+  /* Added gradient background to complement gears */
+  background: linear-gradient(135deg, #f8f5fb 0%, #e8dff0 50%, #f0e6f6 100%);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Engrenagens animadas no fundo */
+.gear {
+  position: fixed;
+  opacity: 0.1;
+  z-index: -1;
+  animation: moveUp linear infinite;
+  filter: drop-shadow(0 0 10px rgba(126, 63, 150, 0.3));
+}
+
+.gear svg {
+  fill: #582b69;
+  animation: rotate linear infinite;
+}
+
+.gear:nth-child(1) {
+  left: 10%;
+  animation-duration: 25s;
+  width: 60px;
+  height: 60px;
+}
+
+.gear:nth-child(1) svg {
+  animation-duration: 8s;
+}
+
+.gear:nth-child(2) {
+  left: 25%;
+  animation-duration: 30s;
+  animation-delay: -5s;
+  width: 80px;
+  height: 80px;
+}
+
+.gear:nth-child(2) svg {
+  animation-duration: 12s;
+  animation-direction: reverse;
+}
+
+.gear:nth-child(3) {
+  left: 45%;
+  animation-duration: 22s;
+  animation-delay: -10s;
+  width: 50px;
+  height: 50px;
+}
+
+.gear:nth-child(3) svg {
+  animation-duration: 6s;
+}
+
+.gear:nth-child(4) {
+  left: 65%;
+  animation-duration: 28s;
+  animation-delay: -15s;
+  width: 70px;
+  height: 70px;
+}
+
+.gear:nth-child(4) svg {
+  animation-duration: 10s;
+  animation-direction: reverse;
+}
+
+.gear:nth-child(5) {
+  left: 80%;
+  animation-duration: 35s;
+  animation-delay: -8s;
+  width: 90px;
+  height: 90px;
+}
+
+.gear:nth-child(5) svg {
+  animation-duration: 15s;
+}
+
+.gear:nth-child(6) {
+  left: 5%;
+  animation-duration: 20s;
+  animation-delay: -20s;
+  width: 45px;
+  height: 45px;
+}
+
+.gear:nth-child(6) svg {
+  animation-duration: 7s;
+  animation-direction: reverse;
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .login-container {

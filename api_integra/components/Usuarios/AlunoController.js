@@ -55,4 +55,71 @@ function InserirEstudante(req, res) {
     });
   }
 
-  module.exports = {InserirEstudante, GetAllEstudantes};
+  function AtualizarEstudante(req, res) {
+    const { id_aluno, rm, nome, curso, modulo_ano, email, telefone} = req.body;
+
+    if (!id_aluno) {
+      return res.status(400).json({ erro: 'ID obrigatório não preenchido.' });
+    }
+
+    // Guarda os campos que foram enviados
+    let campos = [];
+    let valores = [];
+
+    if (nome) {
+      campos.push("nome = ?");
+      valores.push(nome);
+    }
+    if (email) {
+      campos.push("email = ?");
+      valores.push(email);
+    }
+    if (telefone) {
+      campos.push("telefone = ?");
+      valores.push(telefone);
+    }
+    if (curso) {
+      campos.push("curso = ?");
+      valores.push(curso);
+    }
+    if (rm) {
+      campos.push("rm = ?");
+      valores.push(rm);
+    }
+    if (modulo_ano) {
+      campos.push("modulo_ano = ?");
+      valores.push(modulo_ano);
+    }
+
+    {
+      executarUpdate();
+    }
+
+    function executarUpdate() {
+      if (campos.length === 0) {
+        return res.status(400).json({ erro: 'Nenhum campo para atualizar.' });
+      }
+
+      const sql = `UPDATE aluno SET ${campos.join(", ")} WHERE id_aluno = ?`;
+      valores.push(id_aluno);
+
+      conexao.query(sql, valores, (err, resultado) => {
+        if (err) {
+          console.error("Erro ao atualizar estudante:", err);
+          return res.status(500).json({ erro: "Erro ao atualizar estudante." });
+        }
+
+        if (resultado.affectedRows === 0) {
+          return res.status(404).json({ erro: "Estudante não encontrado." });
+        }
+
+        res.status(200).json({
+          mensagem: "Estudante atualizado com sucesso.",
+          id_aluno,
+        });
+      });
+    }
+  }
+
+
+  module.exports = {InserirEstudante, GetAllEstudantes, AtualizarEstudante};

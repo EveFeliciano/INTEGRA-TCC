@@ -1,5 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import 'avaliacao_visita_page.dart'; // se salvar em outro arquivo
 
 void main() {
   runApp(const MyApp());
@@ -7,15 +8,19 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Avaliação Visita Técnica',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        primaryColor: const Color.fromARGB(255, 88, 43, 105),
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          secondary: CupertinoColors.systemYellow,
+        ),
+        fontFamily: 'BarlowRegular',
       ),
-      home: const HomePage(),
+      home: const LoginPage(), // <-- Aqui está a tela inicial!
     );
   }
 }

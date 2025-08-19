@@ -35,5 +35,27 @@ function DeleteUsuario(req, res) {
   });
 }
 
+function UsuarioLogado(req, res){
+  if (!req.session.usuarioLogado) {
+    return res.status(401).json({ erro: 'Usuário não está logado.' });
+  }
 
-module.exports = {DeleteUsuario};
+  res.json({ usuario: req.session.usuarioLogado });
+}
+
+function Logout(req, res) {
+  if (req.session.usuarioLogado) {
+      req.session.destroy(err => {
+          if (err) {
+              console.error(err);
+              return res.status(500).json({ erro: 'Erro ao encerrar a sessão.' });
+          }
+          res.clearCookie('connect.sid'); // limpa o cookie de sessão
+          return res.json({ mensagem: 'Logout realizado com sucesso!' });
+      });
+  } else {
+      return res.status(400).json({ erro: 'Nenhum usuário está logado.' });
+  }
+}
+
+module.exports = {DeleteUsuario, UsuarioLogado, Logout};

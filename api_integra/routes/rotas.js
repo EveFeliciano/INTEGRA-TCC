@@ -7,6 +7,7 @@ const AlunoController = require('../components/Usuarios/AlunoController');
 const EmpresaController = require('../components/Usuarios/EmpresaController');
 const CoordenadorController = require('../components/Usuarios/CoordenadorController');
 const EnderecoController = require('../components/EnderecoController');
+const LoginController = require('../components/LoginController');
 
 router.use(express.json());
 router.use(express.urlencoded({ extended: true })); 
@@ -55,12 +56,35 @@ router.put('/atualizar-empresa', (req, res) => {
 });
 
 //ENDEREÇO
+router.get('/enderecos', (req, res) => {
+    EnderecoController.GetAllEnderecos(res);
+});
+
 router.post('/atualizar-endereco', (req, res) => {
     EnderecoController.AtualizarEndereco(req, res);
 });
 
+router.delete('/delete-endereco', (req, res) => {
+    EnderecoController.DeleteEndereco(req, res);
+});
+
+//USUARIOS
+
+router.get('/login', (req, res) => {
+    UsuarioController.UsuarioLogado(req, res);
+});
+
+router.get('/logout', (req, res) => {
+    UsuarioController.Logout(req, res);
+});
+
 router.delete('/delete-usuario', (req, res) => {
     UsuarioController.DeleteUsuario(req, res);
+});
+
+//LOGIN 
+router.post('/login', (req, res) => {
+    LoginController.Login(req, res);
 });
 
 module.exports = router;

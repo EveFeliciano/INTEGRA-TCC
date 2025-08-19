@@ -1,5 +1,15 @@
 const conexao = require('../db/conexao');
 
+function GetAllEnderecos(res){
+    conexao.query('SELECT * FROM endereco', (err, resultados) => {
+    if (err) {
+      return res.status(500).json({ erro: 'Erro ao buscar endereços' });
+    }
+
+    res.status(200).json(resultados);
+  });
+}
+
 function AtualizarEndereco(req, res) {
     const { id, tipo, rua, numero, bairro, cidade, estado, cep, complemento } = req.body;
 
@@ -67,4 +77,25 @@ function AtualizarEndereco(req, res) {
     });
 }
 
-module.exports = { AtualizarEndereco };
+function DeleteEndereco(req, res){
+    const { id_endereco } = req.body;
+
+    if (!id_endereco) {
+        return res.status(400).json({ erro: 'ID obrigatório não preenchido.' });
+    }
+
+    conexao.query('DELETE FROM endereco WHERE id_endereco = ?', [id_endereco], (err, resultado) => {
+    if (err) {
+        console.error(err);
+        return res.status(500).json({ erro: 'Erro ao deletar endereço.' });
+        }
+    
+        if (resultado.affectedRows === 0) {
+        return res.status(404).json({ erro: 'Endereço não encontrado.' });
+        }
+    
+        res.json({ mensagem: `Endereço deletado com sucesso.` });
+  });
+}
+
+module.exports = { GetAllEnderecos, AtualizarEndereco, DeleteEndereco };

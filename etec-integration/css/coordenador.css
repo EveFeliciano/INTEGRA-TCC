@@ -30,7 +30,7 @@
 
 .company-header {
   padding: 1.25rem;
-  background-color: #f8fafc;
+  background-color: #fef8ff;
   border-bottom: 1px solid #e2e8f0;
 }
 
@@ -73,7 +73,7 @@
 .card-footer {
   padding: 1rem 1.25rem;
   border-top: 1px solid #e2e8f0;
-  background-color: #f8fafc;
+  background-color: #fef8ff;
 }
 
 /* Speaker Cards */
@@ -446,6 +446,10 @@
   margin: 0;
 }
 
+.espaco_card {
+  padding-top: 8px;
+}
+
 /* Quick Actions */
 .quick-actions-section {
   margin-bottom: 2rem;
@@ -465,6 +469,12 @@
 }
 
 .quick-action-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
   background: white;
   padding: 1.5rem;
   border-radius: var(--radius);

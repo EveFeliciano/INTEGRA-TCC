@@ -20,7 +20,7 @@ body {
   line-height: 1.6;
   color: #333;
   overflow-x: hidden;
-  background-color: #f1e7ff;
+  background-color: #fef8ff;
 }
 
 .container {
@@ -141,15 +141,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.1rem 0;
-  /* Reduzido */
+  padding: 0.5rem 1rem;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
 .logo-image {
   max-width: 180px;
-  /* Reduzido */
   height: auto;
   transition: transform 0.3s ease;
 }
@@ -1052,7 +1050,9 @@ body {
     justify-content: center;
   }
 
-  /* Esconder Links Úteis no mobile */
+  .footer-about{
+    display: none;
+  }
   .footer-links {
     display: none;
   }

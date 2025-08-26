@@ -5,12 +5,12 @@
 }
 
 body {
-    background-color: #f1e7ff;
+    background-color: #fef8ff;
     padding-top: 80px;
 }
 
 .section {
-    background-color: #f1e7ff;
+    background-color: #fef8ff;
     width: 100%;
     padding: 3rem 0;
     scroll-margin-top: 80px;
@@ -245,8 +245,6 @@ html {
 .faq-section {
     padding: 4rem 0;
     text-align: center;
-    background-color: #f1e7ff;
-    ;
 }
 
 .faq-container {

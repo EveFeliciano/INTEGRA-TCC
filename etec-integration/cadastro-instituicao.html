@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Estudante - INTEGRA</title>
+  <!-- Updated title for institution registration -->
+  <title>Cadastro de Instituição - INTEGRA</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -73,7 +74,7 @@
     }
 
     .gear svg {
-      fill: #5f36b8;
+      fill: #582b69;
       animation: gearRotate 10s linear infinite;
     }
 
@@ -239,6 +240,8 @@
       padding: 2rem;
       position: relative;
       z-index: 1;
+      /* Added min-height to ensure full viewport centering */
+      min-height: 100vh;
     }
 
     .login-container {
@@ -246,6 +249,8 @@
       max-width: 500px;
       position: relative;
       animation: slideUp 0.6s ease-out 0.2s both;
+      /* Added margin auto for perfect horizontal centering */
+      margin: 0 auto;
     }
 
     /* Animação de deslizar para cima */
@@ -345,6 +350,9 @@
       flex-direction: column;
       gap: 1.5rem;
       animation: fadeInUp 0.6s ease-out 0.6s both;
+      /* Added centering properties for form fields */
+      align-items: center;
+      width: 100%;
     }
 
     @keyframes fadeInUp {
@@ -362,16 +370,67 @@
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
+      /* Added full width and centering for form groups */
+      width: 100%;
+      align-items: stretch;
     }
 
-    .form-group label {
-      font-weight: 600;
-      color: var(--foreground);
-      font-size: 0.9rem;
+    /* Added styles for side-by-side layout of institution type and code */
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      width: 100%;
     }
 
-    .form-group input {
-      padding: 1rem 1.5rem;
+    .form-row .form-group {
+      margin: 0;
+    }
+
+    .form-row .form-group:first-child {
+      flex: 2; /* Institution type takes more space */
+    }
+
+    .form-row .form-group:last-child {
+      flex: 1; /* Institution code takes less space */
+    }
+
+    @media (max-width: 640px) {
+      .form-row {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      
+      .form-row .form-group:first-child,
+      .form-row .form-group:last-child {
+        flex: 1;
+      }
+    }
+
+    /* Adding input wrapper with icon styles */
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 1rem;
+      z-index: 2;
+      color: var(--muted-foreground);
+      transition: color 0.3s ease;
+      pointer-events: none;
+    }
+
+    .input-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .form-group input,
+    .form-group select {
+      padding: 1rem 1.5rem 1rem 3.5rem; /* Added left padding for icon */
       border: 2px solid var(--border);
       border-radius: 12px;
       font-size: 1rem;
@@ -379,23 +438,64 @@
       color: var(--foreground);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       backdrop-filter: blur(10px);
+      /* Added width and centering for inputs */
+      width: 100%;
+      text-align: center;
     }
 
-    .form-group input:focus {
+    .form-group input:focus,
+    .form-group select:focus {
       outline: none;
       border-color: rgba(139, 92, 246, 0.5);
       box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
       transform: translateY(-2px);
     }
 
-    .form-group input::placeholder {
+    /* Icon color change on focus */
+    .form-group input:focus + .input-icon,
+    .form-group select:focus + .input-icon {
+      color: rgba(139, 92, 246, 0.8);
+    }
+
+    .form-group input::placeholder,
+    .form-group select::placeholder {
       color: var(--muted-foreground);
+    }
+
+    .conditional-field {
+      margin-top: 0.5rem;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .conditional-field.show {
+      opacity: 1;
+      max-height: 100px;
+    }
+
+    .conditional-field input {
+      animation: slideInFromTop 0.3s ease-out;
+    }
+
+    @keyframes slideInFromTop {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .input-help {
       font-size: 0.8rem;
       color: var(--muted-foreground);
       margin-top: 0.25rem;
+      /* Changed help text alignment from center to left */
+      text-align: left;
     }
 
     .primary-button {
@@ -411,6 +511,10 @@
       overflow: hidden;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      /* Added width and centering for button */
+      width: 100%;
+      max-width: 300px;
+      margin: 1rem auto 0;
     }
 
     .primary-button::before {
@@ -512,8 +616,9 @@
           </svg>
         </div>
       </div>
-      <h2 class="loading-text">Entrando...</h2>
-      <p class="loading-subtitle">Aguarde enquanto validamos suas credenciais</p>
+      <!-- Updated loading text for institution registration -->
+      <h2 class="loading-text">Cadastrando Instituição...</h2>
+      <p class="loading-subtitle">Aguarde enquanto processamos o cadastro da sua instituição</p>
     </div>
   </div>
 
@@ -564,33 +669,125 @@
 
       <div class="login-card">
         <div class="card-header">
-          <h1 class="card-title">Acesso - Estudante</h1>
-          <p class="card-description">Faça login com seu email institucional</p>
+          <!-- Updated title and description for institution registration -->
+          <h1 class="card-title">Cadastro de Instituição</h1>
+          <p class="card-description">Preencha os dados da sua instituição de ensino</p>
         </div>
         <div class="card-content">
-          <form id="estudante-form" class="login-form">
+          <!-- Updated form ID and fields for institution registration -->
+          <form id="instituicao-form" class="login-form">
             <div class="form-group">
-              <label for="email-estudante">Email Institucional</label>
-              <input
-                id="email-estudante"
-                type="email"
-                placeholder="seu.nome@instituicao.sp.gov.br"
-                required
-                pattern=".+@(etec\.sp\.gov\.br|fatec\.sp\.gov\.br)$"
-                title="Por favor, use seu email institucional (@etec.sp.gov.br ou @fatec.sp.gov.br)"
-              >
-              <p class="input-help">Use seu email com domínio etec.sp.gov.br ou fatec.sp.gov.br</p>
+              <label for="nome-instituicao">Nome da Instituição</label>
+              <div class="input-wrapper">
+                <input
+                  id="nome-instituicao"
+                  type="text"
+                  placeholder="Digite o nome completo da instituição"
+                  required
+                  minlength="3"
+                >
+                <div class="input-icon">
+                  <!-- Updated icon to school for institution -->
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+                  </svg>
+                </div>
+              </div>
+              <p class="input-help">Nome oficial da instituição de ensino</p>
             </div>
+
+            <!-- Created side-by-side layout for institution type and code -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="tipo-instituicao">Tipo de Instituição</label>
+                <div class="input-wrapper">
+                  <select id="tipo-instituicao" required>
+                    <option value="">Selecione o tipo</option>
+                    <option value="ETEC">ETEC</option>
+                    <option value="FATEC">FATEC</option>
+                  </select>
+                  <div class="input-icon">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/>
+                    </svg>
+                  </div>
+                </div>
+                <div id="outro-tipo" class="conditional-field">
+                  <input
+                    type="text"
+                    id="tipo-instituicao-outro"
+                    placeholder="Especifique o tipo"
+                    minlength="3"
+                  >
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="codigo-instituicao">Código</label>
+                <div class="input-wrapper">
+                  <input
+                    id="codigo-instituicao"
+                    type="text"
+                    placeholder="Ex: 001"
+                    required
+                    minlength="3"
+                    maxlength="20"
+                  >
+                  <div class="input-icon">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M4,4A2,2 0 0,0 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6A2,2 0 0,0 20,4H4M4,6H20V18H4V6M6,8V10H8V8H6M10,8V10H18V8H10M6,12V14H8V12H6M10,12V14H18V12H10Z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
             <div class="form-group">
-              <label for="password-estudante">Senha</label>
-              <input id="password-estudante" type="password" required>
+              <label for="email-instituicao">Email Institucional</label>
+              <div class="input-wrapper">
+                <input
+                  id="email-instituicao"
+                  type="email"
+                  placeholder="contato@instituicao.edu.br"
+                  required
+                >
+                <div class="input-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                  </svg>
+                </div>
+              </div>
+              <p class="input-help">Email oficial da instituição para contato</p>
             </div>
-            <button type="submit" class="primary-button">Entrar</button>
+
+            <div class="form-group">
+              <label for="cidade-estado">Cidade/Estado</label>
+              <div class="input-wrapper">
+                <input
+                  id="cidade-estado"
+                  type="text"
+                  placeholder="Ex: São Paulo/SP"
+                  required
+                  minlength="5"
+                >
+                <div class="input-icon">
+                  <!-- Updated icon to location -->
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/>
+                  </svg>
+                </div>
+              </div>
+              <p class="input-help">Cidade e estado onde a instituição está localizada</p>
+            </div>
+
+            <!-- Updated button text for institution registration -->
+            <button type="submit" class="primary-button">Cadastrar Instituição</button>
           </form>
         </div>
         <div class="card-footer">
           <div class="recovery-link">
-            Esqueceu sua senha? <a href="./recupera-senha.html" class="text-link">Recuperar</a>
+            <!-- Updated footer text for institution context -->
+            Instituição já cadastrada? <a href="./login-instituicao.html" class="text-link">Fazer login</a>
           </div>
         </div>
       </div>
@@ -599,25 +796,72 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const form = document.getElementById("estudante-form");
+      <!-- Updated form ID and field references for institution form -->
+      const form = document.getElementById("instituicao-form");
       const loadingScreen = document.getElementById("loading-screen");
+      const tipoSelect = document.getElementById("tipo-instituicao");
+      const outroTipoField = document.getElementById("outro-tipo");
+      const outroTipoInput = document.getElementById("tipo-instituicao-outro");
+      const areaSelect = document.getElementById("area-ensino");
+      const outraAreaField = document.getElementById("outra-area");
+      const outraAreaInput = document.getElementById("area-ensino-outro");
+
+      tipoSelect.addEventListener("change", function() {
+        if (this.value === "outro") {
+          outroTipoField.classList.add("show");
+          outroTipoInput.required = true;
+          outroTipoInput.focus();
+        } else {
+          outroTipoField.classList.remove("show");
+          outroTipoInput.required = false;
+          outroTipoInput.value = "";
+        }
+      });
+
+      areaSelect.addEventListener("change", function() {
+        if (this.value === "outro") {
+          outraAreaField.classList.add("show");
+          outraAreaInput.required = true;
+          outraAreaInput.focus();
+        } else {
+          outraAreaField.classList.remove("show");
+          outraAreaInput.required = false;
+          outraAreaInput.value = "";
+        }
+      });
 
       form.addEventListener("submit", function(event) {
         event.preventDefault();
         
-        // Validação básica
-        const email = document.getElementById("email-estudante").value;
-        const password = document.getElementById("password-estudante").value;
+        const nomeInstituicao = document.getElementById("nome-instituicao").value;
+        const tipoInstituicao = tipoSelect.value;
+        const tipoOutro = outroTipoInput.value;
+        const codigoInstituicao = document.getElementById("codigo-instituicao").value;
+        const areaEnsino = areaSelect.value;
+        const areaOutro = outraAreaInput.value;
+        const email = document.getElementById("email-instituicao").value;
+        const cidadeEstado = document.getElementById("cidade-estado").value;
         
-        if (email && password) {
+        const tipoFinal = tipoInstituicao === "outro" ? tipoOutro : tipoInstituicao;
+        const areaFinal = areaEnsino === "outro" ? areaOutro : areaEnsino;
+        
+        if (nomeInstituicao && tipoFinal && codigoInstituicao && areaFinal && email && cidadeEstado) {
           loadingScreen.classList.add("active");
+
+          console.log("[v0] Dados da instituição:", {
+            nome: nomeInstituicao,
+            tipo: tipoFinal,
+            codigo: codigoInstituicao,
+            area: areaFinal,
+            email: email,
+            localizacao: cidadeEstado
+          });
           
-          // Simulate loading time and redirect
           setTimeout(function() {
-            window.location.href = "dashboard/estudante/index.html";
-          }, 3000); // 3 seconds loading time
+            window.location.href = "dashboard/instituicao/index.html";
+          }, 3000);
         } else {
-          alert("Por favor, preencha todos os campos.");
+          alert("Por favor, preencha todos os campos obrigatórios.");
         }
       });
     });

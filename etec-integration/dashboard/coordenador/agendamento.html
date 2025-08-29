@@ -13,56 +13,48 @@
 </head>
 
 <body>
-    <div class="flex-col min-h-screen">
-        <!-- Header -->
-        <header class="sticky-header">
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo">
-                        <a href="home.html" class="logo-link">
-                            <img src="../../img/logo.png" alt="Logo" class="logo-image"
-                                style="max-width: 200px; height: auto;">
-                        </a>
-                    </div>
-
-                    <nav class="main-nav">
-                        <a href="home.html" class="nav-link">
-                            <i class="fas fa-home"></i> Home
-                        </a>
-                        <a href="agendamento.html" class="nav-link active">
-                            <i class="fas fa-calendar-plus"></i> Agendamento
-                        </a>
-                        <a href="agendados.html" class="nav-link">
-                            <i class="fas fa-calendar-check"></i> Agendados
-                        </a>
-                        <a href="estudantes.html" class="nav-link">
-                            <i class="fas fa-users"></i> Estudantes
-                        </a>
-                    </nav>
-
-                    <div class="user-actions">
-                        <div class="notification-container">
-                            <button class="notification-btn" id="notification-btn">
-                                <i class="fas fa-bell"></i>
-                                <span class="notification-badge">3</span>
-                            </button>
-                        </div>
-                        <div class="user-info" id="user-profile-btn">
-                            <div class="user-avatar">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <span class="user-name">Prof. João Silva</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <a href="../../login.html" class="logout-button">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </a>
-                    </div>
+    <header class="sticky-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html" class="logo-link">
+                        <img src="../../img/logo.png" alt="Logo INTEGRA" class="logo-image">
+                    </a>
                 </div>
-            </div>
-        </header>
 
-        <main class="dashboard-main">
+                <!-- Botão de menu hamburguer -->
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <!-- Menu de navegação principal -->
+                <nav class="main-nav" id="mainNav">
+                    <a href="home.html" class="nav-link">Home</a>
+                    <a href="agendamento.html" class="nav-link">Agendamento</a>
+                    <a href="agendados.html" class="nav-link">Agendados</a>
+                    <a href="estudantes.html" class="nav-link">Estudantes</a>
+
+                    <!-- User Profile -->
+                    <div class="user-info" id="user-profile-btn">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <p>Prof. João</p>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+
+                    <div class="mobile-buttons">
+                        <a href="index.html" class="button primary-button">Sair</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="section primeiro">
             <div class="container">
                 <div class="page-header">
                     <h1 class="page-title">Agendamento de Eventos</h1>
@@ -130,193 +122,194 @@
                     </div>
                 </div>
             </div>
-        </main>
-
-        <!-- Schedule Lecture Modal -->
-        <div class="modal" id="schedule-lecture-modal" style="display: none;">
-            <div class="modal-content extra-large">
-                <div class="modal-header">
-                    <h3 class="modal-title">Agendar Nova Palestra</h3>
-                    <p class="modal-description">Preencha os detalhes da palestra</p>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="lecture-theme">Tema da Palestra</label>
-                        <input type="text" id="lecture-theme" placeholder="Ex: Inteligência Artificial na Prática">
-                    </div>
-
-                    <div class="scheduling-section">
-                        <div class="calendar-section">
-                            <h4><i class="fas fa-calendar-alt"></i> Selecione a Data</h4>
-                            <div class="lecture-calendar-container">
-                                <div class="calendar" id="lecture-calendar">
-                                    <!-- Calendar will be generated by JavaScript -->
-                                </div>
-                                <input type="hidden" id="lecture-date">
-                            </div>
-                        </div>
-                        <div class="time-section">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="lecture-start-time">Horário de Início</label>
-                                    <input type="time" id="lecture-start-time">
-                                </div>
-                                <div class="form-group">
-                                    <label for="lecture-end-time">Horário de Término</label>
-                                    <input type="time" id="lecture-end-time">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="lecture-classes">Salas que Participarão</label>
-                            <div class="classes-selection" id="lecture-classes-selection">
-                                <label class="class-checkbox">
-                                    <input type="checkbox" name="lecture-classes" value="1A">
-                                    <span>1A - Informática (Manhã)</span>
-                                </label>
-                                <label class="class-checkbox">
-                                    <input type="checkbox" name="lecture-classes" value="1B">
-                                    <span>1B - Administração (Tarde)</span>
-                                </label>
-                                <label class="class-checkbox">
-                                    <input type="checkbox" name="lecture-classes" value="2A">
-                                    <span>2A - Informática (Manhã)</span>
-                                </label>
-                                <label class="class-checkbox">
-                                    <input type="checkbox" name="lecture-classes" value="2B">
-                                    <span>2B - Logística (Tarde)</span>
-                                </label>
-                                <label class="class-checkbox">
-                                    <input type="checkbox" name="lecture-classes" value="3A">
-                                    <span>3A - Informática (Manhã)</span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="speaker-count">Quantidade de Palestrantes</label>
-                            <select id="speaker-count">
-                                <option value="1">1 Palestrante</option>
-                                <option value="2">2 Palestrantes</option>
-                                <option value="3">3 Palestrantes</option>
-                                <option value="4">4+ Palestrantes</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="lecture-description">Descrição</label>
-                        <textarea id="lecture-description" placeholder="Descreva o conteúdo da palestra..."></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button id="publish-lecture" class="button primary-button">
-                        <i class="fas fa-bullhorn"></i> Publicar
-                    </button>
-                    <button id="close-lecture-modal" class="button outline-button">Cancelar</button>
-                </div>
-            </div>
         </div>
+    </main>
 
-        <!-- Visit Participation Modal -->
-        <div class="modal" id="visit-modal" style="display: none;">
-            <div class="modal-content extra-large">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="visit-modal-title">Participar da Visita Técnica</h3>
-                    <p class="modal-description" id="visit-modal-description">Escolha data e horário disponível</p>
+    <!-- Schedule Lecture Modal -->
+    <div class="modal" id="schedule-lecture-modal" style="display: none;">
+        <div class="modal-content extra-large">
+            <div class="modal-header">
+                <h3 class="modal-title">Agendar Nova Palestra</h3>
+                <p class="modal-description">Preencha os detalhes da palestra</p>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="lecture-theme">Tema da Palestra</label>
+                    <input type="text" id="lecture-theme" placeholder="Ex: Inteligência Artificial na Prática">
                 </div>
-                <div class="modal-body">
-                    <div class="visit-info-card" id="visit-info">
-                        <!-- Visit information will be populated -->
-                    </div>
 
-                    <div class="scheduling-section">
-                        <div class="calendar-section">
-                            <h4><i class="fas fa-calendar-alt"></i> Selecione a Data</h4>
-                            <div class="calendar-container">
-                                <div class="calendar" id="visit-calendar">
-                                    <!-- Calendar will be generated by JavaScript -->
-                                </div>
-                                <input type="hidden" id="visit-date">
+                <div class="scheduling-section">
+                    <div class="calendar-section">
+                        <h4><i class="fas fa-calendar-alt"></i> Selecione a Data</h4>
+                        <div class="lecture-calendar-container">
+                            <div class="calendar" id="lecture-calendar">
+                                <!-- Calendar will be generated by JavaScript -->
                             </div>
-                        </div>
-
-                        <div class="time-section">
-                            <h4><i class="fas fa-clock"></i> Horários Disponíveis</h4>
-                            <div class="time-slots-container" id="visit-time-slots">
-                                <p class="no-date-selected">Selecione uma data para ver os horários disponíveis</p>
-                            </div>
+                            <input type="hidden" id="lecture-date">
                         </div>
                     </div>
+                    <div class="time-section">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="lecture-start-time">Horário de Início</label>
+                                <input type="time" id="lecture-start-time">
+                            </div>
+                            <div class="form-group">
+                                <label for="lecture-end-time">Horário de Término</label>
+                                <input type="time" id="lecture-end-time">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="form-row">
                     <div class="form-group">
-                        <label for="visit-classes">Salas que Participarão</label>
-                        <div class="classes-selection" id="classes-selection">
+                        <label for="lecture-classes">Salas que Participarão</label>
+                        <div class="classes-selection" id="lecture-classes-selection">
                             <label class="class-checkbox">
-                                <input type="checkbox" name="selected-classes" value="1A">
+                                <input type="checkbox" name="lecture-classes" value="1A">
                                 <span>1A - Informática (Manhã)</span>
                             </label>
                             <label class="class-checkbox">
-                                <input type="checkbox" name="selected-classes" value="1B">
+                                <input type="checkbox" name="lecture-classes" value="1B">
                                 <span>1B - Administração (Tarde)</span>
                             </label>
                             <label class="class-checkbox">
-                                <input type="checkbox" name="selected-classes" value="2A">
+                                <input type="checkbox" name="lecture-classes" value="2A">
                                 <span>2A - Informática (Manhã)</span>
                             </label>
                             <label class="class-checkbox">
-                                <input type="checkbox" name="selected-classes" value="2B">
+                                <input type="checkbox" name="lecture-classes" value="2B">
                                 <span>2B - Logística (Tarde)</span>
                             </label>
                             <label class="class-checkbox">
-                                <input type="checkbox" name="selected-classes" value="3A">
+                                <input type="checkbox" name="lecture-classes" value="3A">
                                 <span>3A - Informática (Manhã)</span>
                             </label>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="visit-notes">Observações</label>
-                        <textarea id="visit-notes" placeholder="Observações adicionais..."></textarea>
+                        <label for="speaker-count">Quantidade de Palestrantes</label>
+                        <select id="speaker-count">
+                            <option value="1">1 Palestrante</option>
+                            <option value="2">2 Palestrantes</option>
+                            <option value="3">3 Palestrantes</option>
+                            <option value="4">4+ Palestrantes</option>
+                        </select>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button id="confirm-visit" class="button primary-button">
-                        <i class="fas fa-check"></i> Fazer Pedido
-                    </button>
-                    <button id="close-visit-modal" class="button outline-button">Cancelar</button>
+
+                <div class="form-group">
+                    <label for="lecture-description">Descrição</label>
+                    <textarea id="lecture-description" placeholder="Descreva o conteúdo da palestra..."></textarea>
                 </div>
             </div>
+            <div class="modal-footer">
+                <button id="publish-lecture" class="button primary-button">
+                    <i class="fas fa-bullhorn"></i> Publicar
+                </button>
+                <button id="close-lecture-modal" class="button outline-button">Cancelar</button>
+            </div>
         </div>
+    </div>
 
-        <!-- Success Modal -->
-        <div class="modal" id="success-modal" style="display: none;">
-            <div class="modal-content">
-                <div class="modal-body text-center">
-                    <div class="success-icon">
-                        <i class="fas fa-check-circle"></i>
+    <!-- Visit Participation Modal -->
+    <div class="modal" id="visit-modal" style="display: none;">
+        <div class="modal-content extra-large">
+            <div class="modal-header">
+                <h3 class="modal-title" id="visit-modal-title">Participar da Visita Técnica</h3>
+                <p class="modal-description" id="visit-modal-description">Escolha data e horário disponível</p>
+            </div>
+            <div class="modal-body">
+                <div class="visit-info-card" id="visit-info">
+                    <!-- Visit information will be populated -->
+                </div>
+
+                <div class="scheduling-section">
+                    <div class="calendar-section">
+                        <h4><i class="fas fa-calendar-alt"></i> Selecione a Data</h4>
+                        <div class="calendar-container">
+                            <div class="calendar" id="visit-calendar">
+                                <!-- Calendar will be generated by JavaScript -->
+                            </div>
+                            <input type="hidden" id="visit-date">
+                        </div>
                     </div>
-                    <h3 id="success-title">Sucesso!</h3>
-                    <p id="success-message">Operação realizada com sucesso</p>
+
+                    <div class="time-section">
+                        <h4><i class="fas fa-clock"></i> Horários Disponíveis</h4>
+                        <div class="time-slots-container" id="visit-time-slots">
+                            <p class="no-date-selected">Selecione uma data para ver os horários disponíveis</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button id="go-to-scheduled" class="button primary-button">
-                        <i class="fas fa-calendar-check"></i> Ver Agendados
-                    </button>
-                    <button id="close-success-modal" class="button outline-button">Fechar</button>
+
+                <div class="form-group">
+                    <label for="visit-classes">Salas que Participarão</label>
+                    <div class="classes-selection" id="classes-selection">
+                        <label class="class-checkbox">
+                            <input type="checkbox" name="selected-classes" value="1A">
+                            <span>1A - Informática (Manhã)</span>
+                        </label>
+                        <label class="class-checkbox">
+                            <input type="checkbox" name="selected-classes" value="1B">
+                            <span>1B - Administração (Tarde)</span>
+                        </label>
+                        <label class="class-checkbox">
+                            <input type="checkbox" name="selected-classes" value="2A">
+                            <span>2A - Informática (Manhã)</span>
+                        </label>
+                        <label class="class-checkbox">
+                            <input type="checkbox" name="selected-classes" value="2B">
+                            <span>2B - Logística (Tarde)</span>
+                        </label>
+                        <label class="class-checkbox">
+                            <input type="checkbox" name="selected-classes" value="3A">
+                            <span>3A - Informática (Manhã)</span>
+                        </label>
+                    </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="visit-notes">Observações</label>
+                    <textarea id="visit-notes" placeholder="Observações adicionais..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="confirm-visit" class="button primary-button">
+                    <i class="fas fa-check"></i> Fazer Pedido
+                </button>
+                <button id="close-visit-modal" class="button outline-button">Cancelar</button>
             </div>
         </div>
+    </div>
 
-        <footer class="dashboard-footer">
-            <div class="container">
-                <div class="footer-content">
-                    <p class="copyright">© 2025 INTEGRA. Todos os direitos reservados.</p>
+    <!-- Success Modal -->
+    <div class="modal" id="success-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
                 </div>
+                <h3 id="success-title">Sucesso!</h3>
+                <p id="success-message">Operação realizada com sucesso</p>
             </div>
-        </footer>
+            <div class="modal-footer">
+                <button id="go-to-scheduled" class="button primary-button">
+                    <i class="fas fa-calendar-check"></i> Ver Agendados
+                </button>
+                <button id="close-success-modal" class="button outline-button">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="dashboard-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="copyright">© 2025 INTEGRA. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
     </div>
 
     <script src="../../js/coordenador-agendamento.js"></script>

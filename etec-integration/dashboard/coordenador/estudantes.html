@@ -19,59 +19,54 @@
             <div class="container">
                 <div class="header-content">
                     <div class="logo">
-                        <a href="home.html" class="logo-link">
-                            <img src="../../img/logo.png" alt="Logo" class="logo-image"
-                                style="max-width: 200px; height: auto;">
+                        <a href="index.html" class="logo-link">
+                            <img src="../../img/logo.png" alt="Logo INTEGRA" class="logo-image">
                         </a>
                     </div>
 
-                    <nav class="main-nav">
-                        <a href="home.html" class="nav-link">
-                            <i class="fas fa-home"></i> Home
-                        </a>
-                        <a href="agendamento.html" class="nav-link">
-                            <i class="fas fa-calendar-plus"></i> Agendamento
-                        </a>
-                        <a href="agendados.html" class="nav-link">
-                            <i class="fas fa-calendar-check"></i> Agendados
-                        </a>
-                        <a href="estudantes.html" class="nav-link active">
-                            <i class="fas fa-users"></i> Estudantes
-                        </a>
-                    </nav>
+                    <!-- Botão de menu hamburguer -->
+                    <button class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
 
-                    <div class="user-actions">
-                        <div class="notification-container">
-                            <button class="notification-btn">
-                                <i class="fas fa-bell"></i>
-                                <span class="notification-badge">3</span>
-                            </button>
-                        </div>
+                    <!-- Menu de navegação principal -->
+                    <nav class="main-nav" id="mainNav">
+                        <a href="home.html" class="nav-link">Home</a>
+                        <a href="agendamento.html" class="nav-link">Agendamento</a>
+                        <a href="agendados.html" class="nav-link">Agendados</a>
+                        <a href="estudantes.html" class="nav-link">Estudantes</a>
+
+                        <!-- User Profile -->
                         <div class="user-info" id="user-profile-btn">
                             <div class="user-avatar">
                                 <i class="fas fa-user"></i>
                             </div>
-                            <span class="user-name">Prof. João Silva</span>
+                            <p>Prof. João</p>
                             <i class="fas fa-chevron-down"></i>
                         </div>
-                        <a href="../../login.html" class="logout-button">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </a>
-                    </div>
+
+                        <div class="mobile-buttons">
+                            <a href="index.html" class="button primary-button">Sair</a>
+                        </div>
+                    </nav>
                 </div>
             </div>
         </header>
 
         <main class="dashboard-main">
-            <div class="container">
-                <div class="page-header">
-                    <h1 class="page-title">Gerenciamento de Estudantes</h1>
-                    <p class="page-description">Organize os estudantes por turmas e cursos</p>
-                </div>
+            <div class="section primeiro">
+                <div class="container">
+                    <div class="page-header">
+                        <h1 class="page-title">Gerenciamento de Estudantes</h1>
+                        <p class="page-description">Organize os estudantes por turmas e cursos</p>
+                    </div>
 
-                <!-- Classes Grid -->
-                <div class="classes-grid" id="classes-grid">
-                    <!-- Classes will be populated by JavaScript -->
+                    <!-- Classes Grid -->
+                    <div class="classes-grid" id="classes-grid">
+                        <!-- Classes will be populated by JavaScript -->
+                    </div>
                 </div>
             </div>
         </main>

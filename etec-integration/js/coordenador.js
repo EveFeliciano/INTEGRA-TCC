@@ -635,6 +635,16 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${day}/${month}/${year}`
   }
 
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('mainNav');
+
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+  });
+
+
   // Initial render
   renderEmpresas(empresas)
   renderPalestrantes(palestrantes)

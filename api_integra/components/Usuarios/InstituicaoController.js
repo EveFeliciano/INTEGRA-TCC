@@ -1,6 +1,7 @@
 const conexao = require('../../db/conexao');
 const bcrypt = require('bcrypt');
 const emailController = require('../EmailController');
+const cepController = require("../CepController");
 
 function GetAllInstituicoes(res){
     conexao.query('SELECT * FROM instituicao', (err, resultados) => {
@@ -111,7 +112,7 @@ function AtualizarInstituicao(req, res) {
         return res.status(400).json({ erro: "Nenhum campo para atualizar." });
         }
 
-        const sql = `UPDATE instituicao SET ${campos.join(", ")} WHERE id_instituicao = ?`;
+        const sql = `UPDATE instituicao SET ${campos.join(", ")} WHERE id = ?`;
         valores.push(id_instituicao);
 
         conexao.query(sql, valores, (err, resultado) => {

@@ -7,6 +7,7 @@ const AlunoController = require('../components/Usuarios/AlunoController');
 const EmpresaController = require('../components/Usuarios/EmpresaController');
 const CoordenadorController = require('../components/Usuarios/CoordenadorController');
 const InstituicaoController = require('../components/Usuarios/InstituicaoController');
+const PalestranteController = require('../components/Usuarios/PalestranteController');
 const EnderecoController = require('../components/EnderecoController');
 const LoginController = require('../components/LoginController');
 
@@ -67,6 +68,19 @@ router.post('/inserir-instituicao', (req, res) => {
 
 router.put('/atualizar-instituicao', (req, res) => {
     InstituicaoController.AtualizarInstituicao(req, res);
+});
+
+//PALESTRANTE
+router.get('/palestrantes', (req, res) => {
+    PalestranteController.GetAllPalestrantes(res);
+});
+
+router.post('/inserir-palestrante', (req, res) => {
+    PalestranteController.InserirPalestrante(req, res);
+});
+
+router.put('/atualizar-palestrante', (req, res) => {
+    PalestranteController.AtualizarPalestrante(req, res);
 });
 
 //ENDEREÇO

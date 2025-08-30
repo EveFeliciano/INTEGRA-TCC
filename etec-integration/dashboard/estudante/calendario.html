@@ -34,7 +34,7 @@
                     <nav class="main-nav" id="mainNav">
                         <a href="index.html" class="nav-link">Home</a>
                         <a href="calendario.html" class="nav-link">Calendário</a>
-                        <a href="historico.html" class="nav-link">Histórico</a>
+                        <a href="avaliar.html" class="nav-link">Avaliar</a>
 
                         <!-- User Profile -->
                         <div class="user-info" id="user-profile-btn">
@@ -58,14 +58,10 @@
                 <div class="container">
                     <!-- Welcome Message -->
                     <div class="welcome-section">
-                        <h1 class="welcome-title">Bem-vindo(a), Maria!</h1>
-                        <p class="welcome-description">Acompanhe seus eventos, avaliações e certificados da ETEC</p>
+                        <h1 class="welcome-title">Veja seus Eventos</h1>
+                        <p class="welcome-description">Acompanhe suas próximas Palestras e Visitas Técnicas</p>
                     </div>
                     <div class="calendar-card">
-                        <div class="card-header">
-                            <h2 class="card-title">Calendário de Eventos</h2>
-                            <p class="card-description">Visualize as visitas técnicas e palestras programadas</p>
-                        </div>
                         <div class="card-content">
                             <div class="calendar-container">
                                 <div class="calendar" id="calendar">
@@ -74,7 +70,61 @@
                                 <div class="selected-day-events">
                                     <h3 class="selected-date" id="selected-date">Selecione uma data</h3>
                                     <div id="events-container" class="events-container">
-                                        <!-- Events will be populated by JavaScript -->
+                                        <div class="event-item" style="display: none;">
+                                            <div class="event-time event-bar-calendario">
+                                                <div class="event-info">Hora:</div>
+                                                <span class="time event-preenchido-calendario"></span>
+                                                <div class="event-info">Até:</div>
+                                                <span class="time_end event-preenchido-calendario"></span>
+                                                <div class="event-info">Tipo:</div>
+                                                <span class="tipo event-preenchido-calendario"></span>
+                                            </div>
+                                            <div class="pula-linha"></div>
+                                            <div class="event-nome event-bar-calendario">
+                                                <div class="event-info">Título:</div>
+                                                <span class="nome event-preenchido-calendario-title"></span>
+                                            </div>
+                                            <div class="pula-linha"></div>
+                                            <div class="event-info event-bar-descricao">Descrição</div>
+                                            <div class="event-descricao"><span
+                                                    class="descricao event-preenchido-descricao"></span>
+                                            </div>
+                                            <div class="pula-linha"></div>
+                                            <div class="event-endereco event-bar-calendario">
+                                                <div class="event-info">Rua:</div>
+                                                <span class="rua event-preenchido-calendario-title"></span>
+                                            </div>
+                                            <div class="pula-linha"></div>
+                                            <div class="event-bairro-cidade event-bar-calendario">
+                                                <div class="event-info">Bairro:</div>
+                                                <span class="bairro event-preenchido-calendario-title"></span>
+                                                <div class="event-info">N°:</div>
+                                                <span class="numero event-preenchido-numero"></span>
+                                            </div>
+                                            <div class="pula-linha"></div>
+                                            <div class="event-estado-cep event-bar-calendario">
+                                                <div class="event-info">Cidade:</div>
+                                                <span class="cidade event-preenchido-calendario-title"></span>
+                                                <div class="event-info">UF:</div>
+                                                <span class="estado event-preenchido-estado"></span>
+                                                <div class="event-info">CEP:</div>
+                                                <span class="cep event-preenchido-cep"></span>
+                                            </div>
+                                            <div class="pula-linha"></div>
+                                            <div class="event-preco event-bar-calendario">
+                                                <div class="event-info">Preço:</div>
+                                                <span class="preco event-preenchido-calendario-preco"></span>
+                                                <div class="event-info">Vagas:</div>
+                                                <span class="vagas event-preenchido-calendario"></span>
+                                            </div>
+                                            <div class="pula-linha"></div>
+                                            <div class="confirma-presenca">
+                                                <p>Você irá partipar deste evento?</p>
+                                                <div class="pula-linha"></div>
+                                                <a href="#" class="button outline-button light">Cancelar</a>
+                                                <a href="#" class="button primary-button">Confirmar</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -82,22 +132,18 @@
                     </div>
                 </div>
             </div>
-        </main>
-
-        <!-- Footer -->
-        <footer class="dashboard-footer">
-            <div class="container">
-                <div class="footer-content">
-                    <p class="copyright">© 2025 INTEGRA. Todos os direitos reservados.</p>
-                    <div class="footer-links">
-                        <a href="#" class="footer-link">Termos de Uso</a>
-                        <a href="#" class="footer-link">Política de Privacidade</a>
-                        <a href="#" class="footer-link">Suporte</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
     </div>
+    </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 INTEGRA. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="../../js/estudante.js"></script>
 </body>

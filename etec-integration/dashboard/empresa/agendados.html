@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eventos Agendados - Empresa - INTEGRA</title>
-    <link rel="icon" href="img/favicon.png" type="image/png" sizes="32x32" />
-    <link rel="stylesheet" href="css/empresa.css">
-    <link rel="stylesheet" href="css/dashboard.css">
-    <link rel="stylesheet" href="css/styles.css">        
+    <title>Dashboard do Estudante - INTEGRA</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/estudante.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <div class="flex-col min-h-screen">
         <!-- Header -->
@@ -18,7 +19,7 @@
                 <div class="header-content">
                     <div class="logo">
                         <a href="index.html" class="logo-link">
-                            <img src="img/logo.png" alt="Logo INTEGRA" class="logo-image">
+                            <img src="../../img/logo.png" alt="Logo INTEGRA" class="logo-image">
                         </a>
                     </div>
 
@@ -32,22 +33,20 @@
                     <!-- Menu de navegação principal -->
                     <nav class="main-nav" id="mainNav">
                         <a href="index.html" class="nav-link">Home</a>
-                        <a href="agendamento.html" class="nav-link">Agendamento</a>
-                        <a href="agendados.html" class="nav-link active">Agendados</a>
-                        <a href="palestrantes.html" class="nav-link">Palestrantes</a>
-                        <a href="servicos.html" class="nav-link">Serviços</a>
+                        <a href="agendados.html" class="nav-link">Minhas Vagas</a>
+                        <a href="vagas.html" class="nav-link">Lançar nova vaga</a>
 
                         <!-- User Profile -->
                         <div class="user-info" id="user-profile-btn">
                             <div class="user-avatar">
                                 <i class="fas fa-user"></i>
                             </div>
-                            <p>TECsolutions</p>
+                            <p>Tech</p>
                             <i class="fas fa-chevron-down"></i>
                         </div>
 
                         <div class="mobile-buttons">
-                            <a href="login.html" class="button primary-button">Sair</a>
+                            <a href="../../login/login.html" class="button primary-button">Sair</a>
                         </div>
                     </nav>
                 </div>
@@ -57,159 +56,67 @@
         <main class="dashboard-main">
             <div class="section primeiro">
                 <div class="container">
-                    <div class="page-header">
-                        <h1 class="page-title">
-                            <i class="fas fa-calendar-check"></i>
-                            Eventos Agendados
-                        </h1>
-                        <p class="page-description">Visualize e gerencie todos os eventos confirmados</p>
+                    <!-- Welcome Message -->
+                    <div class="welcome-section">
+                        <h1 class="welcome-title">Veja seus Eventos</h1>
+                        <p class="welcome-description">Acompanhe suas próximas Palestras e Visitas Técnicas</p>
                     </div>
-                </div>
-            </div>
-
-            <!-- Calendar and Events Section -->
-            <div class="section light-bg">
-                <div class="container">
-                    <div class="calendar-section">
-                        <div class="section-header">
-                            <h2 class="section-title">
-                                <i class="fas fa-calendar-alt section-icon"></i>
-                                Calendário de Eventos
-                            </h2>
-                            <div class="calendar-controls">
-                                <button class="btn-secondary" id="prevMonth">
-                                    <i class="fas fa-chevron-left"></i>
-                                </button>
-                                <span class="current-month" id="currentMonth">Janeiro 2025</span>
-                                <button class="btn-secondary" id="nextMonth">
-                                    <i class="fas fa-chevron-right"></i>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="calendar-container">
-                            <div class="calendar-grid" id="calendarGrid">
-                                <div class="calendar-header">
-                                    <div class="calendar-day-header">Dom</div>
-                                    <div class="calendar-day-header">Seg</div>
-                                    <div class="calendar-day-header">Ter</div>
-                                    <div class="calendar-day-header">Qua</div>
-                                    <div class="calendar-day-header">Qui</div>
-                                    <div class="calendar-day-header">Sex</div>
-                                    <div class="calendar-day-header">Sáb</div>
+                    <div class="calendar-card">
+                        <div class="card-content">
+                            <div class="calendar-container">
+                                <div class="calendar" id="calendar">
+                                    <!-- Calendar will be generated by JavaScript -->
                                 </div>
-                                <div class="calendar-body">
-                                    <!-- Calendar days will be populated by JavaScript -->
-                                    <div class="calendar-day other-month">29</div>
-                                    <div class="calendar-day other-month">30</div>
-                                    <div class="calendar-day other-month">31</div>
-                                    <div class="calendar-day">1</div>
-                                    <div class="calendar-day">2</div>
-                                    <div class="calendar-day">3</div>
-                                    <div class="calendar-day">4</div>
-                                    <div class="calendar-day">5</div>
-                                    <div class="calendar-day">6</div>
-                                    <div class="calendar-day">7</div>
-                                    <div class="calendar-day">8</div>
-                                    <div class="calendar-day">9</div>
-                                    <div class="calendar-day">10</div>
-                                    <div class="calendar-day">11</div>
-                                    <div class="calendar-day">12</div>
-                                    <div class="calendar-day">13</div>
-                                    <div class="calendar-day">14</div>
-                                    <div class="calendar-day has-event">15
-                                        <div class="event-dot blue"></div>
-                                    </div>
-                                    <div class="calendar-day">16</div>
-                                    <div class="calendar-day">17</div>
-                                    <div class="calendar-day">18</div>
-                                    <div class="calendar-day">19</div>
-                                    <div class="calendar-day has-event">20
-                                        <div class="event-dot green"></div>
-                                    </div>
-                                    <div class="calendar-day">21</div>
-                                    <div class="calendar-day has-event">22
-                                        <div class="event-dot orange"></div>
-                                    </div>
-                                    <div class="calendar-day">23</div>
-                                    <div class="calendar-day">24</div>
-                                    <div class="calendar-day has-event">25
-                                        <div class="event-dot purple"></div>
-                                    </div>
-                                    <div class="calendar-day">26</div>
-                                    <div class="calendar-day">27</div>
-                                    <div class="calendar-day">28</div>
-                                    <div class="calendar-day">29</div>
-                                    <div class="calendar-day">30</div>
-                                    <div class="calendar-day">31</div>
-                                    <div class="calendar-day other-month">1</div>
-                                </div>
-                            </div>
-                            
-                            <div class="events-sidebar">
-                                <h3>Próximos Eventos</h3>
-                                <div class="upcoming-events" id="upcomingEvents">
-                                    <div class="event-item">
-                                        <div class="event-date">
-                                            <span class="event-day">15</span>
-                                            <span class="event-month">Jan</span>
-                                        </div>
-                                        <div class="event-info">
-                                            <h4 class="event-title">Palestra: IA na Prática</h4>
-                                            <p class="event-location">FATEC São Paulo</p>
-                                            <p class="event-time">14:00 - 16:00</p>
-                                            <span class="event-speaker">Ana Silva</span>
-                                        </div>
-                                        <div class="event-status confirmed">
-                                            <i class="fas fa-check-circle"></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="event-item">
-                                        <div class="event-date">
-                                            <span class="event-day">20</span>
-                                            <span class="event-month">Jan</span>
-                                        </div>
-                                        <div class="event-info">
-                                            <h4 class="event-title">Workshop: Desenvolvimento Web</h4>
-                                            <p class="event-location">ETEC Zona Leste</p>
-                                            <p class="event-time">09:00 - 12:00</p>
-                                            <span class="event-speaker">Carlos Santos</span>
-                                        </div>
-                                        <div class="event-status confirmed">
-                                            <i class="fas fa-check-circle"></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="event-item">
-                                        <div class="event-date">
-                                            <span class="event-day">22</span>
-                                            <span class="event-month">Jan</span>
-                                        </div>
-                                        <div class="event-info">
-                                            <h4 class="event-title">Visita Técnica</h4>
-                                            <p class="event-location">FATEC Osasco</p>
-                                            <p class="event-time">13:30 - 17:00</p>
-                                            <span class="event-speaker">Equipe TechSolutions</span>
-                                        </div>
-                                        <div class="event-status pending">
-                                            <i class="fas fa-clock"></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="event-item">
-                                        <div class="event-date">
-                                            <span class="event-day">25</span>
-                                            <span class="event-month">Jan</span>
-                                        </div>
-                                        <div class="event-info">
-                                            <h4 class="event-title">Palestra: Cybersecurity</h4>
-                                            <p class="event-location">ETEC Centro</p>
-                                            <p class="event-time">15:00 - 17:00</p>
-                                            <span class="event-speaker">João Costa</span>
-                                        </div>
-                                        <div class="event-status confirmed">
-                                            <i class="fas fa-check-circle"></i>
+                                <div class="selected-day-events">
+                                    <h3 class="selected-date" id="selected-date">Selecione uma data</h3>
+                                    <div id="events-container" class="events-container">
+                                        <div class="event-item" style="display: none;">
+                                            <div class="event-time event-bar-calendario">
+                                                <div class="event-info">Hora:</div>
+                                                <span class="time event-preenchido-calendario"></span>
+                                                <div class="event-info">Até:</div>
+                                                <span class="time_end event-preenchido-calendario"></span>
+                                                <div class="event-info">Tipo:</div>
+                                                <span class="tipo event-preenchido-calendario"></span>
+                                            </div>
+                                            <div class="pula-linha"></div>
+                                            <div class="event-nome event-bar-calendario">
+                                                <div class="event-info">Título:</div>
+                                                <span class="nome event-preenchido-calendario-title"></span>
+                                            </div>
+                                            <div class="pula-linha"></div>
+                                            <div class="event-info event-bar-descricao">Descrição</div>
+                                            <div class="event-descricao"><span
+                                                    class="descricao event-preenchido-descricao"></span>
+                                            </div>
+                                            <div class="pula-linha"></div>
+                                            <div class="event-endereco event-bar-calendario">
+                                                <div class="event-info">Rua:</div>
+                                                <span class="rua event-preenchido-calendario-title"></span>
+                                            </div>
+                                            <div class="pula-linha"></div>
+                                            <div class="event-bairro-cidade event-bar-calendario">
+                                                <div class="event-info">Bairro:</div>
+                                                <span class="bairro event-preenchido-calendario-title"></span>
+                                                <div class="event-info">N°:</div>
+                                                <span class="numero event-preenchido-numero"></span>
+                                            </div>
+                                            <div class="pula-linha"></div>
+                                            <div class="event-estado-cep event-bar-calendario">
+                                                <div class="event-info">Cidade:</div>
+                                                <span class="cidade event-preenchido-calendario-title"></span>
+                                                <div class="event-info">UF:</div>
+                                                <span class="estado event-preenchido-estado"></span>
+                                                <div class="event-info">CEP:</div>
+                                                <span class="cep event-preenchido-cep"></span>
+                                            </div>
+                                            <div class="pula-linha"></div>
+                                            <div class="event-preco event-bar-calendario">
+                                                <div class="event-info">Preço:</div>
+                                                <span class="preco event-preenchido-calendario-preco"></span>
+                                                <div class="event-info">Vagas:</div>
+                                                <span class="vagas event-preenchido-calendario"></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -218,156 +125,20 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Events List Section -->
-            <div class="section">
-                <div class="container">
-                    <div class="events-list-section">
-                        <div class="section-header">
-                            <h2 class="section-title">
-                                <i class="fas fa-list section-icon"></i>
-                                Lista de Eventos
-                            </h2>
-                            <div class="section-actions">
-                                <button class="btn-secondary" id="filterEventsBtn">
-                                    <i class="fas fa-filter"></i>
-                                    Filtrar
-                                </button>
-                                <button class="btn-secondary" id="exportEventsBtn">
-                                    <i class="fas fa-download"></i>
-                                    Exportar
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="events-table">
-                            <div class="table-header">
-                                <div class="table-cell">Evento</div>
-                                <div class="table-cell">Data/Hora</div>
-                                <div class="table-cell">Local</div>
-                                <div class="table-cell">Palestrante</div>
-                                <div class="table-cell">Status</div>
-                                <div class="table-cell">Ações</div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="table-cell">
-                                    <div class="event-info-cell">
-                                        <h4>Palestra: IA na Prática</h4>
-                                        <p>Introdução à Inteligência Artificial</p>
-                                    </div>
-                                </div>
-                                <div class="table-cell">
-                                    <div class="date-time-cell">
-                                        <span class="date">15/01/2025</span>
-                                        <span class="time">14:00 - 16:00</span>
-                                    </div>
-                                </div>
-                                <div class="table-cell">FATEC São Paulo</div>
-                                <div class="table-cell">Ana Silva</div>
-                                <div class="table-cell">
-                                    <span class="status-badge confirmed">Confirmado</span>
-                                </div>
-                                <div class="table-cell">
-                                    <div class="action-buttons">
-                                        <button class="btn-icon" title="Ver detalhes">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="btn-icon" title="Editar">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button class="btn-icon danger" title="Cancelar">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="table-row">
-                                <div class="table-cell">
-                                    <div class="event-info-cell">
-                                        <h4>Workshop: Desenvolvimento Web</h4>
-                                        <p>Criando aplicações modernas</p>
-                                    </div>
-                                </div>
-                                <div class="table-cell">
-                                    <div class="date-time-cell">
-                                        <span class="date">20/01/2025</span>
-                                        <span class="time">09:00 - 12:00</span>
-                                    </div>
-                                </div>
-                                <div class="table-cell">ETEC Zona Leste</div>
-                                <div class="table-cell">Carlos Santos</div>
-                                <div class="table-cell">
-                                    <span class="status-badge confirmed">Confirmado</span>
-                                </div>
-                                <div class="table-cell">
-                                    <div class="action-buttons">
-                                        <button class="btn-icon" title="Ver detalhes">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="btn-icon" title="Editar">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button class="btn-icon danger" title="Cancelar">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="table-row">
-                                <div class="table-cell">
-                                    <div class="event-info-cell">
-                                        <h4>Visita Técnica</h4>
-                                        <p>Conhecendo nossa empresa</p>
-                                    </div>
-                                </div>
-                                <div class="table-cell">
-                                    <div class="date-time-cell">
-                                        <span class="date">22/01/2025</span>
-                                        <span class="time">13:30 - 17:00</span>
-                                    </div>
-                                </div>
-                                <div class="table-cell">FATEC Osasco</div>
-                                <div class="table-cell">Equipe TechSolutions</div>
-                                <div class="table-cell">
-                                    <span class="status-badge pending">Pendente</span>
-                                </div>
-                                <div class="table-cell">
-                                    <div class="action-buttons">
-                                        <button class="btn-icon success" title="Confirmar">
-                                            <i class="fas fa-check"></i>
-                                        </button>
-                                        <button class="btn-icon" title="Ver detalhes">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="btn-icon danger" title="Cancelar">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <footer class="dashboard-footer">
-            <div class="container">
-                <div class="footer-content">
-                    <p class="copyright">© 2025 INTEGRA. Todos os direitos reservados.</p>
-                    <div class="footer-links">
-                        <a href="#" class="footer-link">Termos de Uso</a>
-                        <a href="#" class="footer-link">Política de Privacidade</a>
-                        <a href="#" class="footer-link">Suporte</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
     </div>
+    </div>
+    </main>
 
-    <script src="js/empresa.js"></script>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 INTEGRA. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/estudante.js"></script>
 </body>
+
 </html>

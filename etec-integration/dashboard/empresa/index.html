@@ -34,9 +34,8 @@
                     <!-- Menu de navegação principal -->
                     <nav class="main-nav" id="mainNav">
                         <a href="home.html" class="nav-link">Home</a>
-                        <a href="agendamento.html" class="nav-link">Agendamento</a>
                         <a href="agendados.html" class="nav-link">Agendados</a>
-                        <a href="palestrantes.html" class="nav-link">Estudantes</a>
+                        <a href="palestrantes.html" class="nav-link">Minhas Vagas</a>
 
                         <!-- User Profile -->
                         <div class="user-info" id="user-profile-btn">
@@ -127,117 +126,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Calendar and Events Section -->
-            <div class="section">
-                <div class="container">
-                    <div class="calendar-section">
-                        <div class="section-header">
-                            <h2 class="section-title">
-                                <i class="fas fa-calendar-alt section-icon"></i>
-                                Eventos Agendados
-                            </h2>
-                            <div class="calendar-controls">
-                                <button class="btn-secondary" id="prevMonth">
-                                    <i class="fas fa-chevron-left"></i>
-                                </button>
-                                <span class="current-month" id="currentMonth">Maio 2025</span>
-                                <button class="btn-secondary" id="nextMonth">
-                                    <i class="fas fa-chevron-right"></i>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="calendar-container">
-                            <div class="calendar-grid" id="calendarGrid">
-                                <!-- Calendar will be populated by JavaScript -->
-                            </div>
-                            <div class="events-sidebar">
-                                <h3>Próximos Eventos</h3>
-                                <div class="upcoming-events" id="upcomingEvents">
-                                    <!-- Upcoming events will be populated by JavaScript -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Job Postings Section -->
-            <div class="section light-bg">
-                <div class="container">
-                    <div class="job-postings-section">
-                        <div class="section-header">
-                            <h2 class="section-title">
-                                <i class="fas fa-briefcase section-icon"></i>
-                                Vagas de Emprego
-                            </h2>
-                            <button class="btn-primary" id="createJobBtn">
-                                <i class="fas fa-plus"></i>
-                                Criar Nova Vaga
-                            </button>
-                        </div>
-                        
-                        <div class="job-creation-form" id="jobCreationForm" style="display: none;">
-                            <div class="form-card">
-                                <h3>Nova Vaga de Emprego</h3>
-                                <form id="jobForm">
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                            <label for="jobTitle">Título da Vaga</label>
-                                            <input type="text" id="jobTitle" name="jobTitle" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="jobLevel">Nível</label>
-                                            <select id="jobLevel" name="jobLevel" required>
-                                                <option value="">Selecione o nível</option>
-                                                <option value="junior">Júnior</option>
-                                                <option value="pleno">Pleno</option>
-                                                <option value="senior">Sênior</option>
-                                                <option value="estagio">Estágio</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                            <label for="jobArea">Área</label>
-                                            <select id="jobArea" name="jobArea" required>
-                                                <option value="">Selecione a área</option>
-                                                <option value="desenvolvimento">Desenvolvimento</option>
-                                                <option value="design">Design</option>
-                                                <option value="dados">Ciência de Dados</option>
-                                                <option value="devops">DevOps</option>
-                                                <option value="mobile">Mobile</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="jobSalary">Salário (R$)</label>
-                                            <input type="number" id="jobSalary" name="jobSalary" placeholder="Ex: 5000">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="jobDescription">Descrição da Vaga</label>
-                                        <textarea id="jobDescription" name="jobDescription" rows="4" required></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="jobRequirements">Requisitos</label>
-                                        <textarea id="jobRequirements" name="jobRequirements" rows="3" required></textarea>
-                                    </div>
-                                    <div class="form-actions">
-                                        <button type="button" class="btn-secondary" id="cancelJobBtn">Cancelar</button>
-                                        <button type="submit" class="btn-primary">Publicar Vaga</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        
-                        <div class="jobs-grid" id="jobsGrid">
-                            <!-- Job postings will be populated by JavaScript -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="section light-bg">
                 <div class="quick-actions-section">
                     <h2 class="section-title">Ações Rápidas</h2>

@@ -7,7 +7,7 @@ function DeleteUsuario(req, res) {
     return res.status(400).json({ erro: 'ID e tipo são obrigatórios.' });
   }
 
-  const tabelasValidas = ['empresa', 'aluno', 'coordenador'];
+  const tabelasValidas = ['empresa', 'aluno', 'coordenador', "instituicao", "palestrante"];
 
   if (!tabelasValidas.includes(tipo)) {
     return res.status(400).json({ erro: 'Tipo de usuário inválido.' });
@@ -16,7 +16,9 @@ function DeleteUsuario(req, res) {
   const campoId = {
     empresa: 'id_empresa',
     aluno: 'id_aluno',
-    coordenador: 'id_coordenador'
+    coordenador: 'id_coordenador',
+    instituicao: 'id',
+    palestrante: 'id'
   }[tipo];
 
   const sql = `DELETE FROM ${tipo} WHERE ${campoId} = ?`;

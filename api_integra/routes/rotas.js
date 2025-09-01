@@ -49,8 +49,14 @@ router.get('/empresas', (req, res) => {
     EmpresaController.GetAllEmpresas(res);
 });
 
+router.get('/solicitacoes/empresa/:id_empresa', EmpresaController.GetSolicitacoesEmpresa);
+
 router.post('/inserir-empresa', (req, res) => {
     EmpresaController.InserirEmpresa(req, res);
+});
+
+router.post('/responder-solicitacao', (req, res) => {
+    EmpresaController.ResponderSolicitacao(req, res);
 });
 
 router.put('/atualizar-empresa', (req, res) => {
@@ -77,6 +83,10 @@ router.get('/palestrantes', (req, res) => {
 
 router.post('/inserir-palestrante', (req, res) => {
     PalestranteController.InserirPalestrante(req, res);
+});
+
+router.post('/solicitar-vinculo', (req, res) => {
+    PalestranteController.SolicitarVinculoPalestrante(req, res);
 });
 
 router.put('/atualizar-palestrante', (req, res) => {

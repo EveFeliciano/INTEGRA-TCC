@@ -117,4 +117,59 @@ function AtualizarPalestrante(req, res) {
     }
 }
 
-module.exports = {GetAllPalestrantes, InserirPalestrante, AtualizarPalestrante};
+function SolicitarVinculoPalestrante(req, res) {
+    const { id_palestrante, id_empresa } = req.body;
+
+    if (!id_palestrante || !id_empresa) {
+        return res.status(400).json({ erro: 'Informe id_palestrante e id_empresa' });
+    }
+
+    const checkQuery = `
+        SELECT * FROM solicitacao_palestrante
+        WHERE id_palestrante = ? AND id_empresa = ? AND status = 'pendente'
+    `;
+
+    conexao.query(checkQuery, [id_palestrante, id_empresa], (err, results) => {
+        if (err) {
+            return res.status(500).json({ erro: 'Erro ao verificar solicitações' });
+        }
+
+        if (results.length > 0) {
+            return res.status(400).json({ erro: 'Já existe uma solicitação pendente para esta empresa' });
+        }
+
+        const checkAccepted = `
+            SELECT * FROM solicitacao_palestrante
+            WHERE id_palestrante = ? AND id_empresa = ? AND status = 'aceito'
+        `;
+
+        conexao.query(checkAccepted, [id_palestrante, id_empresa], (err2, results2) => {
+            if (err2) {
+                return res.status(500).json({ erro: 'Erro ao verificar vínculo existente' });
+            }
+
+            if (results2.length > 0) {
+                return res.status(400).json({ erro: 'Este palestrante já está vinculado a esta empresa' });
+            }
+
+            const insertQuery = `
+                INSERT INTO solicitacao_palestrante (id_palestrante, id_empresa, status)
+                VALUES (?, ?, 'pendente')
+            `;
+
+            conexao.query(insertQuery, [id_palestrante, id_empresa], (err3, result) => {
+                if (err3) {
+                    return res.status(500).json({ erro: 'Erro ao criar solicitação' });
+                }
+
+                return res.status(201).json({ 
+                    mensagem: 'Solicitação enviada com sucesso',
+                    id_solicitacao: result.insertId
+                });
+            });
+        });
+    });
+}
+
+
+module.exports = {GetAllPalestrantes, InserirPalestrante, AtualizarPalestrante, SolicitarVinculoPalestrante};

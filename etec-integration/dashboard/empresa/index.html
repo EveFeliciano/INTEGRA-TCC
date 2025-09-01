@@ -1,212 +1,376 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard da Empresa - INTEGRA</title>
-  <link rel="stylesheet" href="../../css/styles.css">
-  <link rel="stylesheet" href="../../css/dashboard.css">
-  <link rel="stylesheet" href="../../css/empresa.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Empresa - INTEGRA</title>
+    <link rel="icon" href="../../img/favicon.png" type="image/png" sizes="32x32" />
+    <link rel="stylesheet" href="../../css/empresa.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/styles.css">        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-  <div class="flex-col min-h-screen">
-    <!-- Header -->
-    <header class="sticky-header">
-      <div class="container">
-        <div class="header-content">
-          <div class="logo">
-            <a href="index.html" class="logo-link">
-              <img src="../../img/logo.png" alt="Logo" class="logo-image" style="max-width: 200px; height: auto;">
-            </a>
-          </div>
+    <div class="flex-col min-h-screen">
+        <!-- Header -->
+        <header class="sticky-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <a href="home.html" class="logo-link">
+                            <img src="../../img/logo.png" alt="Logo INTEGRA" class="logo-image">
+                        </a>
+                    </div>
 
-          <div class="user-actions">
-            <div class="notification-badge" data-count="2" id="notification-icon">
-              <button class="notification-button">
-                <i class="fas fa-bell"></i>
-              </button>
-            </div>
-            <div class="user-info">
-              <div class="user-avatar">
-                <i class="fas fa-user"></i>
-              </div>
-              <span class="user-name">TechSolutions</span>
-            </div>
-            <a href="../../login.html" class="logout-button">
-              <i class="fas fa-sign-out-alt"></i>
-              <span class="sr-only">Sair</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </header>
+                    <!-- Botão de menu hamburguer -->
+                    <button class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
 
-    <main class="dashboard-main">
-      <div class="container">
-        <div class="dashboard-header-row">
-          <div class="dashboard-header">
-            <h1 class="dashboard-title">Painel da Empresa</h1>
-            <p class="dashboard-description">
-              Gerencie suas disponibilidades para visitas técnicas e palestras.
-            </p>
-          </div>
-          <button id="add-availability-btn" class="button primary-button">
-            <i class="fas fa-plus"></i> Nova Disponibilidade
-          </button>
-        </div>
+                    <!-- Menu de navegação principal -->
+                    <nav class="main-nav" id="mainNav">
+                        <a href="home.html" class="nav-link">Home</a>
+                        <a href="agendamento.html" class="nav-link">Agendamento</a>
+                        <a href="agendados.html" class="nav-link">Agendados</a>
+                        <a href="palestrantes.html" class="nav-link">Estudantes</a>
 
-        <div class="tabs">
-          <div class="tabs-list" id="tabs-list">
-            <button class="tab-trigger active" data-tab="disponibilidades">
-              <i class="fas fa-calendar-alt"></i> Disponibilidades
-            </button>
-            <button class="tab-trigger" data-tab="eventos">
-              <i class="fas fa-calendar-check"></i> Eventos Agendados
-            </button>
-            <button class="tab-trigger" data-tab="palestrantes">
-              <i class="fas fa-user-tie"></i> Palestrantes
-            </button>
-          </div>
+                        <!-- User Profile -->
+                        <div class="user-info" id="user-profile-btn">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <p>TECsolutions</p>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
 
-          <div class="tab-content active" id="disponibilidades-tab">
-            <div class="card">
-              <div class="card-header">
-                <h2 class="card-title">Minhas Disponibilidades</h2>
-                <p class="card-description">Visitas técnicas e palestras disponíveis para agendamento</p>
-              </div>
-              <div class="card-content">
-                <div class="availability-list" id="availability-list">
-                  <!-- Availability items will be populated by JavaScript -->
+                        <div class="mobile-buttons">
+                            <a href="index.html" class="button primary-button">Sair</a>
+                        </div>
+                    </nav>
                 </div>
-              </div>
             </div>
-          </div>
+        </header>
 
-          <div class="tab-content" id="eventos-tab">
-            <div class="card">
-              <div class="card-header">
-                <h2 class="card-title">Eventos Agendados</h2>
-                <p class="card-description">Visitas técnicas e palestras confirmadas</p>
-              </div>
-              <div class="card-content">
-                <div class="scheduled-events" id="scheduled-events">
-                  <!-- Scheduled events will be populated by JavaScript -->
+        <main class="dashboard-main">
+            <div class="section primeiro">
+                <div class="container">
+                    <div class="welcome-section">
+                        <h1 class="welcome-title">Bem-vinda, TechSolutions!</h1>
+                        <p class="welcome-description">Gerencie seus eventos e palestrantes para as ETECs e FATECs</p>
+                    </div>
+
+                    <!-- Dashboard Stats -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon blue">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>8</h3>
+                                <p>Eventos Disponíveis</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>5</h3>
+                                <p>Eventos Agendados</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon orange">
+                                <i class="fas fa-microphone"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>12</h3>
+                                <p>Palestrantes</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon purple">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>3</h3>
+                                <p>Pendentes Aprovação</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
 
-          <div class="tab-content" id="palestrantes-tab">
-            <div class="card">
-              <div class="card-header">
-                <h2 class="card-title">Solicitações de Palestrantes</h2>
-                <p class="card-description">Palestrantes que desejam fazer parte da sua empresa</p>
-              </div>
-              <div class="card-content">
-                <div class="notification-list" id="speaker-requests">
-                  <!-- Speaker requests will be populated by JavaScript -->
+            <!-- Added new dynamic sections for speakers, events calendar, and job postings -->
+            <!-- Palestrantes Section -->
+            <div class="section light-bg">
+                <div class="container">
+                    <div class="speakers-management-section">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <i class="fas fa-microphone section-icon"></i>
+                                Seus Palestrantes
+                            </h2>
+                            <button class="btn-primary" id="addSpeakerBtn">
+                                <i class="fas fa-plus"></i>
+                                Adicionar Palestrante
+                            </button>
+                        </div>
+                        
+                        <div class="speakers-grid" id="speakersGrid">
+                            <!-- Speakers will be populated by JavaScript -->
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </main>
 
-    <!-- Add Availability Modal -->
-    <div class="modal" id="add-availability-modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title">Adicionar Nova Disponibilidade</h3>
-          <p class="modal-description">
-            Preencha os detalhes para oferecer uma visita técnica ou palestra para as ETECs.
-          </p>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="availability-title">Título</label>
-            <input type="text" id="availability-title" placeholder="Ex: Visita ao Departamento de TI">
-          </div>
-          <div class="form-group">
-            <label for="availability-type">Tipo</label>
-            <select id="availability-type">
-              <option value="">Selecione o tipo</option>
-              <option value="Visita Técnica">Visita Técnica</option>
-              <option value="Palestra">Palestra</option>
-              <option value="Workshop">Workshop</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="availability-description">Descrição</label>
-            <textarea id="availability-description" placeholder="Descreva a atividade..."></textarea>
-          </div>
-          <div class="form-group">
-            <label for="availability-schedule">Disponibilidade</label>
-            <input type="text" id="availability-schedule" placeholder="Ex: Segundas e Quartas, 14h às 17h">
-          </div>
-          <div class="form-group">
-            <label for="availability-slots">Número de Vagas</label>
-            <input type="number" id="availability-slots" placeholder="Ex: 20">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button id="confirm-availability" class="button primary-button">Adicionar</button>
-          <button id="close-availability-modal" class="button outline-button">Cancelar</button>
-        </div>
-      </div>
+            <!-- Calendar and Events Section -->
+            <div class="section">
+                <div class="container">
+                    <div class="calendar-section">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <i class="fas fa-calendar-alt section-icon"></i>
+                                Eventos Agendados
+                            </h2>
+                            <div class="calendar-controls">
+                                <button class="btn-secondary" id="prevMonth">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <span class="current-month" id="currentMonth">Maio 2025</span>
+                                <button class="btn-secondary" id="nextMonth">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="calendar-container">
+                            <div class="calendar-grid" id="calendarGrid">
+                                <!-- Calendar will be populated by JavaScript -->
+                            </div>
+                            <div class="events-sidebar">
+                                <h3>Próximos Eventos</h3>
+                                <div class="upcoming-events" id="upcomingEvents">
+                                    <!-- Upcoming events will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Job Postings Section -->
+            <div class="section light-bg">
+                <div class="container">
+                    <div class="job-postings-section">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <i class="fas fa-briefcase section-icon"></i>
+                                Vagas de Emprego
+                            </h2>
+                            <button class="btn-primary" id="createJobBtn">
+                                <i class="fas fa-plus"></i>
+                                Criar Nova Vaga
+                            </button>
+                        </div>
+                        
+                        <div class="job-creation-form" id="jobCreationForm" style="display: none;">
+                            <div class="form-card">
+                                <h3>Nova Vaga de Emprego</h3>
+                                <form id="jobForm">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="jobTitle">Título da Vaga</label>
+                                            <input type="text" id="jobTitle" name="jobTitle" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="jobLevel">Nível</label>
+                                            <select id="jobLevel" name="jobLevel" required>
+                                                <option value="">Selecione o nível</option>
+                                                <option value="junior">Júnior</option>
+                                                <option value="pleno">Pleno</option>
+                                                <option value="senior">Sênior</option>
+                                                <option value="estagio">Estágio</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="jobArea">Área</label>
+                                            <select id="jobArea" name="jobArea" required>
+                                                <option value="">Selecione a área</option>
+                                                <option value="desenvolvimento">Desenvolvimento</option>
+                                                <option value="design">Design</option>
+                                                <option value="dados">Ciência de Dados</option>
+                                                <option value="devops">DevOps</option>
+                                                <option value="mobile">Mobile</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="jobSalary">Salário (R$)</label>
+                                            <input type="number" id="jobSalary" name="jobSalary" placeholder="Ex: 5000">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="jobDescription">Descrição da Vaga</label>
+                                        <textarea id="jobDescription" name="jobDescription" rows="4" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="jobRequirements">Requisitos</label>
+                                        <textarea id="jobRequirements" name="jobRequirements" rows="3" required></textarea>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="button" class="btn-secondary" id="cancelJobBtn">Cancelar</button>
+                                        <button type="submit" class="btn-primary">Publicar Vaga</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <div class="jobs-grid" id="jobsGrid">
+                            <!-- Job postings will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section light-bg">
+                <div class="quick-actions-section">
+                    <h2 class="section-title">Ações Rápidas</h2>
+                    <div class="quick-actions-grid">
+                        <a href="disponibilidade.html" class="quick-action-card">
+                            <div class="stat-icon blue">
+                                <i class="fas fa-plus-circle"></i>
+                            </div>
+                            <h3 class="espaco_card">Adicionar Evento</h3>
+                            <p>Criar nova disponibilidade de evento</p>
+                        </a>
+                        <a href="palestrantes.html" class="quick-action-card">
+                            <div class="stat-icon orange">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <h3 class="espaco_card">Aprovar Palestrantes</h3>
+                            <p>Gerenciar solicitações de palestrantes</p>
+                        </a>
+                        <a href="agendados.html" class="quick-action-card">
+                            <div class="stat-icon green">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <h3 class="espaco_card">Ver Agendamentos</h3>
+                            <p>Visualizar eventos confirmados</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="recent-activity-section">
+                    <h2 class="section-title">Atividades Recentes</h2>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon green">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p><strong>Evento confirmado:</strong> Visita Técnica - ETEC Zona Leste</p>
+                                <span class="activity-time">Hoje, 10:30</span>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon blue">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p><strong>Novo palestrante:</strong> Ana Silva solicitou cadastro</p>
+                                <span class="activity-time">Ontem, 15:20</span>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon orange">
+                                <i class="fas fa-microphone"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p><strong>Palestra agendada:</strong> "IA na Prática" - FATEC São Paulo</p>
+                                <span class="activity-time">2 dias atrás</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section light-bg">
+                <div class="container">
+                    <div class="monthly-stats-section">
+                        <h2 class="section-title">Estatísticas do Mês</h2>
+                        <div class="monthly-stats-grid">
+                            <div class="monthly-stat-card">
+                                <div class="monthly-stat-header">
+                                    <h3>Eventos Realizados</h3>
+                                    <div class="stat-icon green">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                </div>
+                                <div class="monthly-stat-number">12</div>
+                                <div class="monthly-stat-change positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>+20% vs mês anterior</span>
+                                </div>
+                            </div>
+
+                            <div class="monthly-stat-card">
+                                <div class="monthly-stat-header">
+                                    <h3>Palestrantes Ativos</h3>
+                                    <div class="stat-icon blue">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                </div>
+                                <div class="monthly-stat-number">8</div>
+                                <div class="monthly-stat-change positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>+2 novos palestrantes</span>
+                                </div>
+                            </div>
+
+                            <div class="monthly-stat-card">
+                                <div class="monthly-stat-header">
+                                    <h3>Taxa de Aprovação</h3>
+                                    <div class="stat-icon purple">
+                                        <i class="fas fa-percentage"></i>
+                                    </div>
+                                </div>
+                                <div class="monthly-stat-number">95%</div>
+                                <div class="monthly-stat-change positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>+3% vs mês anterior</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="dashboard-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="copyright">© 2025 INTEGRA. Todos os direitos reservados.</p>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Termos de Uso</a>
+                        <a href="#" class="footer-link">Política de Privacidade</a>
+                        <a href="#" class="footer-link">Suporte</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 
-    <!-- Notifications Dropdown -->
-    <div class="notifications-dropdown" id="notifications-dropdown">
-      <div class="notifications-header">
-        <h3>Notificações</h3>
-        <button id="close-notifications">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="notifications-content">
-        <div class="notification-item unread">
-          <div class="notification-header">
-            <span class="notification-title">Nova solicitação de palestrante</span>
-            <span class="notification-time">Hoje</span>
-          </div>
-          <p class="notification-content">Ana Silva deseja se tornar palestrante em sua empresa.</p>
-          <div class="notification-actions">
-            <button class="button small-button primary-button">Ver Detalhes</button>
-          </div>
-        </div>
-        <div class="notification-item unread">
-          <div class="notification-header">
-            <span class="notification-title">Evento agendado</span>
-            <span class="notification-time">Ontem</span>
-          </div>
-          <p class="notification-content">ETEC São Paulo agendou uma visita técnica para 20/06/2025.</p>
-          <div class="notification-actions">
-            <button class="button small-button primary-button">Ver Detalhes</button>
-          </div>
-        </div>
-      </div>
-      <div class="notifications-footer">
-        <button class="button outline-button small-button full-width">Ver Todas</button>
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="dashboard-footer">
-      <div class="container">
-        <div class="footer-content">
-          <p class="copyright">© 2025 INTEGRA. Todos os direitos reservados.</p>
-          <div class="footer-links">
-            <a href="#" class="footer-link">Termos de Uso</a>
-            <a href="#" class="footer-link">Política de Privacidade</a>
-            <a href="#" class="footer-link">Suporte</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </div>
-
-  <script src="../../js/empresa.js"></script>
+    <script src="../../js/empresa.js"></script>
 </body>
+
 </html>

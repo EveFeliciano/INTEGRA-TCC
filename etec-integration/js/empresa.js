@@ -1,392 +1,441 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Sample data
-  const disponibilidades = [
+  // Sample data for company dashboard
+  const eventosDisponiveis = [
     {
       id: 1,
-      titulo: "Visita Técnica - Departamento de Desenvolvimento",
+      titulo: "Visita Técnica - Desenvolvimento de Software",
       tipo: "Visita Técnica",
-      descricao:
-        "Visita ao departamento de desenvolvimento de software para conhecer o ambiente de trabalho e as tecnologias utilizadas.",
-      disponibilidade: "Segundas e Quartas, 14h às 17h",
-      vagas: 20,
+      descricao: "Conhecer nosso ambiente de desenvolvimento e metodologias ágeis",
+      duracao: "2 horas",
+      capacidade: "30 alunos",
+      disponibilidade: "Segunda a Sexta, 14h às 16h",
+      status: "ativo",
     },
     {
       id: 2,
-      titulo: "Palestra sobre Mercado de Trabalho em TI",
+      titulo: "Palestra: Inteligência Artificial na Prática",
       tipo: "Palestra",
-      descricao: "Palestra sobre as oportunidades e desafios do mercado de trabalho em Tecnologia da Informação.",
-      disponibilidade: "Terças e Quintas, 19h às 21h",
-      vagas: 50,
+      descricao: "Como a IA está transformando o mercado de trabalho",
+      duracao: "1 hora",
+      capacidade: "100 alunos",
+      disponibilidade: "Terças e Quintas, 19h às 20h",
+      status: "ativo",
+    },
+    {
+      id: 3,
+      titulo: "Workshop: Metodologias Ágeis",
+      tipo: "Workshop",
+      descricao: "Hands-on com Scrum e Kanban",
+      duracao: "3 horas",
+      capacidade: "25 alunos",
+      disponibilidade: "Sábados, 9h às 12h",
+      status: "ativo",
     },
   ]
 
   const eventosAgendados = [
     {
       id: 1,
-      titulo: "Visita Técnica - Departamento de Desenvolvimento",
+      titulo: "Visita Técnica - ETEC Zona Leste",
       tipo: "Visita Técnica",
-      data: new Date(2025, 4, 20),
+      data: new Date(2025, 4, 25),
       horario: "14:00 - 16:00",
-      etec: "ETEC São Paulo",
-      participantes: 15,
+      etec: "ETEC Zona Leste",
+      turma: "3º DS",
+      alunos: 28,
+      status: "confirmado",
+    },
+    {
+      id: 2,
+      titulo: "Palestra IA - FATEC São Paulo",
+      tipo: "Palestra",
+      data: new Date(2025, 4, 27),
+      horario: "19:00 - 20:00",
+      etec: "FATEC São Paulo",
+      turma: "2º ADS",
+      alunos: 45,
+      status: "confirmado",
+    },
+    {
+      id: 3,
+      titulo: "Workshop Ágil - ETEC Centro",
+      tipo: "Workshop",
+      data: new Date(2025, 4, 30),
+      horario: "09:00 - 12:00",
+      etec: "ETEC Centro",
+      turma: "3º ADM",
+      alunos: 22,
+      status: "pendente",
     },
   ]
 
-  const solicitacoesPalestrantes = [
+  const palestrantes = [
     {
       id: 1,
       nome: "Ana Silva",
       area: "Inteligência Artificial",
-      dataInscricao: new Date(2025, 4, 15),
-      motivacao:
-        "Gostaria de compartilhar minha experiência em IA com os estudantes e contribuir para o desenvolvimento da área.",
-      experiencia:
-        "10 anos de experiência em projetos de IA, incluindo machine learning e processamento de linguagem natural.",
-      disponibilidade: "Segundas e Quartas, 19h às 21h",
-      status: "pendente",
+      contato: "ana.silva@techsolutions.com",
+      telefone: "(11) 9999-5555",
+      bio: "Especialista em IA com mais de 10 anos de experiência",
+      status: "aprovado",
+      datasolicitacao: new Date(2025, 3, 15),
     },
     {
       id: 2,
       nome: "Carlos Mendes",
-      area: "Empreendedorismo",
-      dataInscricao: new Date(2025, 4, 10),
-      motivacao: "Desejo inspirar novos empreendedores e compartilhar minha jornada no mundo dos negócios.",
-      experiencia: "Fundador de 3 startups de sucesso, mentor de empreendedores iniciantes.",
-      disponibilidade: "Terças e Quintas, 18h às 20h",
+      area: "Desenvolvimento Full Stack",
+      contato: "carlos.mendes@techsolutions.com",
+      telefone: "(11) 9999-4444",
+      bio: "Desenvolvedor sênior especializado em React e Node.js",
+      status: "aprovado",
+      datasolicitacao: new Date(2025, 3, 20),
+    },
+    {
+      id: 3,
+      nome: "Mariana Costa",
+      area: "UX/UI Design",
+      contato: "mariana.costa@freelancer.com",
+      telefone: "(11) 9999-3333",
+      bio: "Designer com experiência em startups de tecnologia",
       status: "pendente",
+      datasolicitacao: new Date(2025, 4, 10),
+    },
+    {
+      id: 4,
+      nome: "Roberto Lima",
+      area: "DevOps",
+      contato: "roberto.lima@consultant.com",
+      telefone: "(11) 9999-2222",
+      bio: "Consultor DevOps com certificações AWS e Azure",
+      status: "pendente",
+      datasolicitacao: new Date(2025, 4, 12),
     },
   ]
 
-  // Tab switching
-  const tabTriggers = document.querySelectorAll(".tab-trigger")
-  const tabContents = document.querySelectorAll(".tab-content")
+  const jobPostings = [
+    {
+      id: 1,
+      title: "Desenvolvedor React Sênior",
+      level: "senior",
+      area: "desenvolvimento",
+      salary: 8000,
+      description: "Buscamos um desenvolvedor React experiente para liderar projetos inovadores.",
+      requirements: "React, TypeScript, Node.js, 5+ anos de experiência",
+      createdAt: new Date(2025, 4, 20),
+      status: "active",
+    },
+    {
+      id: 2,
+      title: "Designer UX/UI Pleno",
+      level: "pleno",
+      area: "design",
+      salary: 5500,
+      description: "Oportunidade para designer criativo trabalhar em produtos digitais.",
+      requirements: "Figma, Adobe Creative Suite, portfolio sólido",
+      createdAt: new Date(2025, 4, 18),
+      status: "active",
+    },
+  ]
 
-  tabTriggers.forEach((trigger) => {
-    trigger.addEventListener("click", () => {
-      // Remove active class from all triggers and contents
-      tabTriggers.forEach((t) => t.classList.remove("active"))
-      tabContents.forEach((c) => c.classList.remove("active"))
+  // Hamburger menu functionality
+  const hamburger = document.getElementById("hamburger")
+  const nav = document.getElementById("mainNav")
 
-      // Add active class to clicked trigger and corresponding content
-      trigger.classList.add("active")
-      const tabId = trigger.getAttribute("data-tab")
-      document.getElementById(`${tabId}-tab`).classList.add("active")
-    })
-  })
-
-  // Render disponibilidades
-  function renderDisponibilidades() {
-    const availabilityList = document.getElementById("availability-list")
-    availabilityList.innerHTML = ""
-
-    disponibilidades.forEach((disponibilidade) => {
-      const item = document.createElement("div")
-      item.className = "availability-item"
-
-      const header = document.createElement("div")
-      header.className = "availability-header"
-
-      const info = document.createElement("div")
-      info.className = "availability-info"
-
-      const title = document.createElement("h3")
-      title.textContent = disponibilidade.titulo
-
-      const meta = document.createElement("div")
-      meta.className = "availability-meta"
-      meta.innerHTML = `<span>${disponibilidade.tipo}</span><span>•</span><span>${disponibilidade.vagas} vagas</span>`
-
-      info.appendChild(title)
-      info.appendChild(meta)
-
-      const actions = document.createElement("div")
-      actions.className = "availability-actions"
-
-      const editButton = document.createElement("button")
-      editButton.className = "action-button"
-      editButton.innerHTML = '<i class="fas fa-edit"></i>'
-      editButton.title = "Editar"
-
-      const deleteButton = document.createElement("button")
-      deleteButton.className = "action-button delete"
-      deleteButton.innerHTML = '<i class="fas fa-trash"></i>'
-      deleteButton.title = "Excluir"
-      deleteButton.addEventListener("click", () => excluirDisponibilidade(disponibilidade.id))
-
-      actions.appendChild(editButton)
-      actions.appendChild(deleteButton)
-
-      header.appendChild(info)
-      header.appendChild(actions)
-
-      const description = document.createElement("p")
-      description.className = "availability-description"
-      description.textContent = disponibilidade.descricao
-
-      const schedule = document.createElement("div")
-      schedule.className = "availability-schedule"
-      schedule.innerHTML = `<i class="fas fa-calendar"></i><span>${disponibilidade.disponibilidade}</span>`
-
-      item.appendChild(header)
-      item.appendChild(description)
-      item.appendChild(schedule)
-
-      availabilityList.appendChild(item)
+  if (hamburger && nav) {
+    hamburger.addEventListener("click", () => {
+      nav.classList.toggle("active")
     })
   }
 
-  // Render eventos agendados
-  function renderEventosAgendados() {
-    const scheduledEvents = document.getElementById("scheduled-events")
-    scheduledEvents.innerHTML = ""
+  // Update dashboard stats dynamically
+  function updateDashboardStats() {
+    const eventosDisponiveisCount = eventosDisponiveis.filter((e) => e.status === "ativo").length
+    const eventosAgendadosCount = eventosAgendados.filter((e) => e.status === "confirmado").length
+    const palestrantesCount = palestrantes.length
+    const pendentesCount = palestrantes.filter((p) => p.status === "pendente").length
 
-    if (eventosAgendados.length > 0) {
-      eventosAgendados.forEach((evento) => {
-        const item = document.createElement("div")
-        item.className = "scheduled-event"
-
-        const header = document.createElement("div")
-        header.className = "scheduled-event-header"
-
-        const info = document.createElement("div")
-
-        const title = document.createElement("h3")
-        title.className = "scheduled-event-title"
-        title.textContent = evento.titulo
-
-        const date = document.createElement("p")
-        date.className = "scheduled-event-date"
-        date.textContent = `${formatDate(evento.data)} • ${evento.horario}`
-
-        info.appendChild(title)
-        info.appendChild(date)
-
-        const badge = document.createElement("div")
-        badge.className = "scheduled-event-badge"
-        badge.textContent = evento.tipo
-
-        header.appendChild(info)
-        header.appendChild(badge)
-
-        const details = document.createElement("div")
-        details.className = "scheduled-event-details"
-
-        const etec = document.createElement("p")
-        etec.textContent = `ETEC: ${evento.etec}`
-
-        const participants = document.createElement("p")
-        participants.textContent = `Participantes: ${evento.participantes}`
-
-        details.appendChild(etec)
-        details.appendChild(participants)
-
-        item.appendChild(header)
-        item.appendChild(details)
-
-        scheduledEvents.appendChild(item)
-      })
-    } else {
-      const noEvents = document.createElement("div")
-      noEvents.className = "no-events-message"
-
-      const icon = document.createElement("i")
-      icon.className = "fas fa-calendar"
-
-      const title = document.createElement("h3")
-      title.textContent = "Nenhum evento agendado"
-
-      const message = document.createElement("p")
-      message.textContent = "Quando coordenadores agendarem eventos com sua empresa, eles aparecerão aqui."
-
-      noEvents.appendChild(icon)
-      noEvents.appendChild(title)
-      noEvents.appendChild(message)
-
-      scheduledEvents.appendChild(noEvents)
+    // Update stat cards if they exist
+    const statCards = document.querySelectorAll(".stat-card")
+    if (statCards.length >= 4) {
+      statCards[0].querySelector("h3").textContent = eventosDisponiveisCount
+      statCards[1].querySelector("h3").textContent = eventosAgendadosCount
+      statCards[2].querySelector("h3").textContent = palestrantesCount
+      statCards[3].querySelector("h3").textContent = pendentesCount
     }
   }
 
-  // Render solicitações de palestrantes
-  function renderSolicitacoesPalestrantes() {
-    const speakerRequests = document.getElementById("speaker-requests")
-    speakerRequests.innerHTML = ""
+  function populateSpeakersGrid() {
+    const speakersGrid = document.getElementById("speakersGrid")
+    if (!speakersGrid) return
 
-    if (solicitacoesPalestrantes.length > 0) {
-      solicitacoesPalestrantes.forEach((solicitacao) => {
-        const item = document.createElement("div")
-        item.className = "notification-item unread"
-
-        const header = document.createElement("div")
-        header.className = "notification-header"
-
-        const title = document.createElement("span")
-        title.className = "notification-title"
-        title.textContent = solicitacao.nome
-
-        const time = document.createElement("span")
-        time.className = "notification-time"
-        time.textContent = formatDate(solicitacao.dataInscricao)
-
-        header.appendChild(title)
-        header.appendChild(time)
-
-        const content = document.createElement("p")
-        content.className = "notification-content"
-        content.textContent = `Área: ${solicitacao.area}
-Motivação: ${solicitacao.motivacao}
-Experiência: ${solicitacao.experiencia}
-Disponibilidade: ${solicitacao.disponibilidade}`
-
-        const actions = document.createElement("div")
-        actions.className = "notification-actions"
-
-        const approveButton = document.createElement("button")
-        approveButton.className = "button small-button primary-button"
-        approveButton.textContent = "Aprovar"
-        approveButton.addEventListener("click", () => aprovarPalestrante(solicitacao.id))
-
-        const rejectButton = document.createElement("button")
-        rejectButton.className = "button small-button outline-button"
-        rejectButton.textContent = "Recusar"
-        rejectButton.addEventListener("click", () => recusarPalestrante(solicitacao.id))
-
-        actions.appendChild(approveButton)
-        actions.appendChild(rejectButton)
-
-        item.appendChild(header)
-        item.appendChild(content)
-        item.appendChild(actions)
-
-        speakerRequests.appendChild(item)
-      })
-    } else {
-      const noRequests = document.createElement("div")
-      noRequests.className = "no-events-message"
-
-      const icon = document.createElement("i")
-      icon.className = "fas fa-user-tie"
-
-      const title = document.createElement("h3")
-      title.textContent = "Nenhuma solicitação de palestrante"
-
-      const message = document.createElement("p")
-      message.textContent =
-        "Quando palestrantes se inscreverem para fazer parte da sua empresa, as solicitações aparecerão aqui."
-
-      noRequests.appendChild(icon)
-      noRequests.appendChild(title)
-      noRequests.appendChild(message)
-
-      speakerRequests.appendChild(noRequests)
-    }
+    speakersGrid.innerHTML = palestrantes
+      .map(
+        (speaker) => `
+      <div class="speaker-card">
+        <div class="speaker-header">
+          <div class="speaker-avatar">
+            ${speaker.nome.charAt(0)}
+          </div>
+          <div class="speaker-info">
+            <h3>${speaker.nome}</h3>
+            <p class="speaker-area">${speaker.area}</p>
+          </div>
+        </div>
+        <div class="speaker-details">
+          <div class="speaker-contact">
+            <i class="fas fa-envelope"></i>
+            <span>${speaker.contato}</span>
+          </div>
+          <div class="speaker-contact">
+            <i class="fas fa-phone"></i>
+            <span>${speaker.telefone}</span>
+          </div>
+          <p class="speaker-bio">${speaker.bio}</p>
+          <span class="speaker-status ${speaker.status}">
+            <i class="fas fa-${speaker.status === "aprovado" ? "check" : "clock"}"></i>
+            ${speaker.status === "aprovado" ? "Aprovado" : "Pendente"}
+          </span>
+        </div>
+      </div>
+    `,
+      )
+      .join("")
   }
 
-  // Add availability modal
-  const addAvailabilityModal = document.getElementById("add-availability-modal")
-  const addAvailabilityBtn = document.getElementById("add-availability-btn")
-  const closeAvailabilityModalBtn = document.getElementById("close-availability-modal")
-  const confirmAvailabilityBtn = document.getElementById("confirm-availability")
+  const currentDate = new Date(2025, 4, 1) // May 2025
 
-  addAvailabilityBtn.addEventListener("click", () => {
-    addAvailabilityModal.style.display = "flex"
-  })
+  function populateCalendar() {
+    const calendarGrid = document.getElementById("calendarGrid")
+    const currentMonth = document.getElementById("currentMonth")
+    if (!calendarGrid || !currentMonth) return
 
-  closeAvailabilityModalBtn.addEventListener("click", () => {
-    addAvailabilityModal.style.display = "none"
-  })
+    const year = currentDate.getFullYear()
+    const month = currentDate.getMonth()
 
-  confirmAvailabilityBtn.addEventListener("click", () => {
-    // Get form values
-    const title = document.getElementById("availability-title").value
-    const type = document.getElementById("availability-type").value
-    const description = document.getElementById("availability-description").value
-    const schedule = document.getElementById("availability-schedule").value
-    const slots = document.getElementById("availability-slots").value
+    currentMonth.textContent = new Intl.DateTimeFormat("pt-BR", {
+      month: "long",
+      year: "numeric",
+    }).format(currentDate)
 
-    if (title && type && description && schedule && slots) {
-      alert(`Disponibilidade "${title}" adicionada com sucesso!`)
-      addAvailabilityModal.style.display = "none"
+    const firstDay = new Date(year, month, 1)
+    const lastDay = new Date(year, month + 1, 0)
+    const startDate = new Date(firstDay)
+    startDate.setDate(startDate.getDate() - firstDay.getDay())
 
-      // Reset form
-      document.getElementById("availability-title").value = ""
-      document.getElementById("availability-type").value = ""
-      document.getElementById("availability-description").value = ""
-      document.getElementById("availability-schedule").value = ""
-      document.getElementById("availability-slots").value = ""
+    const days = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"]
+    let calendarHTML = days.map((day) => `<div class="calendar-day header">${day}</div>`).join("")
 
-      // In a real application, we would add the new availability to the list
-      // and re-render the list
-    } else {
-      alert("Por favor, preencha todos os campos.")
+    for (let i = 0; i < 42; i++) {
+      const date = new Date(startDate)
+      date.setDate(startDate.getDate() + i)
+
+      const isCurrentMonth = date.getMonth() === month
+      const isToday = date.toDateString() === new Date().toDateString()
+      const hasEvent = eventosAgendados.some((evento) => evento.data.toDateString() === date.toDateString())
+
+      let classes = "calendar-day"
+      if (!isCurrentMonth) classes += " other-month"
+      if (isToday) classes += " today"
+      if (hasEvent) classes += " has-event"
+
+      calendarHTML += `
+        <div class="${classes}">
+          <span class="day-number">${date.getDate()}</span>
+          ${hasEvent ? '<div class="event-dot"></div>' : ""}
+        </div>
+      `
     }
-  })
 
-  // Delete availability
-  function excluirDisponibilidade(id) {
-    if (confirm("Tem certeza que deseja excluir esta disponibilidade?")) {
-      alert(`Disponibilidade ${id} excluída com sucesso!`)
-      // In a real application, we would remove the availability from the list
-      // and re-render the list
-    }
+    calendarGrid.innerHTML = calendarHTML
   }
 
-  // Approve speaker
-  function aprovarPalestrante(id) {
-    if (confirm("Tem certeza que deseja aprovar este palestrante?")) {
-      alert(`Palestrante ${id} aprovado com sucesso!`)
-      // In a real application, we would update the speaker status
-      // and re-render the list
-    }
+  function populateUpcomingEvents() {
+    const upcomingEvents = document.getElementById("upcomingEvents")
+    if (!upcomingEvents) return
+
+    const sortedEvents = eventosAgendados
+      .filter((evento) => evento.data >= new Date())
+      .sort((a, b) => a.data - b.data)
+      .slice(0, 5)
+
+    upcomingEvents.innerHTML = sortedEvents
+      .map(
+        (evento) => `
+      <div class="upcoming-event">
+        <h4 class="event-title">${evento.titulo}</h4>
+        <p class="event-details">
+          ${evento.data.toLocaleDateString("pt-BR")} • ${evento.horario}<br>
+          ${evento.etec} - ${evento.turma} (${evento.alunos} alunos)
+        </p>
+      </div>
+    `,
+      )
+      .join("")
   }
 
-  // Reject speaker
-  function recusarPalestrante(id) {
-    if (confirm("Tem certeza que deseja recusar este palestrante?")) {
-      alert(`Palestrante ${id} recusado.`)
-      // In a real application, we would update the speaker status
-      // and re-render the list
-    }
+  function populateJobsGrid() {
+    const jobsGrid = document.getElementById("jobsGrid")
+    if (!jobsGrid) return
+
+    jobsGrid.innerHTML = jobPostings
+      .map(
+        (job) => `
+      <div class="job-card">
+        <div class="job-header">
+          <div>
+            <h3 class="job-title">${job.title}</h3>
+            <span class="job-level">${job.level}</span>
+          </div>
+        </div>
+        <div class="job-meta">
+          <div class="job-meta-item">
+            <i class="fas fa-briefcase"></i>
+            <span>${job.area}</span>
+          </div>
+          <div class="job-meta-item">
+            <i class="fas fa-dollar-sign"></i>
+            <span>R$ ${job.salary.toLocaleString()}</span>
+          </div>
+          <div class="job-meta-item">
+            <i class="fas fa-calendar"></i>
+            <span>${job.createdAt.toLocaleDateString("pt-BR")}</span>
+          </div>
+        </div>
+        <p class="job-description">${job.description}</p>
+        <div class="job-actions">
+          <button class="job-action">Editar</button>
+          <button class="job-action primary">Ver Candidatos</button>
+        </div>
+      </div>
+    `,
+      )
+      .join("")
   }
 
-  // Notifications dropdown
-  const notificationIcon = document.getElementById("notification-icon")
-  const notificationsDropdown = document.getElementById("notifications-dropdown")
-  const closeNotifications = document.getElementById("close-notifications")
+  // Event listeners for new functionality
+  const createJobBtn = document.getElementById("createJobBtn")
+  const jobCreationForm = document.getElementById("jobCreationForm")
+  const cancelJobBtn = document.getElementById("cancelJobBtn")
+  const jobForm = document.getElementById("jobForm")
+  const prevMonth = document.getElementById("prevMonth")
+  const nextMonth = document.getElementById("nextMonth")
 
-  notificationIcon.addEventListener("click", () => {
-    notificationsDropdown.classList.toggle("show")
-  })
+  if (createJobBtn && jobCreationForm) {
+    createJobBtn.addEventListener("click", () => {
+      jobCreationForm.style.display = jobCreationForm.style.display === "none" ? "block" : "none"
+    })
+  }
 
-  closeNotifications.addEventListener("click", () => {
-    notificationsDropdown.classList.remove("show")
-  })
+  if (cancelJobBtn && jobCreationForm) {
+    cancelJobBtn.addEventListener("click", () => {
+      jobCreationForm.style.display = "none"
+      jobForm.reset()
+    })
+  }
 
-  // Close modals and dropdowns when clicking outside
-  window.addEventListener("click", (e) => {
-    if (e.target === addAvailabilityModal) {
-      addAvailabilityModal.style.display = "none"
-    }
+  if (jobForm) {
+    jobForm.addEventListener("submit", (e) => {
+      e.preventDefault()
+      const formData = new FormData(jobForm)
+      const newJob = {
+        id: jobPostings.length + 1,
+        title: formData.get("jobTitle"),
+        level: formData.get("jobLevel"),
+        area: formData.get("jobArea"),
+        salary: Number.parseInt(formData.get("jobSalary")),
+        description: formData.get("jobDescription"),
+        requirements: formData.get("jobRequirements"),
+        createdAt: new Date(),
+        status: "active",
+      }
 
-    if (
-      notificationsDropdown.classList.contains("show") &&
-      !notificationIcon.contains(e.target) &&
-      !notificationsDropdown.contains(e.target)
-    ) {
-      notificationsDropdown.classList.remove("show")
-    }
-  })
+      jobPostings.push(newJob)
+      populateJobsGrid()
+      jobCreationForm.style.display = "none"
+      jobForm.reset()
+    })
+  }
+
+  if (prevMonth) {
+    prevMonth.addEventListener("click", () => {
+      currentDate.setMonth(currentDate.getMonth() - 1)
+      populateCalendar()
+      populateUpcomingEvents()
+    })
+  }
+
+  if (nextMonth) {
+    nextMonth.addEventListener("click", () => {
+      currentDate.setMonth(currentDate.getMonth() + 1)
+      populateCalendar()
+      populateUpcomingEvents()
+    })
+  }
 
   // Helper function to format date
   function formatDate(date) {
     const day = date.getDate().toString().padStart(2, "0")
     const month = (date.getMonth() + 1).toString().padStart(2, "0")
     const year = date.getFullYear()
-
     return `${day}/${month}/${year}`
   }
 
-  // Initial render
-  renderDisponibilidades()
-  renderEventosAgendados()
-  renderSolicitacoesPalestrantes()
+  // Helper function to format date for display
+  function formatDateForDisplay(date) {
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }
+    return date.toLocaleDateString("pt-BR", options)
+  }
+
+  // Add some interactive functionality to activity items
+  const activityItems = document.querySelectorAll(".activity-item")
+  activityItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      // Add a subtle animation when clicked
+      item.style.transform = "scale(0.98)"
+      setTimeout(() => {
+        item.style.transform = "scale(1)"
+      }, 150)
+    })
+  })
+
+  // Add hover effects to quick action cards
+  const quickActionCards = document.querySelectorAll(".quick-action-card")
+  quickActionCards.forEach((card) => {
+    card.addEventListener("mouseenter", () => {
+      const icon = card.querySelector(".stat-icon")
+      if (icon) {
+        icon.style.transform = "scale(1.1) rotate(5deg)"
+      }
+    })
+
+    card.addEventListener("mouseleave", () => {
+      const icon = card.querySelector(".stat-icon")
+      if (icon) {
+        icon.style.transform = "scale(1) rotate(0deg)"
+      }
+    })
+  })
+
+  // Initialize dashboard
+  updateDashboardStats()
+  populateSpeakersGrid()
+  populateCalendar()
+  populateUpcomingEvents()
+  populateJobsGrid()
+
+  // Simulate real-time updates (optional)
+  setInterval(() => {
+    // You could add real-time updates here
+    // For now, we'll just keep the stats as they are
+  }, 30000) // Update every 30 seconds
+
+  console.log("Empresa Dashboard initialized successfully")
+  console.log("Eventos Disponíveis:", eventosDisponiveis.length)
+  console.log("Eventos Agendados:", eventosAgendados.length)
+  console.log("Palestrantes:", palestrantes.length)
 })

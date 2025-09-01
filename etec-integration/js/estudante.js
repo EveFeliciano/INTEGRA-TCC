@@ -1,5 +1,5 @@
-// Dashboard do Estudante - JS completo atualizado
 document.addEventListener("DOMContentLoaded", () => {
+  // ---------- DADOS DOS EVENTOS (única declaração) ----------
   const events = [
     {
       id: 1,
@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
       estado: "SP",
       cep: "03030-030",
       preco: "R$70,00",
-      vagas: 25
+      vagas: 25,
+      avaliado: false
     },
     {
       id: 2,
@@ -33,7 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
       estado: "SP",
       cep: "04094-050",
       preco: "R$55,00",
-      vagas: 30
+      vagas: 30,
+      avaliado: false
     },
     {
       id: 3,
@@ -50,7 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
       estado: "SP",
       cep: "01010-010",
       preco: "R$40,00",
-      vagas: 40
+      vagas: 40,
+      avaliado: false
     },
     {
       id: 4,
@@ -67,216 +70,358 @@ document.addEventListener("DOMContentLoaded", () => {
       estado: "SP",
       cep: "02020-020",
       preco: "Gratuito",
-      vagas: 120
+      vagas: 120,
+      avaliado: false
     }
   ];
 
-  let currentMonth = new Date().getMonth();
-  let currentYear = new Date().getFullYear();
+  // ---------- PÁGINA 1: Dashboard com Calendário ----------
   const calendarElement = document.getElementById("calendar");
+  if (calendarElement) {
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
 
-  // ---------- Função de Geração do Calendário ----------
-  function generateCalendar(year, month) {
-    const firstDay = new Date(year, month, 1);
-    const lastDay = new Date(year, month + 1, 0);
-    const daysInMonth = lastDay.getDate();
-    const startingDay = firstDay.getDay();
+    function generateCalendar(year, month) {
+      const firstDay = new Date(year, month, 1);
+      const lastDay = new Date(year, month + 1, 0);
+      const daysInMonth = lastDay.getDate();
+      const startingDay = firstDay.getDay();
 
-    const monthNames = [
-      "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-      "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
-    ];
+      const monthNames = [
+        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+      ];
 
-    let html = `
-      <div class="calendar-nav">
-        <button class="month-nav" id="prevMonth">&lt;</button>
-        <h3>${monthNames[month]} ${year}</h3>
-        <button class="month-nav" id="nextMonth">&gt;</button>
-      </div>
-      <div class="calendar-weekdays">
-        <div class="weekday">Dom</div>
-        <div class="weekday">Seg</div>
-        <div class="weekday">Ter</div>
-        <div class="weekday">Qua</div>
-        <div class="weekday">Qui</div>
-        <div class="weekday">Sex</div>
-        <div class="weekday">Sáb</div>
-      </div>
-      <div class="calendar-days">
-    `;
+      let html = `
+        <div class="calendar-nav">
+          <button class="month-nav" id="prevMonth">&lt;</button>
+          <h3>${monthNames[month]} ${year}</h3>
+          <button class="month-nav" id="nextMonth">&gt;</button>
+        </div>
+        <div class="calendar-weekdays">
+          <div class="weekday">Dom</div>
+          <div class="weekday">Seg</div>
+          <div class="weekday">Ter</div>
+          <div class="weekday">Qua</div>
+          <div class="weekday">Qui</div>
+          <div class="weekday">Sex</div>
+          <div class="weekday">Sáb</div>
+        </div>
+        <div class="calendar-days">
+      `;
 
-    // células vazias antes do primeiro dia
-    for (let i = 0; i < startingDay; i++) {
-      html += '<div class="calendar-day empty"></div>';
-    }
+      for (let i = 0; i < startingDay; i++) {
+        html += '<div class="calendar-day empty"></div>';
+      }
 
-    const today = new Date();
-    const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+      const today = new Date();
+      const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
 
-    for (let day = 1; day <= daysInMonth; day++) {
-      const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
-      const isToday = dateStr === todayStr;
-      const past = new Date(year, month, day) < new Date(today.getFullYear(), today.getMonth(), today.getDate());
-      const hasEvent = events.some(event => event.date === dateStr);
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+        const isToday = dateStr === todayStr;
+        const past = new Date(year, month, day) < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+        const hasEvent = events.some(event => event.date === dateStr);
 
-      let classes = "calendar-day";
-      if (past) classes += " past";
-      if (isToday) classes += " today";
-      if (hasEvent) classes += " has-event";
+        let classes = "calendar-day";
+        if (past) classes += " past";
+        if (isToday) classes += " today";
+        if (hasEvent) classes += " has-event";
 
-      html += `<div class="${classes}" data-date="${dateStr}">${day}</div>`;
-    }
+        html += `<div class="${classes}" data-date="${dateStr}">${day}</div>`;
+      }
 
-    html += "</div>";
-    calendarElement.innerHTML = html;
+      html += "</div>";
+      calendarElement.innerHTML = html;
 
-    // Navegação de meses
-    document.getElementById("prevMonth").addEventListener("click", () => {
-      currentMonth = currentMonth > 0 ? currentMonth - 1 : 11;
-      if (currentMonth === 11) currentYear--;
-      generateCalendar(currentYear, currentMonth);
-    });
-
-    document.getElementById("nextMonth").addEventListener("click", () => {
-      currentMonth = currentMonth < 11 ? currentMonth + 1 : 0;
-      if (currentMonth === 0) currentYear++;
-      generateCalendar(currentYear, currentMonth);
-    });
-
-    // clique nos dias
-    const days = calendarElement.querySelectorAll(".calendar-day:not(.empty)");
-    days.forEach(day => {
-      day.addEventListener("click", () => {
-        showEventsForDate(day.dataset.date);
-        days.forEach(d => d.classList.remove("active"));
-        day.classList.add("active");
+      document.getElementById("prevMonth").addEventListener("click", () => {
+        currentMonth = currentMonth > 0 ? currentMonth - 1 : 11;
+        if (currentMonth === 11) currentYear--;
+        generateCalendar(currentYear, currentMonth);
       });
-    });
-  }
 
-  // ---------- Função para Mostrar Eventos de um Dia ----------
-  function showEventsForDate(date) {
-    const selectedDateElement = document.getElementById("selected-date");
-    const eventsContainer = document.getElementById("events-container");
-    const cards = eventsContainer.querySelectorAll(".event-item");
+      document.getElementById("nextMonth").addEventListener("click", () => {
+        currentMonth = currentMonth < 11 ? currentMonth + 1 : 0;
+        if (currentMonth === 0) currentYear++;
+        generateCalendar(currentYear, currentMonth);
+      });
 
-    const [year, month, day] = date.split("-").map(Number);
-    const dateObj = new Date(year, month - 1, day);
-
-    selectedDateElement.innerHTML = `
-      <div class="event-date-block">
-        <div class="event-day">${dateObj.toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" })}</div>
-        <div class="event-weekday">${dateObj.toLocaleDateString("pt-BR", { weekday: "long" })}</div>
-      </div>
-    `;
-
-    const dayEvents = events.filter(event => event.date === date);
-
-    // Esconde todos os cards
-    cards.forEach(card => card.style.display = "none");
-
-    // Remove mensagem antiga
-    const oldMsg = eventsContainer.querySelector(".no-events, .event-passed");
-    if (oldMsg) oldMsg.remove();
-
-    if (dayEvents.length === 0) {
-      const msg = document.createElement("p");
-      msg.classList.add("no-events");
-      msg.style.textAlign = "center";
-      msg.textContent = "Nenhum evento programado para esta data.";
-      eventsContainer.appendChild(msg);
-    } else {
-      dayEvents.forEach((event, index) => {
-        const today = new Date();
-        const eventParts = event.date.split("-").map(Number);
-        const eventDate = new Date(eventParts[0], eventParts[1] - 1, eventParts[2]);
-
-        if (eventDate < new Date(today.getFullYear(), today.getMonth(), today.getDate())) {
-          // Evento já passou
-          const passedMsg = document.createElement("div");
-          passedMsg.classList.add("event-passed");
-          passedMsg.style.textAlign = "center";
-          passedMsg.innerHTML = `
-            <p>Este evento já ocorreu.</p>
-            <a href="avaliar.html" class="button primary-button full-width">Avaliar Evento</a>
-          `;
-          eventsContainer.appendChild(passedMsg);
-        } else {
-          if (cards[index]) {
-            cards[index].querySelector(".time").textContent = event.time;
-            cards[index].querySelector(".tipo").textContent = event.tipo;
-            cards[index].querySelector(".nome").textContent = event.nome;
-            cards[index].querySelector(".descricao").textContent = event.descricao;
-
-            if (cards[index].querySelector(".time_end")) cards[index].querySelector(".time_end").textContent = event.time_end;
-            if (cards[index].querySelector(".rua")) cards[index].querySelector(".rua").textContent = event.rua;
-            if (cards[index].querySelector(".numero")) cards[index].querySelector(".numero").textContent = event.numero;
-            if (cards[index].querySelector(".bairro")) cards[index].querySelector(".bairro").textContent = event.bairro;
-            if (cards[index].querySelector(".cidade")) cards[index].querySelector(".cidade").textContent = event.cidade;
-            if (cards[index].querySelector(".estado")) cards[index].querySelector(".estado").textContent = event.estado;
-            if (cards[index].querySelector(".cep")) cards[index].querySelector(".cep").textContent = event.cep;
-            if (cards[index].querySelector(".preco")) cards[index].querySelector(".preco").textContent = event.preco;
-            if (cards[index].querySelector(".vagas")) cards[index].querySelector(".vagas").textContent = event.vagas;
-
-            cards[index].style.display = "block";
-          }
-        }
+      const days = calendarElement.querySelectorAll(".calendar-day:not(.empty)");
+      days.forEach(day => {
+        day.addEventListener("click", () => {
+          showEventsForDate(day.dataset.date);
+          days.forEach(d => d.classList.remove("active"));
+          day.classList.add("active");
+        });
       });
     }
-  }
 
-  // ---------- Função para Carregar Próximos Eventos ----------
-  function loadUpcomingEvents() {
-    const container = document.getElementById("upcoming-events");
-    const today = new Date();
+    function showEventsForDate(date) {
+      const selectedDateElement = document.getElementById("selected-date");
+      const eventsContainer = document.getElementById("events-container");
+      if (!selectedDateElement || !eventsContainer) return;
 
-    const upcoming = events
-      .filter(e => {
-        const parts = e.date.split("-").map(Number);
-        const eventDate = new Date(parts[0], parts[1] - 1, parts[2]);
-        return eventDate >= new Date(today.getFullYear(), today.getMonth(), today.getDate());
-      })
-      .sort((a, b) => {
-        const aParts = a.date.split("-").map(Number);
-        const bParts = b.date.split("-").map(Number);
-        const aDate = new Date(aParts[0], aParts[1] - 1, aParts[2]);
-        const bDate = new Date(bParts[0], bParts[1] - 1, bParts[2]);
-        return aDate - bDate;
-      })
-      .slice(0, 2);
+      const cards = eventsContainer.querySelectorAll(".event-item");
 
-    if (upcoming.length === 0) {
-      container.innerHTML = '<p class="no-events">Nenhum evento próximo.</p>';
-      return;
-    }
+      const [year, month, day] = date.split("-").map(Number);
+      const dateObj = new Date(year, month - 1, day);
 
-    container.innerHTML = upcoming.map(event => {
-      const parts = event.date.split("-").map(Number);
-      const eventDate = new Date(parts[0], parts[1] - 1, parts[2]);
-      const formattedDate = eventDate.toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" });
-      const weekday = eventDate.toLocaleDateString("pt-BR", { weekday: "long" });
-
-      return `
-        <div class="upcoming-event-card">
-          <div class="upcoming-event-header">
-            <div class="upcoming-event-date">${formattedDate}</div>
-            <div class="upcoming-event-weekday">${weekday}</div>
-            <div class="upcoming-event-time">${event.time}</div>
-          </div>
-          <div class="upcoming-event-info">
-            <div class="upcoming-event-type">${event.tipo}</div>
-            <div class="upcoming-event-name">${event.nome}</div>
-            <div class="upcoming-event-description">${event.descricao}</div>
-            <div class="upcoming-event-address">
-              ${event.rua}, ${event.numero} - ${event.bairro}, ${event.cidade}
-            </div>
-          </div>
+      selectedDateElement.innerHTML = `
+        <div class="event-date-block">
+          <div class="event-day">${dateObj.toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" })}</div>
+          <div class="event-weekday">${dateObj.toLocaleDateString("pt-BR", { weekday: "long" })}</div>
         </div>
       `;
-    }).join("");
+
+      const dayEvents = events.filter(event => event.date === date);
+
+      cards.forEach(card => card.style.display = "none");
+      const oldMsg = eventsContainer.querySelector(".no-events, .event-passed");
+      if (oldMsg) oldMsg.remove();
+
+      if (dayEvents.length === 0) {
+        const msg = document.createElement("p");
+        msg.classList.add("no-events");
+        msg.style.textAlign = "center";
+        msg.textContent = "Nenhum evento programado para esta data.";
+        eventsContainer.appendChild(msg);
+      } else {
+        dayEvents.forEach((event, index) => {
+          const today = new Date();
+          const eventParts = event.date.split("-").map(Number);
+          const eventDate = new Date(eventParts[0], eventParts[1] - 1, eventParts[2]);
+
+          if (eventDate < new Date(today.getFullYear(), today.getMonth(), today.getDate())) {
+            const passedMsg = document.createElement("div");
+            passedMsg.classList.add("event-passed");
+            passedMsg.style.textAlign = "center";
+            passedMsg.innerHTML = `
+              <p>Este evento já ocorreu.</p>
+              <a href="avaliar.html" class="button primary-button full-width">Avaliar Evento</a>
+            `;
+            eventsContainer.appendChild(passedMsg);
+          } else {
+            const card = cards[index];
+            if (card) {
+              card.querySelector(".time").textContent = event.time;
+              card.querySelector(".tipo").textContent = event.tipo;
+              card.querySelector(".nome").textContent = event.nome;
+              card.querySelector(".descricao").textContent = event.descricao;
+              if (card.querySelector(".time_end")) card.querySelector(".time_end").textContent = event.time_end;
+              if (card.querySelector(".rua")) card.querySelector(".rua").textContent = event.rua;
+              if (card.querySelector(".numero")) card.querySelector(".numero").textContent = event.numero;
+              if (card.querySelector(".bairro")) card.querySelector(".bairro").textContent = event.bairro;
+              if (card.querySelector(".cidade")) card.querySelector(".cidade").textContent = event.cidade;
+              if (card.querySelector(".estado")) card.querySelector(".estado").textContent = event.estado;
+              if (card.querySelector(".cep")) card.querySelector(".cep").textContent = event.cep;
+              if (card.querySelector(".preco")) card.querySelector(".preco").textContent = event.preco;
+              if (card.querySelector(".vagas")) card.querySelector(".vagas").textContent = event.vagas;
+              card.style.display = "block";
+            }
+          }
+        });
+      }
+    }
+
+    function loadUpcomingEvents() {
+      const container = document.getElementById("upcoming-events");
+      if (!container) return;
+
+      // Reaproveita a lista de eventos futuros
+      const today = new Date();
+      const todayLocal = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+      const upcomingEvents = events.filter(e => {
+        const [year, month, day] = e.date.split("-").map(Number);
+        const eventDate = new Date(year, month - 1, day);
+        return eventDate >= todayLocal;
+      });
+
+      // Atualiza contador
+      const eventCountEl = document.getElementById("event-count");
+      if (eventCountEl) eventCountEl.textContent = upcomingEvents.length;
+
+      if (upcomingEvents.length === 0) {
+        container.innerHTML = '<p class="no-events">Nenhum evento próximo.</p>';
+        return;
+      }
+
+      container.innerHTML = upcomingEvents.slice(0, 2).map(event => {
+        const [year, month, day] = event.date.split("-").map(Number);
+        const date = new Date(year, month - 1, day);
+        const formatted = date.toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" });
+        const weekday = date.toLocaleDateString("pt-BR", { weekday: "long" });
+
+        return `
+      <div class="upcoming-event-card">
+        <div class="upcoming-event-header">
+          <div class="upcoming-event-date">${formatted}</div>
+          <div class="upcoming-event-weekday">${weekday}</div>
+          <div class="upcoming-event-time">${event.time}</div>
+        </div>
+        <div class="upcoming-event-info">
+          <div class="upcoming-event-type">${event.tipo}</div>
+          <div class="upcoming-event-name">${event.nome}</div>
+          <div class="upcoming-event-description">${event.descricao}</div>
+          <div class="upcoming-event-address">${event.rua}, ${event.numero} - ${event.bairro}, ${event.cidade}</div>
+        </div>
+      </div>
+    `;
+      }).join("");
+    }
+
+    // ---------- ATUALIZA CONTADORES ----------
+    function updateStats() {
+      const today = new Date();
+      const todayLocal = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+      // Eventos Agendados (futuros)
+      const upcomingCount = events.filter(e => {
+        const [y, m, d] = e.date.split("-").map(Number);
+        const eventDate = new Date(y, m - 1, d);
+        return eventDate >= todayLocal;
+      }).length;
+
+      const upcomingEl = document.getElementById("upcoming-events-count");
+      if (upcomingEl) upcomingEl.textContent = upcomingCount;
+
+      // Notas Pendentes (eventos passados não avaliados)
+      const pendingRatingsCount = events.filter(e => {
+        const [y, m, d] = e.date.split("-").map(Number);
+        const eventDate = new Date(y, m - 1, d);
+        return eventDate < todayLocal && !e.avaliado;
+      }).length;
+
+      const pendingEl = document.getElementById("pending-ratings");
+      if (pendingEl) pendingEl.textContent = pendingRatingsCount;
+
+      // Notas Anteriores (eventos passados avaliados)
+      const previousRatingsCount = events.filter(e => {
+        const [y, m, d] = e.date.split("-").map(Number);
+        const eventDate = new Date(y, m - 1, d);
+        return eventDate < todayLocal && e.avaliado;
+      }).length;
+
+      const previousEl = document.getElementById("previous-ratings-count");
+      if (previousEl) previousEl.textContent = previousRatingsCount;
+    }
+
+    // Executa no carregamento
+    updateStats();
+
+    generateCalendar(currentYear, currentMonth);
+    loadUpcomingEvents();
   }
 
-  // Inicializa
-  generateCalendar(currentYear, currentMonth);
-  loadUpcomingEvents();
+  // ---------- PÁGINA 2: Lista de Eventos Passados/Futuros ----------
+  const pastContainer = document.getElementById("past-events");
+  const futureContainer = document.getElementById("future-events");
+  const previousRatingsContainer = document.getElementById("previous-ratings");
+
+  if (pastContainer && futureContainer) {
+    const pastTemplate = pastContainer.querySelector(".template").cloneNode(true);
+    const futureTemplate = futureContainer.querySelector(".template").cloneNode(true);
+    pastContainer.innerHTML = "";
+    futureContainer.innerHTML = "";
+
+    function getCountdown(dateStr) {
+      const eventDate = new Date(dateStr);
+      const now = new Date();
+      const diff = eventDate - now;
+
+      if (diff <= 0) return "Evento iniciado";
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    function renderEvents() {
+      const today = new Date();
+
+      events.forEach(event => {
+        const eventDate = new Date(event.date);
+        const isPast = eventDate < today;
+
+        const card = (isPast ? pastTemplate : futureTemplate).cloneNode(true);
+        card.classList.remove("template");
+        card.dataset.id = event.id;
+        card.querySelector(".card-name").textContent = event.nome;
+        card.querySelector(".card-type").textContent = event.tipo;
+        card.querySelector(".card-description").textContent = event.descricao;
+
+        if (!isPast) {
+          const countdownEl = card.querySelector(".card-countdown");
+          setInterval(() => {
+            countdownEl.textContent = getCountdown(event.date + "T" + event.time);
+          }, 1000);
+        }
+
+        (isPast ? pastContainer : futureContainer).appendChild(card);
+      });
+    }
+
+    renderEvents();
+  }
+
+  // ---------- FUNÇÃO DE ESTRELAS E AVALIAÇÃO ----------
+  function renderStars(container, rating) {
+    const stars = container.querySelectorAll("i");
+    stars.forEach(star => {
+      const value = parseInt(star.dataset.value);
+      star.classList.toggle("filled", value <= rating);
+    });
+  }
+
+  function attachStarEvents(card) {
+    const stars = card.querySelectorAll(".rating-stars i");
+    let selectedRating = 0;
+
+    stars.forEach(star => {
+      star.addEventListener("mouseover", () => {
+        const hoverValue = parseInt(star.dataset.value);
+        stars.forEach(s => s.classList.toggle("filled", parseInt(s.dataset.value) <= hoverValue));
+      });
+
+      star.addEventListener("mouseout", () => {
+        renderStars(card.querySelector(".rating-stars"), selectedRating);
+      });
+
+      star.addEventListener("click", () => {
+        selectedRating = parseInt(star.dataset.value);
+        renderStars(card.querySelector(".rating-stars"), selectedRating);
+      });
+    });
+
+    const btn = card.querySelector(".submit-rating");
+    if (btn) {
+      btn.addEventListener("click", () => {
+        if (selectedRating === 0) {
+          alert("Selecione uma nota antes de avaliar.");
+          return;
+        }
+
+        // Remove o botão
+        btn.remove();
+
+        // Remove todos os listeners das estrelas para desativar alterações
+        stars.forEach(star => {
+          star.replaceWith(star.cloneNode(true));
+        });
+
+        // Move para Notas Anteriores
+        previousRatingsContainer.appendChild(card);
+
+        // Preenche as estrelas permanentemente
+        renderStars(card.querySelector(".rating-stars"), selectedRating);
+      });
+    }
+  }
+
+  // Inicializa todos os cards de eventos passados (clone do template ou existentes)
+  const pastCards = pastContainer.querySelectorAll(".past-event-card:not(.template)");
+  pastCards.forEach(card => attachStarEvents(card));
 });

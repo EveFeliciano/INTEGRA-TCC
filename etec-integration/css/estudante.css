@@ -117,6 +117,7 @@
 .card-description {
   color: var(--muted-foreground);
   font-size: 0.875rem;
+  text-align: center;
 }
 
 .card-content {
@@ -623,4 +624,187 @@
   background: #dddbe8;
   color: var(--primary-color);
   border-color: var(--primary-color);
+}
+
+/* Grid dos cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.event-card {
+  background: linear-gradient(145deg, #ffffff, #f1f3f6);
+  border-radius: 1rem;
+  padding: 1.5rem 1rem;
+  width: 100%;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 0.2rem;
+}
+
+.card-type {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-light);
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+
+.card-description {
+  font-size: 0.95rem;
+  color: #555;
+  text-align: center;
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
+}
+
+.card-countdown {
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--secondary-color);
+  text-align: center;
+  margin-top: auto;
+}
+
+.event-card button {
+  margin-top: 0.8rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 0.75rem;
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.event-card button:hover {
+  transform: translateY(-2px);
+}
+
+.past-event-card {
+  border-left: 4px solid var(--primary-color);
+}
+
+.future-event-card {
+  border-left: 4px solid var(--secondary-color);
+}
+
+.section-avaliar {
+  padding-bottom: 2rem;
+}
+
+.template {
+  display: none !important;
+}
+
+/* Cards das Notas Anteriores */
+.previous-rating-card {
+  background: linear-gradient(145deg, #ffffff, #f1f3f6);
+  /* mesma base que eventos */
+  border-radius: 1rem;
+  padding: 1.5rem 1rem;
+  width: 100%;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid #f5a623;
+  /* destaque dourado para nota */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.previous-rating-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Conteúdo do card */
+.previous-rating-card .card-name,
+.previous-rating-card .card-type,
+.previous-rating-card .card-description,
+.previous-rating-card .card-date-time {
+  text-align: center;
+  width: 100%;
+}
+
+.previous-rating-card .card-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.previous-rating-card .card-type {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+.previous-rating-card .card-description {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.3;
+}
+
+/* Estrelas de avaliação */
+.rating-stars {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.rating-stars i {
+  font-size: 1.5rem;
+  color: #ddd;
+  /* estrelas vazias */
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.rating-stars i.filled {
+  color: #f5a623;
+  /* estrelas preenchidas */
+}
+
+/* Botão Avaliar */
+.previous-rating-card .submit-rating {
+  margin-top: 0.75rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.75rem;
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  width: 80%;
+  text-align: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.previous-rating-card .submit-rating:hover {
+  transform: translateY(-2px);
+  background: darken(var(--primary-color), 5%);
 }

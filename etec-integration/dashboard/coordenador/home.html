@@ -67,24 +67,6 @@
                     <!-- Dashboard Stats -->
                     <div class="stats-grid">
                         <div class="stat-card">
-                            <div class="stat-icon blue">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            <div class="stat-content">
-                                <h3>12</h3>
-                                <p>Empresas Parceiras</p>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon green">
-                                <i class="fas fa-microphone"></i>
-                            </div>
-                            <div class="stat-content">
-                                <h3>8</h3>
-                                <p>Palestrantes</p>
-                            </div>
-                        </div>
-                        <div class="stat-card">
                             <div class="stat-icon orange">
                                 <i class="fas fa-calendar"></i>
                             </div>
@@ -118,19 +100,19 @@
                             <h3 class="espaco_card">Agendar Evento</h3>
                             <p>Criar nova palestra ou visita técnica</p>
                         </a>
-                        <a href="estudantes.html" class="quick-action-card">
-                            <div class="stat-icon purple">
-                                <i class="fas fa-user-plus"></i>
-                            </div>
-                            <h3 class="espaco_card">Adicionar Aluno</h3>
-                            <p>Cadastrar novo estudante</p>
-                        </a>
                         <a href="agendados.html" class="quick-action-card">
                             <div class="stat-icon orange">
                                 <i class="fas fa-calendar-check"></i>
                             </div>
                             <h3 class="espaco_card">Ver Agendados</h3>
                             <p>Visualizar eventos programados</p>
+                        </a>
+                        <a href="estudantes.html" class="quick-action-card">
+                            <div class="stat-icon purple">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <h3 class="espaco_card">Adicionar Aluno</h3>
+                            <p>Cadastrar novo estudante</p>
                         </a>
                     </div>
                 </div>
@@ -173,50 +155,43 @@
                 </div>
             </div>
 
-            <div class="section light-bg">
-                <div class="container">
-                    <div class="monthly-stats-section">
-                        <h2 class="section-title">Estatísticas do Mês</h2>
-                        <div class="monthly-stats-grid">
-                            <div class="monthly-stat-card">
-                                <div class="monthly-stat-header">
-                                    <h3>Eventos Realizados</h3>
-                                    <div class="stat-icon green">
-                                        <i class="fas fa-chart-line"></i>
-                                    </div>
-                                </div>
-                                <div class="monthly-stat-number">18</div>
-                                <div class="monthly-stat-change positive">
-                                    <i class="fas fa-arrow-up"></i>
-                                    <span>+12% vs mês anterior</span>
-                                </div>
+            <div class="container">
+                <div class="calendar-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Calendário de Eventos</h2>
+                        <p class="card-description">Visualize as visitas técnicas e palestras programadas</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="calendar-container">
+                            <div class="calendar" id="calendar">
+                                <!-- Calendar gerado via JavaScript -->
                             </div>
-
-                            <div class="monthly-stat-card">
-                                <div class="monthly-stat-header">
-                                    <h3>Participação Estudantes</h3>
-                                    <div class="stat-icon blue">
-                                        <i class="fas fa-users"></i>
+                            <div class="selected-day-events">
+                                <h3 class="selected-date" id="selected-date">Selecione uma data</h3>
+                                <div id="events-container" class="events-container">
+                                    <div class="event-item" style="display: none;">
+                                        <div class="event-time event-bar">
+                                            <div class="event-info">Hora:</div>
+                                            <span class="time event-preenchido"></span>
+                                            <div class="event-info">Tipo:</div>
+                                            <span class="tipo event-preenchido-tipo"></span>
+                                        </div>
+                                        <div class="event-nome event-bar-calendario">
+                                            <div class="event-info">Título:</div>
+                                            <span class="nome event-preenchido-calendario-title"></span>
+                                        </div>
+                                        <div class="pula-linha"></div>
+                                        <div class="event-info event-bar-descricao">Descrição</div>
+                                        <div class="event-descricao"><span
+                                                class="descricao event-preenchido-descricao"></span>
+                                        </div>
+                                        <div class="card-footer">
+                                            <a href="calendario.html" class="button primary-button full-width">Ver
+                                                Mais
+                                                Informações
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="monthly-stat-number">89%</div>
-                                <div class="monthly-stat-change positive">
-                                    <i class="fas fa-arrow-up"></i>
-                                    <span>+5% vs mês anterior</span>
-                                </div>
-                            </div>
-
-                            <div class="monthly-stat-card">
-                                <div class="monthly-stat-header">
-                                    <h3>Novas Parcerias</h3>
-                                    <div class="stat-icon purple">
-                                        <i class="fas fa-handshake"></i>
-                                    </div>
-                                </div>
-                                <div class="monthly-stat-number">4</div>
-                                <div class="monthly-stat-change neutral">
-                                    <i class="fas fa-minus"></i>
-                                    <span>Mesmo que mês anterior</span>
                                 </div>
                             </div>
                         </div>
@@ -240,7 +215,7 @@
         </footer>
     </div>
 
-    <script src="../../js/coordenador-home.js"></script>
+    <script src="../../js/coordenador.js"></script>
 </body>
 
 </html>

@@ -2117,3 +2117,129 @@ header:hover {
     font-size: 0.9rem;
   }
 }
+
+/* Calendar */
+.calendar-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .calendar-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calendar {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.calendar-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.month-nav {
+  background: var(--muted);
+  border: none;
+  color: var(--foreground);
+  font-size: 1.25rem;
+  padding: 0.25rem 0.75rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.month-nav:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.weekday {
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.calendar-day:hover {
+  background: var(--muted);
+}
+
+.calendar-day.past {
+  background: #dddbe8;
+  color: #888;
+}
+
+.calendar-day.today {
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: bold;
+}
+
+.calendar-day.has-event {
+  background-color: #4a2358;
+  color: #f59e0b;
+  font-weight: bold;
+}
+
+.calendar-day.active {
+  outline: 2px solid var(--primary-color);
+}
+
+.calendar-day.has-event.past {
+  background-color: #e0e0e0;
+  color: #666666;
+  font-weight: bold;
+  opacity: 0.7;
+  cursor: default;
+  border: 2px solid #b0b0b0;
+  border-radius: 5px;
+}
+
+.event-passed {
+  background-color: #f0f0f0;
+  color: #000000;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.event-passed .button {
+  margin-top: 10px;
+}

@@ -22,24 +22,19 @@
                     </a>
                 </div>
 
-                <!-- Botão de menu hamburguer -->
                 <button class="hamburger" id="hamburger">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
 
-                <!-- Menu de navegação principal -->
                 <nav class="main-nav" id="mainNav">
                     <a href="index.html" class="nav-link">Home</a>
                     <a href="calendario.html" class="nav-link">Calendário</a>
                     <a href="avaliar.html" class="nav-link">Avaliar</a>
 
-                    <!-- User Profile -->
                     <div class="user-info" id="user-profile-btn">
-                        <div class="user-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
+                        <div class="user-avatar"><i class="fas fa-user"></i></div>
                         <p>Maria</p>
                         <i class="fas fa-chevron-down"></i>
                     </div>
@@ -51,37 +46,83 @@
             </div>
         </div>
     </header>
-    <!-- Welcome Message -->
+
     <div class="welcome-section primeiro">
         <h1 class="welcome-title">Avalie seus Eventos</h1>
         <p class="welcome-description">Aqui você pode avaliar eventos passados ou acompanhar os próximos eventos.</p>
     </div>
 
-    <section>
-        <h2>Eventos Passados</h2>
-        <div id="past-events" class="cards-grid">
-            <!-- Card de exemplo -->
-            <div class="event-card past-event-card">
-                <div class="card-name"></div>
-                <div class="card-type"></div>
-                <button class="btn-evaluate">Avaliar Evento</button>
-            </div>
-            <!-- Mais cards podem ser adicionados -->
-        </div>
-    </section>
+    <div class="container">
+        <!-- Eventos Passados -->
+        <section class="section-avaliar">
+            <h2>Eventos Passados</h2>
+            <div id="past-events" class="cards-grid">
+                <!-- Template invisível -->
+                <div class="event-card past-event-card template" data-id="">
+                    <div class="card-name"></div>
+                    <div class="card-type"></div>
+                    <p class="card-description"></p>
+                    <p class="card-date-time"></p>
 
-    <section>
-        <h2>Eventos Próximos</h2>
-        <div id="future-events" class="cards-grid">
-            <!-- Card de exemplo -->
-            <div class="event-card future-event-card">
-                <div class="card-name"></div>
-                <div class="card-type"></div>
-                <div class="card-countdown"></div>
+                    <!-- Estrelas para avaliação -->
+                    <div class="rating-stars">
+                        <i class="fas fa-star" data-value="1"></i>
+                        <i class="fas fa-star" data-value="2"></i>
+                        <i class="fas fa-star" data-value="3"></i>
+                        <i class="fas fa-star" data-value="4"></i>
+                        <i class="fas fa-star" data-value="5"></i>
+                    </div>
+
+                    <button class="submit-rating">Avaliar</button>
+                </div>
             </div>
-            <!-- Mais cards podem ser adicionados -->
+        </section>
+
+        <!-- Próximos Eventos -->
+        <section class="section-avaliar">
+            <h2>Próximos Eventos</h2>
+            <div id="future-events" class="cards-grid">
+                <div class="event-card future-event-card template" data-id="">
+                    <div class="card-name"></div>
+                    <div class="card-type"></div>
+                    <p class="card-description"></p>
+                    <div class="card-countdown"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notas Anteriores -->
+        <section class="section-avaliar">
+            <h2>Notas Anteriores</h2>
+            <div id="previous-ratings" class="cards-grid">
+                <!-- Cards avaliados aparecerão aqui via JS -->
+                <!-- Template invisível -->
+                <div class="event-card previous-rating-card template" data-id="">
+                    <div class="card-name"></div>
+                    <div class="card-type"></div>
+                    <p class="card-description"></p>
+                    <p class="card-date-time"></p>
+
+                    <!-- Estrelas para avaliação -->
+                    <div class="rating-stars">
+                        <i class="fas fa-star" data-value="1"></i>
+                        <i class="fas fa-star" data-value="2"></i>
+                        <i class="fas fa-star" data-value="3"></i>
+                        <i class="fas fa-star" data-value="4"></i>
+                        <i class="fas fa-star" data-value="5"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 INTEGRA. Todos os direitos reservados.</p>
+            </div>
         </div>
-    </section>
+    </footer>
 
     <script src="../../js/estudante.js"></script>
 </body>

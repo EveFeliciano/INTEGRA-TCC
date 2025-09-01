@@ -243,7 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const bDate = new Date(bParts[0], bParts[1] - 1, bParts[2]);
         return aDate - bDate;
       })
-      .slice(0, 3);
+      .slice(0, 2);
 
     if (upcoming.length === 0) {
       container.innerHTML = '<p class="no-events">Nenhum evento próximo.</p>';

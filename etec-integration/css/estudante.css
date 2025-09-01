@@ -93,7 +93,7 @@
 /* Card geral */
 .calendar-card,
 .upcoming-events-card {
-  background: var(--card);
+  background-color: #f7f7f7;
   border: 1px solid var(--border);
   border-radius: 0.75rem;
   overflow: hidden;
@@ -104,6 +104,7 @@
   padding: 1.5rem;
   border-bottom: 1px solid var(--border);
   text-align: center;
+  background-color: var(--white);
 }
 
 .card-title {
@@ -119,11 +120,13 @@
 }
 
 .card-content {
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+  /* top right bottom left */
 }
 
 .card-footer {
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 1.5rem 1rem 1.5rem;
+  /* top right bottom left */
   border-top: 1px solid var(--border);
   background: var(--muted);
   text-align: center;
@@ -257,7 +260,7 @@
 
 /* Selected day events */
 .selected-day-events {
-  background: var(--muted);
+  background: #fffaff;
   border-radius: 0.5rem;
   padding: 1rem;
 }
@@ -332,7 +335,7 @@
 }
 
 .event-preenchido {
-  background-color: #dddbe8;
+  background-color: #f2e9f7;
   color: var(--text-color);
   padding: 0.25rem 0.75rem;
   display: flex;
@@ -349,7 +352,7 @@
   display: flex;
   flex-grow: 1;
   padding: 0.25rem 0.75rem;
-  background-color: #dddbe8;
+  background-color: #f2e9f7;
   color: var(--text-color);
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
@@ -363,7 +366,7 @@
   display: flex;
   flex-grow: 0;
   padding: 0.25rem 0.75rem;
-  background-color: #dddbe8;
+  background-color: #f2e9f7;
   color: var(--text-color);
   margin-left: auto;
   align-items: center;
@@ -380,7 +383,7 @@
   align-items: center;
   justify-content: center;
   padding: 0.25rem 0.75rem;
-  background-color: #dddbe8;
+  background-color: #f2e9f7;
   color: var(--text-color);
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
@@ -392,7 +395,7 @@
   display: flex;
   flex-grow: 1;
   padding: 0.25rem 0.75rem;
-  background-color: #dddbe8;
+  background-color: #f2e9f7;
   color: var(--text-color);
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
@@ -405,7 +408,7 @@
   align-items: center;
   justify-content: center;
   padding: 0.25rem 0.75rem;
-  background-color: #dddbe8;
+  background-color: #f2e9f7;
   color: var(--text-color);
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
@@ -420,7 +423,7 @@
   flex-grow: 0;
   width: 15%;
   padding: 0.25rem 0.75rem;
-  background-color: #dddbe8;
+  background-color: #f2e9f7;
   color: var(--text-color);
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
@@ -435,7 +438,7 @@
   flex-grow: 0;
   width: 9%;
   padding: 0.25rem 0.75rem;
-  background-color: #dddbe8;
+  background-color: #f2e9f7;
   color: var(--text-color);
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
@@ -450,7 +453,7 @@
   flex-grow: 0;
   width: 21%;
   padding: 0.25rem 0.75rem;
-  background-color: #dddbe8;
+  background-color: #f2e9f7;
   color: var(--text-color);
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
@@ -620,80 +623,4 @@
   background: #dddbe8;
   color: var(--primary-color);
   border-color: var(--primary-color);
-}
-
-/* Avaliar Page */
-.avaliar-header {
-  text-align: center;
-  margin: 2rem 1rem;
-  color: #2c3e50;
-}
-
-.avaliar-header h1 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.avaliar-header p {
-  font-size: 1.1rem;
-  color: #555;
-}
-
-.avaliar-section {
-  margin: 2rem 1rem;
-}
-
-.avaliar-section h2 {
-  margin-bottom: 1rem;
-  color: #34495e;
-}
-
-.avaliar-events-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-.avaliar-event-card {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 1rem;
-  background-color: #f9f9f9;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.avaliar-event-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.avaliar-event-card h3 {
-  margin: 0.5rem 0;
-  color: #2c3e50;
-}
-
-.avaliar-event-card p {
-  margin: 0.3rem 0;
-  color: #555;
-}
-
-.avaliar-event-card .button-eval {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  margin-top: 0.5rem;
-  background-color: #3498db;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
-.avaliar-event-card .button-eval:hover {
-  background-color: #2980b9;
-}
-
-.countdown {
-  font-weight: bold;
-  color: #e74c3c;
-  margin-top: 0.5rem;
 }

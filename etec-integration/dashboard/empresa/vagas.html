@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Vaga - Empresa - INTEGRA</title>
+    <link rel="icon" href="../../img/favicon.png" type="image/png" sizes="32x32" />
+    <link rel="stylesheet" href="../../css/vagas.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/styles.css">        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="flex-col min-h-screen">
+        <!-- Header -->
+        <header class="sticky-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <a href="home.html" class="logo-link">
+                            <img src="../../img/logo.png" alt="Logo INTEGRA" class="logo-image">
+                        </a>
+                    </div>
+
+                    <!-- Botão de menu hamburguer -->
+                    <button class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <!-- Menu de navegação principal -->
+                    <nav class="main-nav" id="mainNav">
+                        <a href="../../index.html" class="nav-link">Home</a>
+                        <a href="../../dashboard/empresa/agendados.html" class="nav-link">Agendados</a>
+                        <a href="palestrantes.html" class="nav-link">Minhas Vagas</a>
+                        <a href="vagas.html" class="nav-link">Lançar nova vaga</a>
+
+                        <!-- User Profile -->
+                        <div class="user-info" id="user-profile-btn">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <p>TECsolutions</p>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <div class="mobile-buttons">
+                            <a href="index.html" class="button primary-button">Sair</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <div class="section primeiro">
+                <div class="container">
+                    <div class="welcome-section">
+                        <h1 class="welcome-title">
+                            <i class="fas fa-briefcase section-icon"></i>
+                        </h1>
+                        <p class="welcome-description">Publique uma oportunidade de emprego para estudantes das ETECs e FATECs</p>
+                    </div>
+
+                    <div class="job-creation-container">
+                        <form id="jobCreationForm" class="job-form">
+                            <div class="form-section">
+                                <div class="section-header">
+                                    <h2 class="section-title">
+                                        <i class="fas fa-info-circle section-icon"></i>
+
+                                    </h2>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="jobTitle" class="form-label">
+                                            <i class="fas fa-tag"></i>
+                                        </label>
+                                        <input type="text" id="jobTitle" name="jobTitle" class="form-input" 
+                                               placeholder="Ex: Desenvolvedor React Júnior" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="jobArea" class="form-label">
+                                            <i class="fas fa-layer-group"></i>
+                                        </label>
+                                        <select id="jobArea" name="jobArea" class="form-input" required>
+                                            <option value="">Selecione uma área</option>
+                                            <option value="desenvolvimento">Desenvolvimento</option>
+                                            <option value="design">Design</option>
+                                            <option value="marketing">Marketing</option>
+                                            <option value="vendas">Vendas</option>
+                                            <option value="rh">Recursos Humanos</option>
+                                            <option value="financeiro">Financeiro</option>
+                                            <option value="operacoes">Operações</option>
+                                            <option value="suporte">Suporte Técnico</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="jobLevel" class="form-label">
+                                            <i class="fas fa-chart-line"></i>
+                                        </label>
+                                        <select id="jobLevel" name="jobLevel" class="form-input" required>
+                                            <option value="">Selecione o nível</option>
+                                            <option value="estagio">Estágio</option>
+                                            <option value="junior">Júnior</option>
+                                            <option value="pleno">Pleno</option>
+                                            <option value="senior">Sênior</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="jobSalary" class="form-label">
+                                            <i class="fas fa-dollar-sign"></i>
+                                        </label>
+                                        <input type="number" id="jobSalary" name="jobSalary" class="form-input" 
+                                               placeholder="Ex: 3500" min="0">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="jobDescription" class="form-label">
+                                        <i class="fas fa-align-left"></i>
+                                    </label>
+                                    <textarea id="jobDescription" name="jobDescription" class="form-textarea" 
+                                              rows="4" placeholder="Descreva as principais responsabilidades e o que a pessoa fará no dia a dia..." required></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="jobRequirements" class="form-label">
+                                        <i class="fas fa-list-check"></i>
+                                    </label>
+                                    <textarea id="jobRequirements" name="jobRequirements" class="form-textarea" 
+                                              rows="4" placeholder="Liste as habilidades técnicas, experiências e conhecimentos necessários..." required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <div class="section-header">
+                                    <h2 class="section-title">
+                                        <i class="fas fa-cogs section-icon"></i>
+                                    </h2>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="workType" class="form-label">
+                                            <i class="fas fa-laptop-house"></i>
+                                        </label>
+                                        <select id="workType" name="workType" class="form-input" required>
+                                            <option value="">Selecione a modalidade</option>
+                                            <option value="presencial">Presencial</option>
+                                            <option value="remoto">Remoto</option>
+                                            <option value="hibrido">Híbrido</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="workSchedule" class="form-label">
+                                            <i class="fas fa-clock"></i>
+                                        </label>
+                                        <select id="workSchedule" name="workSchedule" class="form-input" required>
+                                            <option value="">Selecione o horário</option>
+                                            <option value="integral">Integral (8h/dia)</option>
+                                            <option value="meio-periodo">Meio Período (4h/dia)</option>
+                                            <option value="flexivel">Flexível</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="jobLocation" class="form-label">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </label>
+                                    <input type="text" id="jobLocation" name="jobLocation" class="form-input" 
+                                           placeholder="Ex: São Paulo - SP, Centro">
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <div class="section-header">
+                                    <h2 class="section-title">
+                                        <i class="fas fa-calendar-alt section-icon"></i>
+                                    </h2>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="startDate" class="form-label">
+                                            <i class="fas fa-calendar-plus"></i>
+                                        </label>
+                                        <input type="date" id="startDate" name="startDate" class="form-input">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="applicationDeadline" class="form-label">
+                                            <i class="fas fa-calendar-times"></i>
+                                        </label>
+                                        <input type="date" id="applicationDeadline" name="applicationDeadline" class="form-input">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        <i class="fas fa-calendar-week"></i>
+                                        Dias da Semana Disponíveis
+                                    </label>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="availableDays" value="segunda">
+                                            <span class="checkmark"></span>
+                                            Segunda-feira
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="availableDays" value="terca">
+                                            <span class="checkmark"></span>
+                                            Terça-feira
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="availableDays" value="quarta">
+                                            <span class="checkmark"></span>
+                                            Quarta-feira
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="availableDays" value="quinta">
+                                            <span class="checkmark"></span>
+                                            Quinta-feira
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="availableDays" value="sexta">
+                                            <span class="checkmark"></span>
+                                            Sexta-feira
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="availableDays" value="sabado">
+                                            <span class="checkmark"></span>
+                                            Sábado
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" id="cancelBtn">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button type="button" class="btn-secondary" id="saveAsDraftBtn">
+                                    <i class="fas fa-save"></i>
+                                </button>
+                                <button type="submit" class="btn-primary">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section light-bg">
+                <div class="container">
+                    <div class="preview-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-eye section-icon"></i>
+                        </h2>
+                        <div class="job-preview-card" id="jobPreview">
+                            <div class="job-header">
+                                <div>
+                                    <h3 class="job-title" id="previewTitle">Título da Vaga</h3>
+                                    <div class="job-meta">
+                                        <span class="job-level" id="previewLevel">Nível</span>
+                                        <span class="job-area" id="previewArea">Área</span>
+                                    </div>
+                                </div>
+                                <div class="job-salary" id="previewSalary">R$ --</div>
+                            </div>
+                            <div class="job-details">
+                                <div class="job-meta-row">
+                                    <div class="job-meta-item">
+                                        <i class="fas fa-laptop-house"></i>
+                                        <span id="previewWorkType">Modalidade</span>
+                                    </div>
+                                    <div class="job-meta-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span id="previewSchedule">Horário</span>
+                                    </div>
+                                    <div class="job-meta-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span id="previewLocation">Localização</span>
+                                    </div>
+                                </div>
+                                <div class="job-description">
+                                    <h4>Descrição</h4>
+                                    <p id="previewDescription">Descrição da vaga aparecerá aqui...</p>
+                                </div>
+                                <div class="job-requirements">
+                                    <h4>Requisitos</h4>
+                                    <p id="previewRequirements">Requisitos aparecerão aqui...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="dashboard-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="copyright">© 2025 INTEGRA. Todos os direitos reservados.</p>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Termos de Uso</a>
+                        <a href="#" class="footer-link">Política de Privacidade</a>
+                        <a href="#" class="footer-link">Suporte</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../../js/vagas.js"></script>
+</body>
+
+</html>

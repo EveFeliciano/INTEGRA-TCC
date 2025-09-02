@@ -14,7 +14,7 @@
 
 <body>
     <div class="flex-col min-h-screen">
-        <!-- Header -->
+
         <header class="sticky-header">
             <div class="container">
                 <div class="header-content">
@@ -24,30 +24,30 @@
                         </a>
                     </div>
 
-                    <!-- Botão de menu hamburguer -->
+
                     <button class="hamburger" id="hamburger">
                         <span></span>
                         <span></span>
                         <span></span>
                     </button>
 
-                    <!-- Menu de navegação principal -->
+
                     <nav class="main-nav" id="mainNav">
-                        <a href="home.html" class="nav-link">Home</a>
-                        <a href="agendados.html" class="nav-link">Agendados</a>
-                        <a href="palestrantes.html" class="nav-link">Minhas Vagas</a>
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="vagas.html" class="nav-link">Minhas Vagas</a>
+                        <a href="agendados.html" class="nav-link">Agendamentos</a>
 
                         <!-- User Profile -->
                         <div class="user-info" id="user-profile-btn">
                             <div class="user-avatar">
                                 <i class="fas fa-user"></i>
                             </div>
-                            <p>TECsolutions</p>
+                            <p>Maria</p>
                             <i class="fas fa-chevron-down"></i>
                         </div>
 
                         <div class="mobile-buttons">
-                            <a href="index.html" class="button primary-button">Sair</a>
+                            <a href="../../login/login.html" class="button primary-button">Sair</a>
                         </div>
                     </nav>
                 </div>
@@ -104,33 +104,11 @@
                 </div>
             </div>
 
-            <!-- Added new dynamic sections for speakers, events calendar, and job postings -->
-            <!-- Palestrantes Section -->
-            <div class="section light-bg">
-                <div class="container">
-                    <div class="speakers-management-section">
-                        <div class="section-header">
-                            <h2 class="section-title">
-                                <i class="fas fa-microphone section-icon"></i>
-                                Seus Palestrantes
-                            </h2>
-                            <button class="btn-primary" id="addSpeakerBtn">
-                                <i class="fas fa-plus"></i>
-                                Adicionar Palestrante
-                            </button>
-                        </div>
-                        
-                        <div class="speakers-grid" id="speakersGrid">
-                            <!-- Speakers will be populated by JavaScript -->
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="section light-bg">
                 <div class="quick-actions-section">
                     <h2 class="section-title">Ações Rápidas</h2>
                     <div class="quick-actions-grid">
-                        <a href="disponibilidade.html" class="quick-action-card">
+                        <a href="nova-vaga.html" class="quick-action-card">
                             <div class="stat-icon blue">
                                 <i class="fas fa-plus-circle"></i>
                             </div>
@@ -155,93 +133,29 @@
                 </div>
             </div>
 
-            <div class="section">
-                <div class="recent-activity-section">
-                    <h2 class="section-title">Atividades Recentes</h2>
-                    <div class="activity-list">
-                        <div class="activity-item">
-                            <div class="activity-icon green">
-                                <i class="fas fa-calendar-check"></i>
-                            </div>
-                            <div class="activity-content">
-                                <p><strong>Evento confirmado:</strong> Visita Técnica - ETEC Zona Leste</p>
-                                <span class="activity-time">Hoje, 10:30</span>
-                            </div>
-                        </div>
-
-                        <div class="activity-item">
-                            <div class="activity-icon blue">
-                                <i class="fas fa-user-plus"></i>
-                            </div>
-                            <div class="activity-content">
-                                <p><strong>Novo palestrante:</strong> Ana Silva solicitou cadastro</p>
-                                <span class="activity-time">Ontem, 15:20</span>
-                            </div>
-                        </div>
-
-                        <div class="activity-item">
-                            <div class="activity-icon orange">
-                                <i class="fas fa-microphone"></i>
-                            </div>
-                            <div class="activity-content">
-                                <p><strong>Palestra agendada:</strong> "IA na Prática" - FATEC São Paulo</p>
-                                <span class="activity-time">2 dias atrás</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <!-- Added new dynamic sections for speakers, events calendar, and job postings -->
+            <!-- Palestrantes Section -->
             <div class="section light-bg">
                 <div class="container">
-                    <div class="monthly-stats-section">
-                        <h2 class="section-title">Estatísticas do Mês</h2>
-                        <div class="monthly-stats-grid">
-                            <div class="monthly-stat-card">
-                                <div class="monthly-stat-header">
-                                    <h3>Eventos Realizados</h3>
-                                    <div class="stat-icon green">
-                                        <i class="fas fa-chart-line"></i>
-                                    </div>
-                                </div>
-                                <div class="monthly-stat-number">12</div>
-                                <div class="monthly-stat-change positive">
-                                    <i class="fas fa-arrow-up"></i>
-                                    <span>+20% vs mês anterior</span>
-                                </div>
-                            </div>
-
-                            <div class="monthly-stat-card">
-                                <div class="monthly-stat-header">
-                                    <h3>Palestrantes Ativos</h3>
-                                    <div class="stat-icon blue">
-                                        <i class="fas fa-users"></i>
-                                    </div>
-                                </div>
-                                <div class="monthly-stat-number">8</div>
-                                <div class="monthly-stat-change positive">
-                                    <i class="fas fa-arrow-up"></i>
-                                    <span>+2 novos palestrantes</span>
-                                </div>
-                            </div>
-
-                            <div class="monthly-stat-card">
-                                <div class="monthly-stat-header">
-                                    <h3>Taxa de Aprovação</h3>
-                                    <div class="stat-icon purple">
-                                        <i class="fas fa-percentage"></i>
-                                    </div>
-                                </div>
-                                <div class="monthly-stat-number">95%</div>
-                                <div class="monthly-stat-change positive">
-                                    <i class="fas fa-arrow-up"></i>
-                                    <span>+3% vs mês anterior</span>
-                                </div>
-                            </div>
+                    <div class="speakers-management-section">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <i class="fas fa-microphone section-icon"></i>
+                                Seus Palestrantes
+                            </h2>
+                            <button class="btn-primary" id="addSpeakerBtn">
+                                <i class="fas fa-plus"></i>
+                                Adicionar Palestrante
+                            </button>
+                        </div>
+                        
+                        <div class="speakers-grid" id="speakersGrid">
+                            <!-- Speakers will be populated by JavaScript -->
                         </div>
                     </div>
                 </div>
             </div>
+
         </main>
 
         <footer class="dashboard-footer">

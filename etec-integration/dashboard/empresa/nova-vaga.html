@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Visita Técnica - Empresa - INTEGRA</title>
+    <link rel="icon" href="../../img/favicon.png" type="image/png" sizes="32x32" />
+    <link rel="stylesheet" href="../../css/empresa.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/styles.css">        
+    <link rel="stylesheet" href="../../css/nova-vaga.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="flex-col min-h-screen">
+         Header 
+        <header class="sticky-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <a href="home.html" class="logo-link">
+                            <img src="../../img/logo.png" alt="Logo INTEGRA" class="logo-image">
+                        </a>
+                    </div>
+
+                    <button class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <nav class="main-nav" id="mainNav">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="vagas.html" class="nav-link">Minhas Vagas</a>
+                        <a href="agendados.html" class="nav-link">Agendamentos</a>
+
+                        <!-- User Profile -->
+                        <div class="user-info" id="user-profile-btn">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <p>Maria</p>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <div class="mobile-buttons">
+                            <a href="../../login/login.html" class="button primary-button">Sair</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <div class="section primeiro">
+                <div class="container">
+                    <div class="welcome-section">
+                        <h1 class="welcome-title">
+                            <i class="fas fa-industry section-icon"></i>
+                            Criar Visita Técnica
+                        </h1>
+                        <p class="welcome-description">Ofereça uma oportunidade de visita técnica para estudantes das ETECs e FATECs</p>
+                    </div>
+
+                    <div class="job-creation-layout">
+                        <div class="job-creation-container full-width">
+                            <form id="jobCreationForm" class="job-form">
+                                <div class="form-grid-three-columns">
+                                    <div class="form-section compact">
+                                        <div class="section-header">
+                                            <h2 class="section-title">
+                                                <i class="fas fa-info-circle section-icon"></i>
+                                                Detalhes da Visita
+                                            </h2>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="visitTitle" class="form-label">
+                                                <i class="fas fa-tag"></i>
+                                                Título da Visita *
+                                            </label>
+                                            <input type="text" id="visitTitle" name="visitTitle" class="form-input" 
+                                                   placeholder="Ex: Visita à Fábrica de Automação" required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="visitArea" class="form-label">
+                                                <i class="fas fa-layer-group"></i>
+                                                Área *
+                                            </label>
+                                            <select id="visitArea" name="visitArea" class="form-input" required>
+                                                <option value="">Selecione uma área</option>
+                                                <option value="industria">Indústria</option>
+                                                <option value="tecnologia">Tecnologia</option>
+                                                <option value="logistica">Logística</option>
+                                                <option value="qualidade">Qualidade</option>
+                                                <option value="producao">Produção</option>
+                                                <option value="pesquisa">Pesquisa e Desenvolvimento</option>
+                                                <option value="sustentabilidade">Sustentabilidade</option>
+                                                <option value="inovacao">Inovação</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="visitLocation" class="form-label">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                Localização *
+                                            </label>
+                                            <input type="text" id="visitLocation" name="visitLocation" class="form-input" 
+                                                   placeholder="Ex: São Paulo - SP, Zona Industrial" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="maxParticipants" class="form-label">
+                                                <i class="fas fa-users"></i>
+                                                Máximo de Participantes
+                                            </label>
+                                            <input type="number" id="maxParticipants" name="maxParticipants" class="form-input" 
+                                                   placeholder="Ex: 30" min="1" max="100">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-section compact">
+                                        <div class="section-header">
+                                            <h2 class="section-title">
+                                                <i class="fas fa-clipboard-list section-icon"></i>
+                                                Informações
+                                            </h2>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="visitDescription" class="form-label">
+                                                <i class="fas fa-align-left"></i>
+                                                Descrição da Visita *
+                                            </label>
+                                            <textarea id="visitDescription" name="visitDescription" class="form-textarea" 
+                                                      rows="4" placeholder="" required></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="visitObjectives" class="form-label">
+                                                <i class="fas fa-bullseye"></i>
+                                                Objetivos da Visita
+                                            </label>
+                                            <textarea id="visitObjectives" name="visitObjectives" class="form-textarea" 
+                                                      rows="3" placeholder=""></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="requirements" class="form-label">
+                                                <i class="fas fa-exclamation-triangle"></i>
+                                                Requisitos/Restrições
+                                            </label>
+                                            <textarea id="requirements" name="requirements" class="form-textarea" 
+                                                      rows="2" placeholder=""></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-section compact">
+                                        <div class="section-header">
+                                            <h2 class="section-title">
+                                                <i class="fas fa-calendar-alt section-icon"></i>
+                                                Período da Visita
+                                            </h2>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="form-label">
+                                                <i class="fas fa-calendar-range"></i>
+                                                Datas Disponíveis
+                                            </label>
+                                            <div class="mini-calendar" id="miniCalendar">
+                                                <div class="calendar-header">
+                                                    <button type="button" class="calendar-nav" id="prevMonth">
+                                                        <i class="fas fa-chevron-left"></i>
+                                                    </button>
+                                                    <span class="calendar-month" id="currentMonth">Janeiro 2025</span>
+                                                    <button type="button" class="calendar-nav" id="nextMonth">
+                                                        <i class="fas fa-chevron-right"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="calendar-grid" id="calendarGrid">
+                                                     Calendar days will be generated by JavaScript 
+                                                </div>
+                                                <div class="selected-dates-info" id="selectedDatesInfo">
+                                                    <span class="date-info">Clique nas datas para selecionar o período</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="visitDuration" class="form-label">
+                                                <i class="fas fa-clock"></i>
+                                                Duração da Visita
+                                            </label>
+                                            <select id="visitDuration" name="visitDuration" class="form-input">
+                                                <option value="">Selecione a duração</option>
+                                                <option value="2h">2 horas</option>
+                                                <option value="3h">3 horas</option>
+                                                <option value="4h">4 horas (meio período)</option>
+                                                <option value="8h">8 horas (período integral)</option>
+                                                <option value="custom">Personalizado</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="applicationDeadline" class="form-label">
+                                                <i class="fas fa-calendar-times"></i>
+                                                Prazo para Inscrições
+                                            </label>
+                                            <input type="date" id="applicationDeadline" name="applicationDeadline" class="form-input">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="button" class="btn-secondary" id="cancelBtn">
+                                        <i class="fas fa-times"></i>
+                                        Cancelar
+                                    </button>
+                                    <button type="button" class="btn-secondary" id="saveAsDraftBtn">
+                                        <i class="fas fa-save"></i>
+                                        Salvar Rascunho
+                                    </button>
+                                    <button type="submit" class="btn-primary">
+                                        <i class="fas fa-paper-plane"></i>
+                                        Publicar Visita Técnica
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="preview-sidebar">
+                            <div class="preview-section">
+                                <h2 class="section-title">
+                                    <i class="fas fa-eye section-icon"></i>
+                                    Pré-visualização
+                                </h2>
+                                <div class="job-preview-card" id="visitPreview">
+                                    <div class="job-header">
+                                        <div>
+                                            <h3 class="job-title" id="previewTitle">Título da Visita Técnica</h3>
+                                            <div class="job-meta">
+                                                <span class="job-area" id="previewArea">Área</span>
+                                            </div>
+                                        </div>
+                                        <div class="visit-participants" id="previewParticipants">
+                                            <i class="fas fa-users"></i>
+                                            <span>-- vagas</span>
+                                        </div>
+                                    </div>
+                                    <div class="job-details">
+                                        <div class="job-meta-row">
+                                            <div class="job-meta-item">
+                                                <i class="fas fa-clock"></i>
+                                                <span id="previewDuration">Duração</span>
+                                            </div>
+                                            <div class="job-meta-item">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <span id="previewLocation">Localização</span>
+                                            </div>
+                                        </div>
+                                        <div class="job-description">
+                                            <h4>Descrição</h4>
+                                            <p id="previewDescription">Descrição da visita técnica aparecerá aqui...</p>
+                                        </div>
+                                        <div class="job-requirements">
+                                            <h4>Objetivos</h4>
+                                            <p id="previewObjectives">Objetivos da visita aparecerão aqui...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="dashboard-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="copyright">© 2025 INTEGRA. Todos os direitos reservados.</p>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Termos de Uso</a>
+                        <a href="#" class="footer-link">Política de Privacidade</a>
+                        <a href="#" class="footer-link">Suporte</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../../js/nova-vaga.js"></script>
+</body>
+
+</html>

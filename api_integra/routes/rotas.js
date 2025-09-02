@@ -9,6 +9,7 @@ const CoordenadorController = require('../components/Usuarios/CoordenadorControl
 const InstituicaoController = require('../components/Usuarios/InstituicaoController');
 const PalestranteController = require('../components/Usuarios/PalestranteController');
 const EnderecoController = require('../components/EnderecoController');
+const EventoController = require('../components/EventoController');
 const LoginController = require('../components/LoginController');
 
 router.use(express.json());
@@ -98,7 +99,7 @@ router.get('/enderecos', (req, res) => {
     EnderecoController.GetAllEnderecos(res);
 });
 
-router.post('/atualizar-endereco', (req, res) => {
+router.put('/atualizar-endereco', (req, res) => {
     EnderecoController.AtualizarEndereco(req, res);
 });
 
@@ -124,5 +125,14 @@ router.delete('/delete-usuario', (req, res) => {
 router.post('/login', (req, res) => {
     LoginController.Login(req, res);
 });
+
+//EVENTOS
+router.get('/eventos', (req, res) => {
+    EventoController.GetEventos(req, res);
+})
+
+router.post('/inserir-evento', (req, res) => {
+    EventoController.InserirEvento(req, res);
+})
 
 module.exports = router;

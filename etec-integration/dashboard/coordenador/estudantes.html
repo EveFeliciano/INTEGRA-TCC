@@ -63,6 +63,18 @@
                         <p class="page-description">Organize os estudantes por turmas e cursos</p>
                     </div>
 
+                    <!-- Filtro de Turmas -->
+                    <div class="classes-filters">
+                        <input type="text" id="turma-search" placeholder="Pesquisar turma...">
+                        <select id="turma-filter-field">
+                            <option value="all">Todos</option>
+                            <option value="serie">Série</option>
+                            <option value="letra">Letra</option>
+                            <option value="curso">Curso</option>
+                            <option value="turno">Turno</option>
+                        </select>
+                    </div>
+
                     <!-- Classes Grid -->
                     <div class="classes-grid" id="classes-grid">
                         <!-- Classes will be populated by JavaScript -->
@@ -78,7 +90,22 @@
                     <h3 class="modal-title" id="students-modal-title">Alunos da Turma</h3>
                     <p class="modal-description" id="students-modal-description">Lista de estudantes</p>
                 </div>
+
                 <div class="modal-body">
+                    <!-- 🔎 Barra de pesquisa e filtro -->
+                    <div class="students-filters">
+                        <div class="search-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <input type="text" id="student-search" placeholder="Pesquisar aluno..." />
+                        <select id="student-filter">
+                            <option value="all">Todos</option>
+                            <option value="nome">Nome</option>
+                            <option value="rm">RM</option>
+                            <option value="email">Email</option>
+                        </select>
+                    </div>
+
                     <div class="students-table-container">
                         <table class="data-table" id="students-table">
                             <thead>
@@ -95,6 +122,7 @@
                         </table>
                     </div>
                 </div>
+
                 <div class="modal-footer">
                     <button id="add-student-btn" class="button primary-button">
                         <i class="fas fa-plus"></i> Adicionar Aluno

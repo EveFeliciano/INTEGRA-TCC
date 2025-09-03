@@ -1246,12 +1246,65 @@
   gap: 1.5rem;
 }
 
+.course-administracao {
+  border-left: 4px solid #2196F3;
+
+  & .class-curso {
+    color: #2196F3;
+  }
+}
+
+.course-recursos-humanos {
+  border-left: 4px solid #f3c221;
+
+  & .class-curso {
+    color: #f3c221;
+  }
+}
+
+.course-informatica-para-internet {
+  border-left: 4px solid #c95db1;
+
+  & .class-curso {
+    color: #c95db1;
+  }
+}
+
+.course-quimica {
+  border-left: 4px solid #6ac95d;
+
+  & .class-curso {
+    color: #6ac95d;
+  }
+}
+
+.course-contabilidade {
+  border-left: 4px solid #6ac95d;
+
+  & .class-curso {
+    color: #6ac95d;
+  }
+}
+
+.course-logistica {
+  border-left: 4px solid #6ac95d;
+
+  & .class-curso {
+    color: #6ac95d;
+  }
+}
+
+/* =========================
+   Cards de Turma
+========================= */
 .class-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: var(--radius);
-  border: 1px solid #e2e8f0;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: #fff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
 }
 
 .class-card:hover {
@@ -1259,17 +1312,132 @@
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
+.class-card .button {
+  margin-top: auto;
+}
+
 .class-header {
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1rem;
+  height: 60px;
+  margin-bottom: 0;
 }
 
 .class-name {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: var(--primary-color);
+  text-align: center;
+}
+
+.class-name.center {
+  font-weight: bold;
+  text-align: center;
+}
+
+.class-curso {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #6b7280;
+  text-align: center;
+  margin-top: -0.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================
+   Modal de Estudantes
+========================= */
+
+/* Coloração do topo conforme o curso */
+.course-informatica-para-internet #students-modal .modal-content,
+.course-informatica-para-internet #student-form-modal .modal-content {
+  border-top: 6px solid #4CAF50;
+}
+
+.course-administracao #students-modal .modal-content,
+.course-administracao #student-form-modal .modal-content {
+  border-top: 6px solid #2196F3;
+}
+
+.course-recursos-humanos #students-modal .modal-content,
+.course-recursos-humanos #student-form-modal .modal-content {
+  border-top: 6px solid #9C27B0;
+}
+
+/* Estilo geral da modal */
+#students-modal .modal-content,
+#student-form-modal .modal-content {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  margin: 1rem auto;
+  max-width: 600px;
+}
+
+#students-modal .modal-content:hover,
+#student-form-modal .modal-content:hover {
+  transform: translateY(-2px);
+}
+
+/* Modal maior para lista de alunos */
+#students-modal .modal-content.large {
+  width: 70%;
+  height: 70%;
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header da modal */
+#students-modal .modal-header,
+#student-form-modal .modal-header {
+  padding: 1rem 1.5rem;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Corpo da modal com scroll */
+#students-modal .modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.5rem;
+}
+
+/* Footer fixo no fim da modal */
+#students-modal .modal-footer,
+#student-form-modal .modal-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: #f9f9f9;
+  border-top: 1px solid #ddd;
+}
+
+/* =========================
+   Barra de Filtros
+========================= */
+.students-filters {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.students-filters input#student-search {
+  flex: 8;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.students-filters select#student-filter {
+  flex: 2;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
 .class-shift {
@@ -1295,6 +1463,60 @@
   font-size: 1.125rem;
   font-weight: 600;
   color: var(--primary-color);
+}
+
+.classes-filters {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.classes-filters input#turma-search {
+  flex: 8;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.classes-filters input#turma-search:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 6px rgba(88, 43, 105, 0.3);
+  outline: none;
+}
+
+.classes-filters select#turma-filter-field {
+  flex: 2;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.classes-filters select#turma-filter-field:hover {
+  border-color: var(--primary-color);
+}
+
+/* =========================
+   Mensagem de Sem Resultados
+========================= */
+.no-results {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  margin: 1rem 0;
+}
+
+/* =========================
+   Destaque de Pesquisa
+========================= */
+mark {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 0 2px;
+  border-radius: 2px;
 }
 
 /* Profile Styles */
@@ -2358,7 +2580,7 @@ header:hover {
   cursor: pointer;
 }
 
-.container-edit{
+.container-edit {
   width: 100%;
 }
 

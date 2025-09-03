@@ -122,12 +122,10 @@
 
 .card-content {
   padding: 1.5rem 1.5rem 0.5rem 1.5rem;
-  /* top right bottom left */
 }
 
 .card-footer {
   padding: 0.5rem 1.5rem 1rem 1.5rem;
-  /* top right bottom left */
   border-top: 1px solid var(--border);
   background: var(--muted);
   text-align: center;
@@ -363,19 +361,16 @@
   font-size: 0.875rem;
   font-weight: 600;
   color: #4a4a4a;
-  /* cinza escuro */
 }
 
 .upcoming-event-weekday {
   font-size: 0.75rem;
   color: #888;
-  /* cinza claro */
 }
 
 .upcoming-event-time {
   font-size: 0.875rem;
   color: #6b6b6b;
-  /* cinza médio */
 }
 
 .upcoming-event-type {
@@ -555,7 +550,6 @@
 /* Cards das Notas Anteriores */
 .previous-rating-card {
   background: linear-gradient(145deg, #ffffff, #f1f3f6);
-  /* mesma base que eventos */
   border-radius: 1rem;
   padding: 1.5rem 1rem;
   width: 100%;
@@ -566,7 +560,6 @@
   gap: 0.75rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   border-left: 4px solid #f5a623;
-  /* destaque dourado para nota */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -613,14 +606,12 @@
 .rating-stars i {
   font-size: 1.5rem;
   color: #ddd;
-  /* estrelas vazias */
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
 .rating-stars i.filled {
   color: #f5a623;
-  /* estrelas preenchidas */
 }
 
 /* Botão Avaliar */
@@ -646,7 +637,6 @@
 /* Cards Estudante (Eventos + Avaliações) */
 .student-card {
   background: #fff;
-  /* branco sólido */
   border-radius: 1rem;
   padding: 1.5rem 1rem;
   width: 100%;
@@ -706,6 +696,5 @@
 /* Avaliações anteriores */
 .previous-rating-card {
   border-left: 4px solid #f5a623;
-  /* destaque dourado */
   gap: 0.75rem;
 }

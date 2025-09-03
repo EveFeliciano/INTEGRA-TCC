@@ -141,6 +141,48 @@
   margin-bottom: 0;
 }
 
+.event-date-block {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.event-day {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.event-weekday {
+  font-size: 0.9rem;
+  color: #888888;
+  text-transform: capitalize;
+}
+
+.no-events {
+  text-align: center;
+}
+
+.event-time {
+  display: flex;
+  /* mantém hora e tipo na mesma linha */
+  align-items: center;
+  /* centraliza verticalmente */
+  gap: 0.25rem;
+  /* espaço entre os elementos */
+  flex-wrap: nowrap;
+  /* evita quebra de linha */
+}
+
+.event-time .event-info {
+  flex: 0 0 auto;
+  /* não deixa crescer */
+}
+
+.event-time .time,
+.event-time .tipo {
+  flex: 1 1 auto;
+  /* ocupa o restante do espaço */
+}
+
 /* Data Table */
 .data-table-container {
   overflow-x: auto;
@@ -2183,4 +2225,208 @@ header:hover {
 
 .event-passed .button {
   margin-top: 10px;
+}
+
+/* Estilo geral dos botões de navegação */
+#prevMonth,
+#nextMonth {
+  background-color: var(--primary-color);
+  /* cor de fundo */
+  color: white;
+  /* cor do texto */
+  border: none;
+  /* sem borda */
+  padding: 0.5rem 1rem;
+  /* tamanho do botão */
+  font-size: 1.2rem;
+  /* tamanho da seta */
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+/* Efeito hover */
+#prevMonth:hover,
+#nextMonth:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Se quiser trocar o símbolo "<" e ">" */
+#prevMonth::before {
+  content: "⬅";
+  /* seta esquerda personalizada */
+}
+
+#nextMonth::before {
+  content: "➡";
+  /* seta direita personalizada */
+}
+
+/* Se preferir remover o texto original e usar apenas o ::before */
+#prevMonth,
+#nextMonth {
+  font-size: 0;
+  /* esconde o texto original */
+}
+
+/* Botões de navegação do calendário */
+#prevMonth,
+#nextMonth {
+  background-color: transparent;
+  /* fundo transparente */
+  color: var(--primary-color);
+  /* cor das setas */
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+/* Hover */
+#prevMonth:hover,
+#nextMonth:hover {
+  color: #fff;
+  /* muda a cor da seta no hover */
+}
+
+/* Seta personalizada (opcional) */
+#prevMonth::before {
+  content: "◀";
+  /* seta esquerda */
+  font-size: 1.2rem;
+}
+
+#nextMonth::before {
+  content: "▶";
+  /* seta direita */
+  font-size: 1.2rem;
+}
+
+/* Esconder o texto original do JS se estiver usando ::before */
+#prevMonth,
+#nextMonth {
+  font-size: 0;
+}
+
+.edit-card {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.edit-card .card-content {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 95%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.button.primary-button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.button.outline-button {
+  background: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.container-edit{
+  width: 100%;
+}
+
+/* Container que abriga calendário e tela de edição */
+.card-container {
+  position: relative;
+  width: 100%;
+}
+
+/* Calendário e edição ocupam toda a largura do container */
+.calendar-card,
+.edit-card {
+  width: 100%;
+  min-height: 400px;
+  box-sizing: border-box;
+}
+
+/* Edit-card fica sobre o calendário */
+.edit-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: #fff;
+  z-index: 10;
+  display: none;
+  overflow-y: auto;
+}
+
+/* Ajuste interno do form */
+#edit-event-form label,
+#edit-event-form input,
+#edit-event-form textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+/* Agrupamento de campos em linha */
+#edit-event-form .form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* Cada elemento da linha ocupa espaço flexível */
+#edit-event-form .form-row>div {
+  flex: 1 1 150px;
+}
+
+/* Botões do form alinhados */
+#edit-event-form .form-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+/* Blocos individuais (nome e descrição) */
+#edit-event-form .block {
+  margin-bottom: 15px;
+}
+
+/* Classe para forçar container em modo edição */
+.card-container.editing {
+  display: block;
 }

@@ -23,10 +23,32 @@
         </div>
 
         <div class="etec-cards-grid" id="etec-cards">
+            <!-- Modelo de card (fica escondido, usado como base) -->
+            <div class="etec-card" id="etec-template" style="display:none;">
+                <div class="etec-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="etec-name"></h3>
+                <p class="etec-code"></p>
+                <div class="etec-stats">
+                    <div class="stat-item">
+                        <div class="stat-number stat-students"></div>
+                        <div class="stat-label">Alunos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number stat-events"></div>
+                        <div class="stat-label">Eventos</div>
+                    </div>
+                </div>
+                <button class="enter-button button primary-button">
+                    <i class="fas fa-arrow-right"></i>
+                    Entrar
+                </button>
+            </div>
         </div>
 
         <div class="add-etec-section">
-            <button class="add-etec-button" onclick="addNewEtec()">
+            <button class="add-etec-button button primary-button" onclick="addNewEtec()">
                 <i class="fas fa-plus-circle"></i>
                 Adicionar Nova Instituição
             </button>
@@ -42,6 +64,7 @@
 
     <script>
         // Sample ETEC data - In a real application, this would come from a database
+        // ---------- DADOS DAS ETECs ----------
         const etecData = [
             {
                 id: 'etec001',
@@ -49,7 +72,6 @@
                 code: 'Código: 141',
                 students: 156,
                 events: 12,
-                partnerships: 8,
                 url: 'home.html'
             },
             {
@@ -58,7 +80,6 @@
                 code: 'Código: 023',
                 students: 203,
                 events: 18,
-                partnerships: 12,
                 url: 'home.html'
             },
             {
@@ -67,99 +88,92 @@
                 code: 'Código: 014',
                 students: 178,
                 events: 15,
-                partnerships: 10,
                 url: 'home.html'
             }
         ];
 
-        // Function to create ETEC cards
+        // ---------- CRIAÇÃO DOS CARDS ----------
         function createEtecCards() {
             const container = document.getElementById('etec-cards');
+            const template = document.getElementById('etec-template');
 
             etecData.forEach(etec => {
-                const card = document.createElement('div');
-                card.className = 'etec-card';
-                card.onclick = () => enterEtec(etec.url, etec.name);
+                // Clona o modelo
+                const card = template.cloneNode(true);
+                card.id = etec.id;
+                card.style.display = "block";
 
-                card.innerHTML = `
-                    <div class="etec-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="etec-name">${etec.name}</h3>
-                    <p class="etec-code">${etec.code}</p>
-                    <div class="etec-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">${etec.students}</div>
-                            <div class="stat-label">Alunos</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">${etec.events}</div>
-                            <div class="stat-label">Eventos</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">${etec.partnerships}</div>
-                            <div class="stat-label">Parcerias</div>
-                        </div>
-                    </div>
-                    <button class="enter-button">
-                        <i class="fas fa-arrow-right"></i>
-                        Entrar
-                    </button>
-                `;
+                // Preenche os dados
+                card.querySelector('.etec-name').textContent = etec.name;
+                card.querySelector('.etec-code').textContent = etec.code;
+                card.querySelector('.stat-students').textContent = etec.students;
+                card.querySelector('.stat-events').textContent = etec.events;
 
+                // Botão de entrar
+                const button = card.querySelector('.enter-button');
+                button.addEventListener("click", (e) => {
+                    e.stopPropagation(); // evita conflito com clique no card
+                    enterEtec(etec.url, etec.name, button);
+                });
+
+                // Clique no card inteiro também funciona
+                card.addEventListener("click", () => {
+                    enterEtec(etec.url, etec.name, button);
+                });
+
+                // Acessibilidade
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('role', 'button');
+                card.setAttribute('aria-label', `Entrar na ${etec.name}`);
+
+                // Adiciona ao container
                 container.appendChild(card);
             });
         }
 
-        // Function to enter selected ETEC
-        function enterEtec(url, etecName) {
-            // Store selected ETEC in localStorage for use in other pages
+        // ---------- ENTRAR NA ETEC ----------
+        function enterEtec(url, etecName, button) {
+            // Salva no localStorage
             localStorage.setItem('selectedEtec', JSON.stringify({
                 name: etecName,
                 timestamp: new Date().toISOString()
             }));
 
-            // Add loading state
-            const button = event.target.closest('.etec-card').querySelector('.enter-button');
+            // Anima botão
             const originalContent = button.innerHTML;
             button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Entrando...';
             button.disabled = true;
 
-            // Simulate loading and redirect
+            // Simula carregamento
             setTimeout(() => {
                 window.location.href = url;
             }, 800);
         }
 
-        // Function to handle adding new ETEC
+        // ---------- ADICIONAR NOVA ETEC ----------
         function addNewEtec() {
-            // In a real application, this would open a modal or redirect to a form
-            // For now, we'll show an alert with instructions
-            alert('Funcionalidade em desenvolvimento!\n\nEm breve você poderá:\n• Cadastrar novas ETECs\n• Definir coordenadores\n• Configurar permissões\n\nEntre em contato com o administrador do sistema para adicionar uma nova instituição.');
-
-            // Alternative: redirect to an admin page
-            // window.location.href = 'admin/add-etec.html';
+            alert(
+                'Funcionalidade em desenvolvimento!\n\n' +
+                'Em breve você poderá:\n' +
+                '• Cadastrar novas ETECs\n' +
+                '• Definir coordenadores\n' +
+                '• Configurar permissões\n\n' +
+                'Entre em contato com o administrador do sistema.'
+            );
         }
 
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function () {
+        // ---------- INICIALIZAÇÃO ----------
+        document.addEventListener('DOMContentLoaded', () => {
             createEtecCards();
 
-            // Add keyboard navigation
-            document.addEventListener('keydown', function (e) {
+            // Acessibilidade: Enter abre o card
+            document.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
                     const focusedCard = document.activeElement.closest('.etec-card');
                     if (focusedCard) {
                         focusedCard.click();
                     }
                 }
-            });
-
-            // Make cards focusable for accessibility
-            document.querySelectorAll('.etec-card').forEach(card => {
-                card.setAttribute('tabindex', '0');
-                card.setAttribute('role', 'button');
-                card.setAttribute('aria-label', `Entrar na ${card.querySelector('.etec-name').textContent}`);
             });
         });
     </script>

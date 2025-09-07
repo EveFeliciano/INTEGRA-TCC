@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const turmas = [
         {
-            "id": 4,
+            "id": 1,
             "nome": "1A",
             "curso": "Administração",
             "modulo": "1º Módulo",
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ]
         },
         {
-            "id": 5,
+            "id": 2,
             "nome": "2A",
             "curso": "Administração",
             "modulo": "2º Módulo",
@@ -35,13 +35,13 @@ document.addEventListener("DOMContentLoaded", () => {
             ]
         },
         {
-            "id": 6, "nome": "2B", "curso": "Recursos Humanos", "modulo": "2º Módulo", "turno": "Manhã", "alunos": []
+            "id": 2, "nome": "2B", "curso": "Recursos Humanos", "modulo": "2º Módulo", "turno": "Manhã", "alunos": []
         },
         {
-            "id": 7, "nome": "3B", "curso": "Recursos Humanos", "modulo": "3º Módulo", "turno": "Manhã", "alunos": []
+            "id": 3, "nome": "3B", "curso": "Recursos Humanos", "modulo": "3º Módulo", "turno": "Manhã", "alunos": []
         },
         {
-            "id": 1, "nome": "1C", "curso": "Informática para Internet", "modulo": "1º Módulo", "turno": "Manhã",
+            "id": 5, "nome": "1C", "curso": "Informática para Internet", "modulo": "1º Módulo", "turno": "Manhã",
             "alunos": [
                 { "id": 1, "nome": "Ana Silva", "rm": "12001", "email": "ana.silva@etec.sp.gov.br" },
                 { "id": 2, "nome": "Bruno Santos", "rm": "12002", "email": "bruno.santos@etec.sp.gov.br" },
@@ -49,14 +49,14 @@ document.addEventListener("DOMContentLoaded", () => {
             ]
         },
         {
-            "id": 2, "nome": "2C", "curso": "Informática para Internet", "modulo": "2º Módulo", "turno": "Manhã",
+            "id": 6, "nome": "2C", "curso": "Informática para Internet", "modulo": "2º Módulo", "turno": "Manhã",
             "alunos": [
                 { "id": 4, "nome": "Diego Costa", "rm": "11001", "email": "diego.costa@etec.sp.gov.br" },
                 { "id": 5, "nome": "Elena Rodrigues", "rm": "11002", "email": "elena.rodrigues@etec.sp.gov.br" }
             ]
         },
         {
-            "id": 3, "nome": "3C", "curso": "Informática para Internet", "modulo": "3º Módulo", "turno": "Manhã",
+            "id": 7, "nome": "3C", "curso": "Informática para Internet", "modulo": "3º Módulo", "turno": "Manhã",
             "alunos": [
                 { "id": 6, "nome": "Felipe Lima", "rm": "10001", "email": "felipe.lima@etec.sp.gov.br" },
                 { "id": 7, "nome": "Gabriela Mendes", "rm": "10002", "email": "gabriela.mendes@etec.sp.gov.br" },

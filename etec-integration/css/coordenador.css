@@ -2580,10 +2580,6 @@ header:hover {
   cursor: pointer;
 }
 
-.container-edit {
-  width: 100%;
-}
-
 /* Container que abriga calendário e tela de edição */
 .card-container {
   position: relative;
@@ -2651,4 +2647,55 @@ header:hover {
 /* Classe para forçar container em modo edição */
 .card-container.editing {
   display: block;
+}
+
+/* Seção de edição */
+.editar {
+  display: none;
+  /* garante que esteja oculta por padrão */
+  width: 100%;
+}
+
+/* Edit-card */
+.edit-card {
+  position: relative;
+  /* não fixed/absolute aqui, pois JS controla a seção inteira */
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 95%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  overflow-y: auto;
+}
+
+/* Ajuste do container */
+.container-edit {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.event-item .salas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.event-item .sala-box {
+  background-color: var(--primary-color);
+  color: var(--white);
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  transition: background-color 0.2s;
+}
+
+.event-item .sala-box:hover {
+  background: #4a2358;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(88, 43, 105, 0.3);
 }

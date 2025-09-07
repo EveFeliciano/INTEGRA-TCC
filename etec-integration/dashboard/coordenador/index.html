@@ -14,53 +14,96 @@
 
 <body>
     <div class="etec-selector-container">
-        <div class="selector-header">
-            <div class="selector-logo">
-                <img src="../../img/logo.png" alt="INTEGRA Logo">
-            </div>
-            <h1 class="selector-title">Selecione sua ETEC</h1>
-            <p class="selector-subtitle">Escolha a unidade que deseja acessar</p>
-        </div>
+        <!-- Header -->
+        <header class="sticky-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <a href="home.html" class="logo-link">
+                            <img src="../../img/logo.png" alt="Logo INTEGRA" class="logo-image">
+                        </a>
+                    </div>
 
-        <div class="etec-cards-grid" id="etec-cards">
-            <!-- Modelo de card (fica escondido, usado como base) -->
-            <div class="etec-card" id="etec-template" style="display:none;">
-                <div class="etec-icon">
-                    <i class="fas fa-graduation-cap"></i>
+                    <!-- Botão de menu hamburguer -->
+                    <button class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <!-- Menu de navegação principal -->
+                    <nav class="main-nav" id="mainNav">
+                        <!-- User Profile -->
+                        <div class="user-info" id="user-profile-btn">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <p>Prof. João</p>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <div class="mobile-buttons">
+                            <a href="../../login/login.html" class="button primary-button">Sair</a>
+                        </div>
+                    </nav>
                 </div>
-                <h3 class="etec-name"></h3>
-                <p class="etec-code"></p>
-                <div class="etec-stats">
-                    <div class="stat-item">
-                        <div class="stat-number stat-students"></div>
-                        <div class="stat-label">Alunos</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number stat-events"></div>
-                        <div class="stat-label">Eventos</div>
-                    </div>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <div class="section primeiro">
+                <div class="welcome-section">
+                    <h1 class="welcome-title">Bem-vindo(a), Prof. João Silva!</h1>
+                    <p class="welcome-description">Gerencie suas atividades acadêmicas e eventos da ETEC</p>
                 </div>
-                <button class="enter-button button primary-button">
-                    <i class="fas fa-arrow-right"></i>
-                    Entrar
+            </div>
+
+            <div class="etec-cards-grid" id="etec-cards">
+                <!-- Modelo de card (fica escondido, usado como base) -->
+                <div class="etec-card" id="etec-template" style="display:none;">
+                    <div class="etec-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="etec-name"></h3>
+                    <p class="etec-code"></p>
+                    <div class="etec-stats">
+                        <div class="stat-item">
+                            <div class="stat-number stat-students"></div>
+                            <div class="stat-label">Alunos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number stat-events"></div>
+                            <div class="stat-label">Eventos</div>
+                        </div>
+                    </div>
+                    <button class="enter-button button primary-button">
+                        <i class="fas fa-arrow-right"></i>
+                        Entrar
+                    </button>
+                </div>
+            </div>
+
+            <div class="add-etec-section">
+                <button class="add-etec-button button primary-button" onclick="addNewEtec()">
+                    <i class="fas fa-plus-circle"></i>
+                    Adicionar Nova Instituição
                 </button>
             </div>
-        </div>
-
-        <div class="add-etec-section">
-            <button class="add-etec-button button primary-button" onclick="addNewEtec()">
-                <i class="fas fa-plus-circle"></i>
-                Adicionar Nova Instituição
-            </button>
-        </div>
-
-        <div class="logout-section">
-            <a href="../../login/login.html" class="logout-link">
-                <i class="fas fa-sign-out-alt"></i>
-                Sair do Sistema
-            </a>
-        </div>
+        </main>
     </div>
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="copyright">© 2025 INTEGRA. Todos os direitos reservados.</p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Termos de Uso</a>
+                    <a href="#" class="footer-link">Política de Privacidade</a>
+                    <a href="#" class="footer-link">Suporte</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Sample ETEC data - In a real application, this would come from a database

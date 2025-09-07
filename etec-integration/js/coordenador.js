@@ -247,13 +247,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // ---------- BOTÃO EDITAR ----------
       const editBtn = card.querySelector(".edit-event-btn");
-      const now = new Date();
       if (editBtn) {
+        const now = new Date();
         if (new Date(event.date + "T" + event.time) < now) {
           editBtn.style.display = "none";
         } else {
           editBtn.style.display = "block";
-          editBtn.onclick = () => openEditEvent(event);
+          editBtn.onclick = () => {
+            // Passar o evento via query string
+            const params = new URLSearchParams(event).toString();
+            window.location.href = `editar.html?${params}`;
+          };
         }
       }
 

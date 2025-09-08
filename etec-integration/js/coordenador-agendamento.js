@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "2025-09-11": ["08:00", "10:00"],
         "2025-09-12": ["08:00", "10:00"]
       },
-      availableRooms: ["1°A", "2°A", "2°B", "3°B", "1°C", "2°C", "3°C", "1°F", "2°F", "1°I", "3°1"]
+      availableRooms: ["1°A", "2°A", "2°B", "3°B", "1°C", "2°C", "3°C", "1°F", "2°F", "1°I", "3°I"]
     },
     {
       title: "Workshop de Inteligência Artificial",
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "2025-09-21": ["14:00", "16:00"],
         "2025-09-22": ["14:00"]
       },
-      availableRooms: ["1°A", "2°A", "2°B", "3°B", "1°C", "2°C", "3°C", "1°F", "2°F", "1°I", "3°1"]
+      availableRooms: ["1°A", "2°A", "2°B", "3°B", "1°C", "2°C", "3°C", "1°F", "2°F", "1°I", "3°I"]
     }
   ];
 
@@ -70,6 +70,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let selectedRooms = [];
 
   // ---------- FUNÇÕES ----------
+
+  // Resetar modal para a primeira etapa
   function resetModal() {
     selectedDay = null;
     selectedHour = null;
@@ -82,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     availableRoomsContainer.innerHTML = "";
   }
 
+  // Popular cards de eventos
   function populateEvents() {
     const templateCard = document.querySelector(".agendar-event-card");
     events.forEach(event => {
@@ -117,6 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Mostrar calendário de dias disponíveis
   function showCalendar() {
     stepDays.style.display = "block";
     availableDaysContainer.innerHTML = "";
@@ -176,6 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
     availableDaysContainer.appendChild(body);
   }
 
+  // Mostrar horários disponíveis
   function showHours() {
     availableHoursContainer.innerHTML = "";
     const hours = selectedEvent.availableHoursPerDay[selectedDay] || [];
@@ -192,6 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Mostrar turmas disponíveis + botão Confirmar
   function showRooms() {
     availableRoomsContainer.innerHTML = "";
     const selectedRoomsSet = new Set();
@@ -212,10 +218,16 @@ document.addEventListener("DOMContentLoaded", () => {
       availableRoomsContainer.appendChild(btn);
     });
 
+    // Adiciona quebra de linha antes do botão
+    const br = document.createElement("br");
+    availableRoomsContainer.appendChild(br);
+
+    // Botão Confirmar
     const confirmBtn = document.createElement("button");
     confirmBtn.textContent = "Confirmar Turmas";
     confirmBtn.classList.add("primary-button");
-    confirmBtn.style.marginTop = "1rem";
+    confirmBtn.style.display = "block";
+    confirmBtn.style.margin = "1rem auto 0"; // centralizado e espaçamento
     confirmBtn.addEventListener("click", () => {
       if (selectedRoomsSet.size === 0) {
         alert("Selecione pelo menos uma turma!");
@@ -232,13 +244,14 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(agendamentos));
 
       modal.style.display = "none";
-      openResumoModal(); // <<-- Abrir resumo antes do reset
+      openResumoModal(); // abrir resumo antes do reset
       resetModal();
     });
 
     availableRoomsContainer.appendChild(confirmBtn);
   }
 
+  // Abrir modal resumo
   function openResumoModal() {
     if (!selectedEvent || !selectedDay || !selectedHour || selectedRooms.length === 0) return;
 

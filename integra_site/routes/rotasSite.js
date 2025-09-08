@@ -35,8 +35,8 @@ router.get('/cadastro', (req, res) => {
   res.sendFile(path.join(__dirname, '../views/cadastro/cadastro.html'));
 });
 
-router.get('/cadastro-coordenador', (req, res) => {
-  res.sendFile(path.join(__dirname, '../views/cadastro/cadastro-coordenador.html'));
+router.get('/cadastro-instituicao', (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/cadastro/cadastro-instituicao.html'));
 });
 
 router.get('/cadastro-empresa', (req, res) => {

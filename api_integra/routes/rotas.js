@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const upload = require('../middlewares/upload');
 
 
 const UsuarioController = require('../components/Usuarios/UsuarioController');
@@ -52,9 +53,11 @@ router.get('/empresas', (req, res) => {
 
 router.get('/solicitacoes/empresa/:id_empresa', EmpresaController.GetSolicitacoesEmpresa);
 
-router.post('/inserir-empresa', (req, res) => {
-    EmpresaController.InserirEmpresa(req, res);
-});
+router.post(
+  '/inserir-empresa',
+  upload.single('logo'), // "logo" é o name do input no formulário
+  EmpresaController.InserirEmpresa
+);
 
 router.post('/responder-solicitacao', (req, res) => {
     EmpresaController.ResponderSolicitacao(req, res);

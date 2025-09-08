@@ -1,47 +1,35 @@
+import { login } from "../js/api/index.js";
+
 document.addEventListener("DOMContentLoaded", () => {
-  // Tab switching
-  const tabTriggers = document.querySelectorAll(".tab-trigger")
-  const tabContents = document.querySelectorAll(".tab-content")
+  const form = document.getElementById("loginForm");
 
-  tabTriggers.forEach((trigger) => {
-    trigger.addEventListener("click", () => {
-      // Remove active class from all triggers and contents
-      tabTriggers.forEach((t) => t.classList.remove("active"))
-      tabContents.forEach((c) => c.classList.remove("active"))
+  if (form) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-      // Add active class to clicked trigger and corresponding content
-      trigger.classList.add("active")
-      const tabId = trigger.getAttribute("data-tab")
-      document.getElementById(`${tabId}-tab`).classList.add("active")
-    })
-  })
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+      const tipo = form.getAttribute("data-tipo"); // ex: "aluno", "coordenador"
 
-  // Form submissions
-  const forms = document.querySelectorAll(".login-form")
-  forms.forEach((form) => {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault()
+      const result = await login(email, senha, tipo);
 
-      const formId = this.id
-      let redirectUrl = ""
-
-      // Determine redirect URL based on form ID
-      if (formId === "estudante-form") {
-        redirectUrl = "dashboard/estudante/index.html"
-      } else if (formId === "coordenador-form") {
-        redirectUrl = "dashboard/coordenador/index.html"
-      } else if (formId === "administrador-form") {
-        redirectUrl = "dashboard/administrador/index.html"
-      } else if (formId === "empresa-form") {
-        redirectUrl = "dashboard/empresa/index.html"
-      } else if (formId === "palestrante-form") {
-        redirectUrl = "dashboard/palestrante/index.html"
+      if (result) {
+        alert("Login realizado com sucesso!");
+        // redireciona para a página certa
+        if (tipo === "aluno") {
+          window.location.href = "/estudante";
+        } else if (tipo === "coordenador") {
+          window.location.href = "/coordenador";
+        } else if (tipo === "instituicao") {
+          window.location.href = "/instituicao";
+        } else if (tipo === "empresa") {
+          window.location.href = "/empresa";
+        } else if (tipo === "palestrante") {
+          window.location.href = "/palestrante";
+        }
+      } else {
+        alert("Email ou senha inválidos!");
       }
-
-      // Redirect to dashboard
-      if (redirectUrl) {
-        window.location.href = redirectUrl
-      }
-    })
-  })
-})
+    });
+  }
+});

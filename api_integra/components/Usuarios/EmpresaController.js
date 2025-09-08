@@ -2,6 +2,7 @@ const conexao = require('../../db/conexao');
 const bcrypt = require('bcrypt');
 const emailController = require('../EmailController');
 const cepController = require("../CepController");
+const path = require("path");
 
 function GetAllEmpresas(res){
     conexao.query('SELECT * FROM empresa', (err, resultados) => {
@@ -20,58 +21,59 @@ function GetAllEmpresas(res){
 
 function InserirEmpresa(req, res) {
   const { nome, email, telefone, setor, cnpj, cep } = req.body;
+  const logoFile = req.file; // multer coloca o arquivo aqui
 
   if (!nome || !email || !cnpj || !cep) {
-      return res.status(400).json({ erro: 'Campos obrigatórios não preenchidos' });
+    return res.status(400).json({ erro: 'Campos obrigatórios não preenchidos' });
   }
 
   let senha = (Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000).toString();
 
   bcrypt.hash(senha, 10, async (err, hash) => {
-      if (err) return res.status(500).json({ erro: 'Erro ao criptografar senha.' });
+    if (err) return res.status(500).json({ erro: 'Erro ao criptografar senha.' });
 
-      const cepInfo = await cepController.procurarCep(cep);
-      const logradouro = cepInfo['logradouro'];
-      const localidade = cepInfo['localidade'];
-      const bairro = cepInfo['bairro'];
-      const estado = cepInfo['uf'];
-      const complemento = cepInfo['complemento'];
+    const cepInfo = await cepController.procurarCep(cep);
+    const logradouro = cepInfo['logradouro'];
+    const localidade = cepInfo['localidade'];
+    const bairro = cepInfo['bairro'];
+    const estado = cepInfo['uf'];
+    const complemento = cepInfo['complemento'];
 
-      console.log(cepInfo);
-      
-      // Primeiro insere o endereço
-      conexao.query('INSERT INTO endereco (rua, bairro, cidade, estado, cep, complemento) VALUES (?, ?, ?, ?, ?, ?)', [logradouro, bairro, localidade, estado, cep, complemento], (err, resultadoEndereco) => {
-          if (err) {
-              console.error('Erro ao inserir endereço:', err);
-              return res.status(500).json({ erro: 'Erro ao cadastrar endereço.' });
+    // Primeiro insere o endereço
+    conexao.query(
+      'INSERT INTO endereco (rua, bairro, cidade, estado, cep, complemento) VALUES (?, ?, ?, ?, ?, ?)',
+      [logradouro, bairro, localidade, estado, cep, complemento],
+      (err, resultadoEndereco) => {
+        if (err) return res.status(500).json({ erro: 'Erro ao cadastrar endereço.' });
+
+        const id_endereco = resultadoEndereco.insertId;
+        const logoPath = logoFile ? `uploads/empresas/${logoFile.filename}` : null;
+
+        const sqlEmpresa = `
+          INSERT INTO empresa (nome, email, telefone, data_cadastro, setor, cnpj, senha, id_endereco, logo)
+          VALUES (?, ?, ?, current_timestamp(), ?, ?, ?, ?, ?)
+        `;
+
+        conexao.query(
+          sqlEmpresa,
+          [nome, email, telefone, setor, cnpj, hash, id_endereco, logoPath],
+          (err, resultadoEmpresa) => {
+            if (err) return res.status(500).json({ erro: 'Erro ao cadastrar empresa.' });
+
+            try {
+              emailController.EnviarEmail(email, senha);
+            } catch (e) {
+              console.error('Erro ao enviar email:', e);
+            }
+
+            res.status(201).json({
+              mensagem: 'Empresa cadastrada com sucesso.',
+              id_empresa: resultadoEmpresa.insertId,
+            });
           }
-
-          const id_endereco = resultadoEndereco.insertId;
-
-          // Depois insere a empresa usando o id_endereco
-          const sqlEmpresa = `
-              INSERT INTO empresa (nome, email, telefone, data_cadastro, setor, cnpj, senha, id_endereco)
-              VALUES (?, ?, ?, current_timestamp(), ?, ?, ?, ?)
-          `;
-
-          conexao.query(sqlEmpresa, [nome, email, telefone, setor, cnpj, hash, id_endereco], (err, resultadoEmpresa) => {
-              if (err) {
-                  console.error('Erro ao inserir empresa:', err);
-                  return res.status(500).json({ erro: 'Erro ao cadastrar empresa.' });
-              }
-
-              try {
-                  emailController.EnviarEmail(email, senha);
-              } catch (e) {
-                  console.error('Erro ao enviar email:', e);
-              }
-
-              res.status(201).json({
-                  mensagem: 'Empresa cadastrada com sucesso.',
-                  id_empresa: resultadoEmpresa.insertId
-              });
-          });
-      });
+        );
+      }
+    );
   });
 }
 

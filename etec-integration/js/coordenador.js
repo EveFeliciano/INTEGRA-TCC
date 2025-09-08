@@ -1,96 +1,98 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ---------- DADOS DOS EVENTOS ----------
-  const events = [
-    {
-      id: 1,
-      tipo: "Workshop",
-      nome: "Programação em Python",
-      descricao: "Aprenda fundamentos de Python aplicados a projetos reais.",
-      date: "2025-08-28",
-      time: "14:00",
-      time_end: "18:00",
-      rua: "Rua da Tecnologia",
-      numero: "320",
-      bairro: "Vila Tech",
-      cidade: "São Paulo",
-      estado: "SP",
-      cep: "03030-030",
-      preco: 70.0,
-      vagas: 25,
-      avaliado: false,
-      salas: ["2°A", "1°C"]
-    },
-    {
-      id: 2,
-      tipo: "Visita Técnica",
-      nome: "Ibirapuera",
-      descricao: "Conhecer o Museu Afro e Parque Ibirapuera.",
-      date: "2025-09-05",
-      time: "10:00",
-      time_end: "16:00",
-      rua: "Av. Pedro Álvares Cabral",
-      numero: "2000",
-      bairro: "Ibirapuera",
-      cidade: "São Paulo",
-      estado: "SP",
-      cep: "04094-050",
-      preco: 55.0,
-      vagas: 30,
-      avaliado: false,
-      salas: ["3°A", "3°B", "3°C"]
-    },
-    {
-      id: 3,
-      tipo: "Palestra",
-      nome: "Inovação Tecnológica",
-      descricao: "Discussão sobre as últimas tendências em tecnologia e inovação.",
-      date: "2025-09-18",
-      time: "10:00",
-      time_end: "15:00",
-      rua: "Rua da Inovação",
-      numero: "150",
-      bairro: "Centro",
-      cidade: "São Paulo",
-      estado: "SP",
-      cep: "01010-010",
-      preco: 40.0,
-      vagas: 40,
-      avaliado: false,
-      salas: ["1°C", "2°C", "3°C"]
-    },
-    {
-      id: 4,
-      tipo: "Visita Técnica",
-      nome: "Laboratório de Pesquisa",
-      descricao: "Explorar as instalações e projetos de pesquisa em andamento.",
-      date: "2025-09-22",
-      time: "09:00",
-      time_end: "13:00",
-      rua: "Av. Ciência e Tecnologia",
-      numero: "500",
-      bairro: "Vila Nova",
-      cidade: "São Paulo",
-      estado: "SP",
-      cep: "02020-020",
-      preco: 0.0,
-      vagas: 120,
-      avaliado: false,
-      salas: ["1°A", "2°A", "3°A"]
-    }
-  ];
+  // ---------- CARREGAR OU CRIAR EVENTOS ----------
+  let events = JSON.parse(localStorage.getItem("events")) || [];
+
+  if (!events.length) {
+    events = [
+      {
+        id: 1,
+        tipo: "Workshop",
+        nome: "Programação em Python",
+        descricao: "Aprenda fundamentos de Python aplicados a projetos reais.",
+        date: "2025-08-28",
+        time: "14:00",
+        time_end: "18:00",
+        rua: "Rua da Tecnologia",
+        numero: "320",
+        bairro: "Vila Tech",
+        cidade: "São Paulo",
+        estado: "SP",
+        cep: "03030-030",
+        preco: 70.0,
+        vagas: 25,
+        avaliado: false,
+        salas: ["2°A", "1°C"]
+      },
+      {
+        id: 2,
+        tipo: "Visita Técnica",
+        nome: "Ibirapuera",
+        descricao: "Conhecer o Museu Afro e Parque Ibirapuera.",
+        date: "2025-09-05",
+        time: "10:00",
+        time_end: "16:00",
+        rua: "Av. Pedro Álvares Cabral",
+        numero: "2000",
+        bairro: "Ibirapuera",
+        cidade: "São Paulo",
+        estado: "SP",
+        cep: "04094-050",
+        preco: 55.0,
+        vagas: 30,
+        avaliado: false,
+        salas: ["3°A", "3°B", "3°C"]
+      },
+      {
+        id: 3,
+        tipo: "Palestra",
+        nome: "Inovação Tecnológica",
+        descricao: "Discussão sobre as últimas tendências em tecnologia e inovação.",
+        date: "2025-09-18",
+        time: "10:00",
+        time_end: "15:00",
+        rua: "Rua da Inovação",
+        numero: "150",
+        bairro: "Centro",
+        cidade: "São Paulo",
+        estado: "SP",
+        cep: "01010-010",
+        preco: 40.0,
+        vagas: 40,
+        avaliado: false,
+        salas: ["1°C", "2°C", "3°C"]
+      },
+      {
+        id: 4,
+        tipo: "Visita Técnica",
+        nome: "Laboratório de Pesquisa",
+        descricao: "Explorar as instalações e projetos de pesquisa em andamento.",
+        date: "2025-09-22",
+        time: "09:00",
+        time_end: "13:00",
+        rua: "Av. Ciência e Tecnologia",
+        numero: "500",
+        bairro: "Vila Nova",
+        cidade: "São Paulo",
+        estado: "SP",
+        cep: "02020-020",
+        preco: 0.0,
+        vagas: 120,
+        avaliado: false,
+        salas: ["1°A", "2°A", "3°A"]
+      }
+    ];
+    localStorage.setItem("events", JSON.stringify(events));
+  }
 
   // ---------- ELEMENTOS DO DOM ----------
   const calendarEl = document.getElementById("calendar");
   const eventsContainer = document.getElementById("events-container");
   const selectedDateEl = document.getElementById("selected-date");
-  const calendarioSection = document.querySelector(".calendario");
-  const editarSection = document.querySelector(".editar");
-  const editCard = document.getElementById("edit-card");
   const templateCard = document.querySelector(".event-item");
 
   if (!calendarEl || !eventsContainer || !selectedDateEl || !templateCard) return;
 
-  templateCard.remove(); // Remove o template do DOM
+  templateCard.remove();
 
   let currentYear = new Date().getFullYear();
   let currentMonth = new Date().getMonth();
@@ -231,7 +233,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (card.querySelector(".preco")) card.querySelector(".preco").textContent = formatCurrency(event.preco);
       if (card.querySelector(".vagas")) card.querySelector(".vagas").textContent = event.vagas;
 
-      // ---------- SALAS ----------
       const salasContainer = card.querySelector(".salas");
       if (salasContainer) {
         salasContainer.innerHTML = "";
@@ -242,65 +243,22 @@ document.addEventListener("DOMContentLoaded", () => {
             span.textContent = sala;
             salasContainer.appendChild(span);
           });
-        } else salasContainer.textContent = "Não definido";
+        } else {
+          salasContainer.textContent = "Não definido";
+        }
       }
 
-      // ---------- BOTÃO EDITAR ----------
       const editBtn = card.querySelector(".edit-event-btn");
       if (editBtn) {
-        const now = new Date();
-        if (new Date(event.date + "T" + event.time) < now) {
-          editBtn.style.display = "none";
-        } else {
-          editBtn.style.display = "block";
-          editBtn.onclick = () => {
-            // Passar o evento via query string
-            const params = new URLSearchParams(event).toString();
-            window.location.href = `editar.html?${params}`;
-          };
-        }
+        editBtn.style.display = "block";
+        editBtn.onclick = () => {
+          console.log("Redirecionando para editar:", event.id);
+          window.location.href = `editar.html?id=${event.id}`;
+        };
       }
 
       eventsContainer.appendChild(card);
     });
-  }
-
-  // ---------- FUNÇÃO ABRIR EDIÇÃO ----------
-  function openEditEvent(event) {
-    calendarioSection.style.display = "none";
-    editarSection.style.display = "block";
-
-    editCard.querySelector("#edit-nome").value = event.nome;
-    editCard.querySelector("#edit-descricao").value = event.descricao;
-    editCard.querySelector("#edit-data").value = event.date;
-    editCard.querySelector("#edit-time").value = event.time;
-    editCard.querySelector("#edit-time-end").value = event.time_end;
-    editCard.querySelector("#edit-cep").value = event.cep;
-    editCard.querySelector("#edit-preco").value = event.preco;
-    editCard.querySelector("#edit-vagas").value = event.vagas;
-
-    const form = editCard.querySelector("#edit-event-form");
-    form.onsubmit = e => {
-      e.preventDefault();
-      event.nome = editCard.querySelector("#edit-nome").value;
-      event.descricao = editCard.querySelector("#edit-descricao").value;
-      event.date = editCard.querySelector("#edit-data").value;
-      event.time = editCard.querySelector("#edit-time").value;
-      event.time_end = editCard.querySelector("#edit-time-end").value;
-      event.cep = editCard.querySelector("#edit-cep").value;
-      event.preco = parseFloat(editCard.querySelector("#edit-preco").value) || 0;
-      event.vagas = parseInt(editCard.querySelector("#edit-vagas").value);
-
-      editarSection.style.display = "none";
-      calendarioSection.style.display = "block";
-      generateCalendar(currentYear, currentMonth);
-      showEventsForDate(event.date);
-    };
-
-    editCard.querySelector("#cancel-edit").onclick = () => {
-      editarSection.style.display = "none";
-      calendarioSection.style.display = "block";
-    };
   }
 
   // ---------- INICIALIZAÇÃO ----------

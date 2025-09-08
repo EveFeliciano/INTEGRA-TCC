@@ -2,14 +2,13 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Editar Evento - INTEGRA</title>
-    <link rel="icon" href="../../img/favicon.png" type="image/png" sizes="32x32" />
-    <link rel="stylesheet" href="../../css/styles.css">
-    <link rel="stylesheet" href="../../css/dashboard.css">
-    <link rel="stylesheet" href="../../css/coordenador.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <link rel="stylesheet" href="../../css/dashboard.css" />
+    <link rel="stylesheet" href="../../css/coordenador.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 
 <body>
@@ -19,30 +18,19 @@
                 <div class="header-content">
                     <div class="logo">
                         <a href="home.html" class="logo-link">
-                            <img src="../../img/logo.png" alt="Logo INTEGRA" class="logo-image">
+                            <img src="../../img/logo.png" alt="Logo INTEGRA" class="logo-image" />
                         </a>
                     </div>
-
-                    <button class="hamburger" id="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-
-                    <nav class="main-nav" id="mainNav">
+                    <nav class="main-nav">
                         <a href="home.html" class="nav-link">Home</a>
                         <a href="agendamento.html" class="nav-link">Agendamento</a>
                         <a href="agendados.html" class="nav-link">Agendados</a>
                         <a href="estudantes.html" class="nav-link">Estudantes</a>
-
-                        <div class="user-info" id="user-profile-btn">
-                            <div class="user-avatar">
-                                <i class="fas fa-user"></i>
-                            </div>
+                        <div class="user-info">
+                            <div class="user-avatar"><i class="fas fa-user"></i></div>
                             <p>Prof. João</p>
                             <i class="fas fa-chevron-down"></i>
                         </div>
-
                         <div class="mobile-buttons">
                             <a href="index.html" class="button primary-button">Sair</a>
                         </div>
@@ -56,19 +44,19 @@
                 <div class="container">
                     <h1>Editar Evento</h1>
                     <form id="edit-event-form">
-                        <label>Nome: <input type="text" id="edit-nome" required></label>
+                        <label>Nome: <input type="text" id="edit-nome" required /></label>
                         <label>Descrição: <textarea id="edit-descricao" required></textarea></label>
-                        <label>Data: <input type="date" id="edit-data" required></label>
-                        <label>Hora Início: <input type="time" id="edit-time" required></label>
-                        <label>Hora Fim: <input type="time" id="edit-time-end" required></label>
-                        <label>Rua: <input type="text" id="edit-rua" required></label>
-                        <label>Número: <input type="text" id="edit-numero" required></label>
-                        <label>Bairro: <input type="text" id="edit-bairro" required></label>
-                        <label>Cidade: <input type="text" id="edit-cidade" required></label>
-                        <label>Estado: <input type="text" id="edit-estado" required></label>
-                        <label>CEP: <input type="text" id="edit-cep" required></label>
-                        <label>Preço: <input type="number" id="edit-preco" required></label>
-                        <label>Vagas: <input type="number" id="edit-vagas" required></label>
+                        <label>Data: <input type="date" id="edit-data" required /></label>
+                        <label>Hora Início: <input type="time" id="edit-time" required /></label>
+                        <label>Hora Fim: <input type="time" id="edit-time-end" required /></label>
+                        <label>Rua: <input type="text" id="edit-rua" required /></label>
+                        <label>Número: <input type="text" id="edit-numero" required /></label>
+                        <label>Bairro: <input type="text" id="edit-bairro" required /></label>
+                        <label>Cidade: <input type="text" id="edit-cidade" required /></label>
+                        <label>Estado: <input type="text" id="edit-estado" required /></label>
+                        <label>CEP: <input type="text" id="edit-cep" required /></label>
+                        <label>Preço: <input type="number" id="edit-preco" required step="0.01" /></label>
+                        <label>Vagas: <input type="number" id="edit-vagas" required /></label>
                         <button type="submit" class="button primary-button">Atualizar</button>
                         <a href="agendados.html" class="button">Cancelar</a>
                     </form>
@@ -77,27 +65,29 @@
         </main>
     </div>
 
-    <script src="../../js/coordenador.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // ---------- PEGAR ID DO EVENTO DA QUERY ----------
             const params = new URLSearchParams(window.location.search);
-            const eventId = Number(params.get("id"));
-            if (!eventId) {
+            const id = parseInt(params.get("id"));
+
+            if (!id) {
+                alert("ID inválido.");
+                window.location.href = "agendados.html";
+                return;
+            }
+
+            const events = JSON.parse(localStorage.getItem("events")) || [];
+            const index = events.findIndex(ev => ev.id === id);
+
+            if (index === -1) {
                 alert("Evento não encontrado.");
                 window.location.href = "agendados.html";
                 return;
             }
 
-            // ---------- BUSCAR EVENTO NO ARRAY ----------
-            const event = events.find(ev => ev.id === eventId);
-            if (!event) {
-                alert("Evento não encontrado.");
-                window.location.href = "agendados.html";
-                return;
-            }
+            const event = events[index];
 
-            // ---------- PREENCHER FORMULÁRIO ----------
+            // Preencher campos
             document.getElementById("edit-nome").value = event.nome;
             document.getElementById("edit-descricao").value = event.descricao;
             document.getElementById("edit-data").value = event.date;
@@ -112,29 +102,34 @@
             document.getElementById("edit-preco").value = event.preco;
             document.getElementById("edit-vagas").value = event.vagas;
 
-            // ---------- ATUALIZAR EVENTO ----------
-            document.getElementById("edit-event-form").onsubmit = (e) => {
+            // Atualizar evento
+            document.getElementById("edit-event-form").addEventListener("submit", (e) => {
                 e.preventDefault();
 
-                event.nome = document.getElementById("edit-nome").value;
-                event.descricao = document.getElementById("edit-descricao").value;
-                event.date = document.getElementById("edit-data").value;
-                event.time = document.getElementById("edit-time").value;
-                event.time_end = document.getElementById("edit-time-end").value;
-                event.rua = document.getElementById("edit-rua").value;
-                event.numero = document.getElementById("edit-numero").value;
-                event.bairro = document.getElementById("edit-bairro").value;
-                event.cidade = document.getElementById("edit-cidade").value;
-                event.estado = document.getElementById("edit-estado").value;
-                event.cep = document.getElementById("edit-cep").value;
-                event.preco = parseFloat(document.getElementById("edit-preco").value) || 0;
-                event.vagas = parseInt(document.getElementById("edit-vagas").value);
+                events[index] = {
+                    ...event,
+                    nome: document.getElementById("edit-nome").value,
+                    descricao: document.getElementById("edit-descricao").value,
+                    date: document.getElementById("edit-data").value,
+                    time: document.getElementById("edit-time").value,
+                    time_end: document.getElementById("edit-time-end").value,
+                    rua: document.getElementById("edit-rua").value,
+                    numero: document.getElementById("edit-numero").value,
+                    bairro: document.getElementById("edit-bairro").value,
+                    cidade: document.getElementById("edit-cidade").value,
+                    estado: document.getElementById("edit-estado").value,
+                    cep: document.getElementById("edit-cep").value,
+                    preco: parseFloat(document.getElementById("edit-preco").value),
+                    vagas: parseInt(document.getElementById("edit-vagas").value)
+                };
 
+                localStorage.setItem("events", JSON.stringify(events));
                 alert("Evento atualizado com sucesso!");
                 window.location.href = "agendados.html";
-            };
+            });
         });
     </script>
+
 </body>
 
 </html>

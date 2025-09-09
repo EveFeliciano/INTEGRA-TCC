@@ -128,7 +128,7 @@
 }
 
 .event-details {
-  padding: 1.25rem;
+  padding: 0.5rem;
   font-size: 0.875rem;
   color: var(--text-dark);
 }
@@ -163,24 +163,18 @@
 
 .event-time {
   display: flex;
-  /* mantém hora e tipo na mesma linha */
   align-items: center;
-  /* centraliza verticalmente */
   gap: 0.25rem;
-  /* espaço entre os elementos */
   flex-wrap: nowrap;
-  /* evita quebra de linha */
 }
 
 .event-time .event-info {
   flex: 0 0 auto;
-  /* não deixa crescer */
 }
 
 .event-time .time,
 .event-time .tipo {
   flex: 1 1 auto;
-  /* ocupa o restante do espaço */
 }
 
 /* Data Table */
@@ -405,12 +399,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* mantém botão à direita */
   gap: 1rem;
   padding: 1rem 1.5rem;
   border-bottom: 1px solid #f1f5f9;
   flex-wrap: nowrap;
-  /* impede que os itens quebrem de linha */
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
@@ -433,7 +425,6 @@
   font-size: 1rem;
   color: white;
   flex-shrink: 0;
-  /* evita encolher */
 }
 
 .activity-icon.blue {
@@ -451,10 +442,8 @@
 .activity-content {
   flex: 1 1 auto;
   min-width: 0;
-  /* essencial para o botão aparecer */
   margin-right: 1rem;
   overflow: hidden;
-  /* impede que o texto empurre o botão */
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -1294,9 +1283,7 @@
   }
 }
 
-/* =========================
-   Cards de Turma
-========================= */
+/* Cards de Turma */
 .class-card {
   background: #fff;
   padding: 1rem;
@@ -1345,11 +1332,7 @@
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* =========================
-   Modal de Estudantes
-========================= */
-
-/* Coloração do topo conforme o curso */
+/* Modal de Estudantes */
 .course-informatica-para-internet #students-modal .modal-content,
 .course-informatica-para-internet #student-form-modal .modal-content {
   border-top: 6px solid #4CAF50;
@@ -1417,9 +1400,7 @@
   border-top: 1px solid #ddd;
 }
 
-/* =========================
-   Barra de Filtros
-========================= */
+/* Barra de Filtros */
 .students-filters {
   display: flex;
   gap: 1rem;
@@ -1499,9 +1480,7 @@
   border-color: var(--primary-color);
 }
 
-/* =========================
-   Mensagem de Sem Resultados
-========================= */
+/* Mensagem de Sem Resultados */
 .no-results {
   text-align: center;
   color: #888;
@@ -1509,9 +1488,7 @@
   margin: 1rem 0;
 }
 
-/* =========================
-   Destaque de Pesquisa
-========================= */
+/* Destaque de Pesquisa */
 mark {
   background-color: var(--primary-color);
   color: #fff;
@@ -2034,7 +2011,7 @@ mark {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1rem;
+  padding: 0 1rem 2rem 1rem;
 }
 
 .selector-header {
@@ -2453,15 +2430,10 @@ header:hover {
 #prevMonth,
 #nextMonth {
   background-color: var(--primary-color);
-  /* cor de fundo */
   color: white;
-  /* cor do texto */
   border: none;
-  /* sem borda */
   padding: 0.5rem 1rem;
-  /* tamanho do botão */
   font-size: 1.2rem;
-  /* tamanho da seta */
   cursor: pointer;
   border-radius: 0.5rem;
   transition: background-color 0.3s;
@@ -2473,31 +2445,25 @@ header:hover {
   background-color: var(--primary-hover);
 }
 
-/* Se quiser trocar o símbolo "<" e ">" */
 #prevMonth::before {
   content: "⬅";
-  /* seta esquerda personalizada */
 }
 
 #nextMonth::before {
   content: "➡";
-  /* seta direita personalizada */
 }
 
 /* Se preferir remover o texto original e usar apenas o ::before */
 #prevMonth,
 #nextMonth {
   font-size: 0;
-  /* esconde o texto original */
 }
 
 /* Botões de navegação do calendário */
 #prevMonth,
 #nextMonth {
   background-color: transparent;
-  /* fundo transparente */
   color: var(--primary-color);
-  /* cor das setas */
   border: none;
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
@@ -2509,19 +2475,16 @@ header:hover {
 #prevMonth:hover,
 #nextMonth:hover {
   color: #fff;
-  /* muda a cor da seta no hover */
 }
 
 /* Seta personalizada (opcional) */
 #prevMonth::before {
   content: "◀";
-  /* seta esquerda */
   font-size: 1.2rem;
 }
 
 #nextMonth::before {
   content: "▶";
-  /* seta direita */
   font-size: 1.2rem;
 }
 
@@ -2652,14 +2615,12 @@ header:hover {
 /* Seção de edição */
 .editar {
   display: none;
-  /* garante que esteja oculta por padrão */
   width: 100%;
 }
 
 /* Edit-card */
 .edit-card {
   position: relative;
-  /* não fixed/absolute aqui, pois JS controla a seção inteira */
   background-color: #fff;
   border-radius: 12px;
   padding: 2rem;
@@ -2698,4 +2659,241 @@ header:hover {
   background: #4a2358;
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(88, 43, 105, 0.3);
+}
+
+.selected-date {
+  text-align: center;
+}
+
+/* Container da grid */
+.agendar-events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Card */
+.agendar-event-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  border-left: 2px solid var(--primary-color);
+}
+
+.agendar-event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Título e descrição */
+.agendar-event-title {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.agendar-event-description {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.agendar-event-details {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+/* Label (campo) */
+.agendar-event-details .label {
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.4rem 0.5rem 0.4rem 0.5rem;
+  /* sem espaçamento extra à direita */
+  border-radius: 8px 0 0 8px;
+  font-size: 0.85rem;
+  text-align: center;
+  flex-shrink: 0;
+  margin: 0;
+  /* remove qualquer espaço externo */
+}
+
+/* Valor (conteúdo) */
+.agendar-event-details .value {
+  background: #f2e9f7;
+  padding: 0.4rem 0.5rem 0.4rem 0.5rem;
+  /* sem espaçamento extra à esquerda */
+  border-radius: 0 8px 8px 0;
+  font-size: 0.85rem;
+  flex: 1;
+  margin: 0;
+  /* remove qualquer espaço externo */
+}
+
+.agendar-event-details .value {
+  margin-left: -2px;
+  /* força colar no label */
+}
+
+/* Botão */
+.agendar-event-btn {
+  margin-top: 1rem;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.agendar-event-btn:hover {
+  background: #7e3f96;
+  transform: translateY(-2px);
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  .agendar-events-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+.button.secundary-button {
+  background: white;
+  color: var(--primary-color);
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+/* Título centralizado e com cor primária */
+.agendar-title {
+  text-align: center;
+  color: var(--primary-color);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-top: 2rem;
+  font-size: 2rem;
+}
+
+.texto {
+  text-align: left;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+/* Modal de Agendamento */
+#agendamento-modal .modal-content {
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+  max-width: 600px;
+  width: 90%;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#agendamento-modal .modal-content:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Header da Modal */
+#agendamento-modal .modal-header {
+  padding: 1.5rem 2rem;
+  background: linear-gradient(90deg, #4f46e5, #6366f1);
+  /* degrade azul roxo */
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Corpo da Modal */
+#agendamento-modal .modal-body {
+  padding: 1.5rem 2rem;
+  background-color: #f9f9f9;
+  flex: 1;
+  overflow-y: auto;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Footer da Modal */
+#agendamento-modal .modal-footer {
+  padding: 1rem 2rem;
+  background-color: #f1f1f1;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+/* Botões da Modal */
+#agendamento-modal .modal-footer button {
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+#agendamento-modal .modal-footer button.primary {
+  background-color: #4f46e5;
+  color: #ffffff;
+}
+
+#agendamento-modal .modal-footer button.primary:hover {
+  background-color: #4338ca;
+}
+
+#agendamento-modal .modal-footer button.secondary {
+  background-color: #9ca3af;
+  color: #ffffff;
+}
+
+#agendamento-modal .modal-footer button.secondary:hover {
+  background-color: #6b7280;
+}
+
+/* Scrollbar personalizada */
+#agendamento-modal .modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+#agendamento-modal .modal-body::-webkit-scrollbar-track {
+  background: #e5e7eb;
+  border-radius: 4px;
+}
+
+#agendamento-modal .modal-body::-webkit-scrollbar-thumb {
+  background: #4f46e5;
+  border-radius: 4px;
 }
